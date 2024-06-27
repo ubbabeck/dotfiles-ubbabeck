@@ -60,18 +60,27 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  #
+  # # Enable the LXQT Desktop Environment.
+ services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.libinput.enable = true;
 
-  # Enable the LXQT Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.libinput.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
 
+  programs.zsh.enable = true;
+
+  # --------------hyprland---------------
   programs.hyprland = {
     # Install the packages from nixpkgs
     enable = true;
     # Whether to enable XWayland
     xwayland.enable = true;
   };
+ # --------------hyprland---------------
 
   programs.git.enable = true;
 
@@ -126,6 +135,36 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     vim
+    waybar
+    dunst
+    libnotify
+    swww
+    rofi-wayland
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xwayland
+    meson
+    wayland-protocols
+    wayland-utils
+    wl-clipboard
+    wlroots
+    kitty
+  ];
+
+  fonts.fonts = with pkgs; [
+    nerdfonts
+    meslo-lgs-nf
+  ];
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    WLD_NO_HARDWARE_CURSON_ = "1";
+  };
+  nixpkgs.overlays = [
+    (self: super: {
+      waybar = super.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      });
+    })
   ];
 
   environment.variables.EDITOR = "vim";
