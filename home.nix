@@ -93,6 +93,9 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    # password manager
+    keepassxc
   ];
 
   # basic configuration of git, please change to your own
