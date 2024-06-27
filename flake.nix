@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # Nixos Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -30,7 +30,14 @@
         # > Our main nixos configuration file <
         modules = [
           ./nixos/configuration.nix
+
           nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.ruben = import ./home.nix;
+          }
         ];
       };
     };

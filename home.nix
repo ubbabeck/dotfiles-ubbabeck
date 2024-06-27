@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
-
 {
-  # TODO please change the username & home directory to your own
-  home.username = "ryan";
-  home.homeDirectory = "/home/ryan";
+  config,
+  pkgs,
+  ...
+}: {
+  home.username = "ruben";
+  home.homeDirectory = "/home/ruben";
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -49,12 +50,12 @@
     # networking tools
     mtr # A network diagnostic tool
     iperf3
-    dnsutils  # `dig` + `nslookup`
+    dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+    ipcalc # it is a calculator for the IPv4/v6 addresses
 
     # misc
     file
@@ -71,11 +72,13 @@
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
+    nixd
+    alejandra
 
     # productivity
     glow # markdown previewer in terminal
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -102,10 +105,10 @@
     difftastic.background = "dark";
   };
 
-
   # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
     # custom settings
     settings = {
       add_newline = false;
@@ -120,14 +123,20 @@
     enable = true;
     # custom settings
     settings = {
-      env.TERM = "xterm-256color";
+      window.decorations = "none";
+      window.dynamic_title = true;
       font = {
         size = 12;
-        draw_bold_text_with_bright_colors = true;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
     };
+  };
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    keyMode = "vi";
   };
 
   programs.zsh = {
@@ -138,7 +147,6 @@
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
-      
     };
   };
 
@@ -150,7 +158,7 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
