@@ -171,7 +171,7 @@
   };
 
   programs.direnv = {
-	enable = true;
+    enable = true;
   };
 
   # This value determines the home Manager release that your

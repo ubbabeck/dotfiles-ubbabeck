@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -21,7 +22,22 @@
     }
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+
+    settings = {
+      auto-optimise-store = true;
+      trusted-users = ["root" "ruben"];
+      experimental-features = ["nix-command" "flakes"];
+      warn-dirty = false;
+      keep-outputs = true;
+      keep-derivations = true;
+    };
+  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
