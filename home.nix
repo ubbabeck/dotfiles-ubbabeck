@@ -149,8 +149,8 @@
     syntaxHighlighting.enable = true;
 
     # set some aliases, feel free to add more or remove some
-    #shellAliases = {
-    # };
+    shellAliases = {
+    };
   };
 
   # This value determines the home Manager release that your
