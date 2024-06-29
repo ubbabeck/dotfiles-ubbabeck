@@ -137,6 +137,7 @@
     #media-session.enable = true;
   };
 
+  services.fprintd.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -148,7 +149,10 @@
     packages = with pkgs; [
       #  thunderbird
     ];
+    shell = pkgs.zsh;
   };
+
+  programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -162,6 +166,7 @@
     dive
     podman-tui
     podman-compose
+    podman-desktop
   ];
 
   environment.variables.EDITOR = "nvim";
