@@ -46,6 +46,7 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
+    mdcat
 
     #flake hub cli
     fh
@@ -128,7 +129,6 @@
   # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
     # custom settings
     settings = {
       add_newline = false;
@@ -165,6 +165,10 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
     # set some aliases, feel free to add more or remove some
     shellAliases = {
     };
