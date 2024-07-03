@@ -12,7 +12,6 @@
     ./hardware-configuration.nix
   ];
 
-
   security.doas.enable = true;
   security.sudo.enable = false;
   security.doas.extraRules = [
@@ -90,6 +89,28 @@
     xwayland.enable = true;
   };
 
+  fonts = {
+    packages = with pkgs; [
+      # icon fonts
+      open-dyslexic
+      noto-fonts
+      noto-fonts-emoji
+      # nerdfonts
+      (nerdfonts.override {fonts = ["OpenDyslexic" "JetBrainsMono"];})
+    ];
+
+    # use fonts specified by user rather than default ones
+    enableDefaultPackages = false;
+
+    # user defined fonts
+    fontconfig.defaultFonts = {
+      serif = ["OpenDyslexic" "Noto Color Emoji"];
+      sansSerif = ["OpenDyslexic" "Noto Color Emoji"];
+      monospace = ["OpenDyslexicM Nerd Font Mono" "Noto Color Emoji"];
+      emoji = ["Noto Color Emoji"];
+    };
+  };
+
   programs.git.enable = true;
 
   # -----Docker ---------
@@ -140,11 +161,11 @@
 
   services.fprintd = {
     enable = false;
-   # TODO allowUnFree for this packages
-   # tod = {
-   #   enable = true;
-   #   driver = pkgs.libfprint-2-tod1-goodix;
-   # };
+    # TODO allowUnFree for this packages
+    # tod = {
+    #   enable = true;
+    #   driver = pkgs.libfprint-2-tod1-goodix;
+    # };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
