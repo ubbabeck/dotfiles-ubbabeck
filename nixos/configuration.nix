@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
   ];
 
+
   security.doas.enable = true;
   security.sudo.enable = false;
   security.doas.extraRules = [
@@ -137,7 +138,15 @@
     #media-session.enable = true;
   };
 
-  services.fprintd.enable = true;
+  services.fprintd = {
+    enable = false;
+   # TODO allowUnFree for this packages
+   # tod = {
+   #   enable = true;
+   #   driver = pkgs.libfprint-2-tod1-goodix;
+   # };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 

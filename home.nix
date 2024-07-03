@@ -157,6 +157,7 @@
     enable = true;
     clock24 = true;
     keyMode = "vi";
+    mouse = true;
   };
 
   programs.zsh = {
