@@ -126,6 +126,9 @@
     vimAlias = true;
   };
 
+  programs.fzf = {
+    enable = true;
+  };
   # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
@@ -158,6 +161,7 @@
     clock24 = true;
     keyMode = "vi";
     mouse = true;
+    reverseSplit = true;
   };
 
   programs.zsh = {
