@@ -44,7 +44,6 @@
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processor https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
     mdcat
 
@@ -126,6 +125,8 @@
     vimAlias = true;
   };
 
+  programs.eza.enable = true;
+
   programs.fzf = {
     enable = true;
   };
@@ -150,7 +151,7 @@
       window.decorations = "none";
       window.dynamic_title = true;
       font = {
-        size = 14;
+        size = 16;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
@@ -177,6 +178,8 @@
     };
     # set some aliases, feel free to add more or remove some
     shellAliases = {
+      ls = "eza";
+      gs = "git status";
     };
   };
 

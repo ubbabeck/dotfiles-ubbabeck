@@ -74,20 +74,12 @@
     LC_TIME = "nb_NO.UTF-8";
   };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the LXQT Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.libinput.enable = true;
-
-  programs.hyprland = {
-    # Install the packages from nixpkgs
-    enable = true;
-    # Whether to enable XWayland
-    xwayland.enable = true;
-  };
+  services.libinput.enable = true;
 
   fonts = {
     packages = with pkgs; [
@@ -99,6 +91,7 @@
       (nerdfonts.override {fonts = ["OpenDyslexic" "JetBrainsMono"];})
     ];
 
+    fontDir.enable = true;
     # use fonts specified by user rather than default ones
     enableDefaultPackages = false;
 
@@ -130,10 +123,12 @@
   };
   # -----Docker ---------
 
-  # Configure keymap in X11
+  # Configure keymap in wayland
   services.xserver = {
-    layout = "no";
-    xkbVariant = "";
+    xkb = {
+      layout = "no";
+      variant = "";
+    };
   };
 
   # Configure console keymap
@@ -145,7 +140,41 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
+  security = {
+    polkit.enable = true;
+    pam.services.swaylock = {};
+  };
+
+  services.gnome.gnome-keyring.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway";
+        user = "ruben";
+      };
+      default_session = initial_session;
+    };
+  };
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraSessionCommands = ''
+      # Brightness
+      bindsym XF86MonBrightnessDown exec light -U 10
+      bindsym XF86MonBrightnessUp exec light -A 10
+
+      # Volume
+      bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
+      bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
+      bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+    '';
+  };
+  programs.waybar.enable = true;
+
+  # sway light
+  programs.light.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -175,7 +204,7 @@
   users.users.ruben = {
     isNormalUser = true;
     description = "ruben";
-    extraGroups = ["networkmanager" "wheel" "podman"];
+    extraGroups = ["networkmanager" "wheel" "podman" "video"];
     packages = with pkgs; [
       #  thunderbird
     ];
@@ -197,6 +226,12 @@
     podman-tui
     podman-compose
     podman-desktop
+
+    # Sway
+    grim
+    slurp
+    wl-clipboard
+    mako
   ];
 
   environment.variables.EDITOR = "nvim";
