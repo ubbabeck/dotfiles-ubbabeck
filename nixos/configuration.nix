@@ -10,6 +10,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./sway.nix
   ];
 
   security.doas.enable = true;
@@ -77,8 +78,6 @@
   services.xserver.enable = true;
 
   # Enable the LXQT Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
   services.libinput.enable = true;
 
   fonts = {
@@ -146,32 +145,7 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "ruben";
-      };
-      default_session = initial_session;
-    };
-  };
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    extraSessionCommands = ''
-      # Brightness
-      bindsym XF86MonBrightnessDown exec light -U 10
-      bindsym XF86MonBrightnessUp exec light -A 10
-
-      # Volume
-      bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
-      bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
-      bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
-    '';
-  };
-  programs.waybar.enable = true;
-
+ 
   # sway light
   programs.light.enable = true;
 
