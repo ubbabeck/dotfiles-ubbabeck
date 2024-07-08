@@ -11,6 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./sway.nix
+    ./programs
   ];
 
   security.doas.enable = true;
@@ -145,7 +146,7 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
- 
+
   # sway light
   programs.light.enable = true;
 
@@ -187,8 +188,6 @@
 
   programs.zsh.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

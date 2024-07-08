@@ -1,5 +1,5 @@
 {pkgs, ...}:
-with pkgs;{
+with pkgs; {
   programs.neovim = {
     enable = true;
 
