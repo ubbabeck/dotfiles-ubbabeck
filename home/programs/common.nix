@@ -22,6 +22,7 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
     mdcat
+    bottom
 
     #flake hub cli
     fh
@@ -72,6 +73,8 @@
     pciutils # lspci
     usbutils # lsusb
 
+    # vscodium
+    vscodium
     # password manager
     keepassxc
   ];
