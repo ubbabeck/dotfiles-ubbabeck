@@ -6,14 +6,15 @@
   programs.tmux = {
     enable = true;
     clock24 = true;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     keyMode = "vi";
     mouse = true;
+    customPaneNavigationAndResize = true;
     reverseSplit = true;
     extraConfig = ''
-      set -g status-right '#[fg=black,bg=color15] #{cpu_percentage}  %H:%M '
-      set-option -sg escape-time 10
-      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+      set-option -ga terminal-overrides ",alacritty:Tc"
+      set-option -g status-right "tmux"
+      set-option -g status-style "bg=black, fg=gray"
     '';
   };
 }

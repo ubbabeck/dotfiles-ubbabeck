@@ -13,9 +13,12 @@
       -b 'Poweroff' 'systemctl poweroff' \
       -b 'Reboot' 'systemctl reboot'
 
+    bar {
+      position bottom
+    }
     # Brightness
-    bindsym XF86MonBrightnessDown exec light -U 10
-    bindsym XF86MonBrightnessUp exec light -A 10
+    bindsym XF86MonBrightnessDown exec ${pkgs.light} -U 10
+    bindsym XF86MonBrightnessUp exec ${pkgs.light} -A 10
 
     # Volume
     bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'

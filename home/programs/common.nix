@@ -77,6 +77,9 @@
     vscodium
     # password manager
     keepassxc
+
+    # signal desktop
+    signal-desktop-beta
   ];
   programs.bat.enable = true;
 }
