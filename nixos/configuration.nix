@@ -199,6 +199,8 @@
     podman-compose
     podman-desktop
 
+    pulseaudio
+
     # Sway
     grim
     slurp

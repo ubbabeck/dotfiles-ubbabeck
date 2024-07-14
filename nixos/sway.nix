@@ -5,22 +5,17 @@
   ...
 }: let
   swayConfig = pkgs.writeText "greetd-sway-config" ''
-    # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
-    exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
-    bindsym Mod4+shift+e exec swaynag \
-      -t warning \
-      -m 'What do you want to do?' \
-      -b 'Poweroff' 'systemctl poweroff' \
-      -b 'Reboot' 'systemctl reboot'
+       # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+       exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
+       bindsym Mod4+shift+e exec swaynag \
+         -t warning \
+         -m 'What do you want to do?' \
+         -b 'Poweroff' 'systemctl poweroff' \
+         -b 'Reboot' 'systemctl reboot'
+       input * {
+    xkb_layout "no"
+       }
 
-    # Brightness
-    bindsym XF86MonBrightnessDown exec light -U 10
-    bindsym XF86MonBrightnessUp exec light -A 10
-
-    # Volume
-    bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'
-    bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'
-    bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
   '';
 in {
   programs.sway = {
@@ -28,7 +23,6 @@ in {
     wrapperFeatures.gtk = true;
   };
 
-  programs.waybar.enable = true;
   services.greetd = {
     enable = true;
     settings = {
