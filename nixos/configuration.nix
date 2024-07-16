@@ -84,11 +84,13 @@
   fonts = {
     packages = with pkgs; [
       # icon fonts
-      open-dyslexic
+
+      #open-dyslexic
       noto-fonts
-      noto-fonts-emoji
       # nerdfonts
-      (nerdfonts.override {fonts = ["OpenDyslexic" "JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "NerdFontsSymbolsOnly"];})
+      font-awesome
+      noto-fonts-emoji
     ];
 
     fontDir.enable = true;
@@ -97,9 +99,7 @@
 
     # user defined fonts
     fontconfig.defaultFonts = {
-      serif = ["OpenDyslexic" "Noto Color Emoji"];
-      sansSerif = ["OpenDyslexic" "Noto Color Emoji"];
-      monospace = ["OpenDyslexicM Nerd Font Mono" "Noto Color Emoji"];
+      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
     };
   };
@@ -138,7 +138,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security = {
     polkit.enable = true;
@@ -156,12 +155,14 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
 
   services.fprintd = {
     enable = false;
