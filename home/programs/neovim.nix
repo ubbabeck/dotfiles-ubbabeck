@@ -25,9 +25,7 @@ with pkgs; {
         inoremap <expr> <S-Tab>
                \ coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
-        inoremap <silent><expr> <CR>
-               \ coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
+        inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm : "\<C-g>u\<tab>"
       '';
     };
 
