@@ -64,6 +64,8 @@ in {
     };
   };
 
+  programs.bemenu.enable = true;
+
   systemd.user.services.swaylock = {
     Unit.Description = "Lock screen";
     Service.ExecStart = "${config.programs.swaylock.package}/bin/swaylock";
