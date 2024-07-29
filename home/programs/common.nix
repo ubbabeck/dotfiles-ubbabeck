@@ -24,6 +24,9 @@
     mdcat
     bottom
 
+    # sound
+    rhythmbox
+
     #flake hub cli
     fh
     # networking tools
@@ -73,6 +76,8 @@
     pciutils # lspci
     usbutils # lsusb
 
+    #
+    neovide
     # vscodium
     vscodium
     # password manager

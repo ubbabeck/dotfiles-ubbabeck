@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    zsh-powerlevel10k
+  ];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -17,6 +20,11 @@
     shellAliases = {
       ls = "eza";
       gs = "git status";
+    };
+
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
     };
   };
 }
