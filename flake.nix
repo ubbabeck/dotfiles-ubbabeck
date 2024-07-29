@@ -29,12 +29,14 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    allowed-unfree-packages = ["zerotierone" "obsidian"];
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
+
     nixosConfigurations = {
       thinkpad-p14 = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs outputs allowed-unfree-packages;};
         # > Our main nixos configuration file <
         modules = [
           ./nixos/configuration.nix

@@ -4,7 +4,8 @@
 {
   config,
   pkgs,
-  inputs,
+  lib,
+  allowed-unfree-packages,
   ...
 }: {
   imports = [
@@ -12,6 +13,7 @@
     ./hardware-configuration.nix
     ./sway.nix
     ./programs
+    ./zerotier.nix
   ];
 
   security.doas.enable = true;
@@ -39,6 +41,10 @@
       keep-outputs = true;
       keep-derivations = true;
     };
+  };
+
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
