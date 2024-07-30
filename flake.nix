@@ -47,6 +47,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.users.ruben = import ./home;
+            home-manager.extraSpecialArgs = {inherit allowed-unfree-packages;};
           }
         ];
       };

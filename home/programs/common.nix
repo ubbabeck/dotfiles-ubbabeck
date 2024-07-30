@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  allowed-unfree-packages,
   ...
 }: {
   # Packages that should be installed to the user profile.
@@ -85,6 +86,12 @@
 
     # signal desktop
     signal-desktop-beta
+
+    #obsidian
+    obsidian
+
+    #ungoogled chromeium
+    ungoogled-chromium
   ];
   programs.bat.enable = true;
 }
