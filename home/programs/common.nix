@@ -5,6 +5,7 @@
   ...
 }: {
   # Packages that should be installed to the user profile.
+  # TODO split and clean up
   home.packages = with pkgs; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
@@ -27,6 +28,9 @@
 
     # sound
     rhythmbox
+
+    #video player
+    mpv
 
     #flake hub cli
     fh
@@ -87,7 +91,7 @@
     # signal desktop
     signal-desktop-beta
 
-    #obsidian
+    # obsidian
     obsidian
 
     #ungoogled chromeium

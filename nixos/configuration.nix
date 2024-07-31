@@ -213,6 +213,16 @@
     slurp
     wl-clipboard
     mako
+
+    # Youtube
+    yt-dlp
+    (pkgs.writers.writeDashBin "youtube-dl" ''
+      exec ${pkgs.yt-dlp}/bin/yt-dlp "@"
+    '')
+
+    (pkgs.writers.writeDashBin "btc-kraken" ''
+      ${pkgs.curl}/bin/curl -Ss 'https://api.kraken.com/0/public/Ticker?pair=BTCEUR' | ${pkgs.jq}/bin/jq '.result.XXBTZEUR.a[0]'
+    '')
   ];
 
   environment.variables.EDITOR = "nvim";
