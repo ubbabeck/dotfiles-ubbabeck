@@ -61,6 +61,9 @@ in {
       indicator-radius = 100;
       indicator-thickness = 7;
       effect-blur = "7x5";
+       show-failed-attempts = true;
+       font-size = 24;
+       color = "808080";
     };
   };
 
