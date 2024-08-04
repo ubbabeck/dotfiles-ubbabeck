@@ -170,6 +170,7 @@ with pkgs; {
       coc-sh
       ale
       coc-pairs
+      coc-pyright
       YouCompleteMe
       coc-html
       lightline-vim
@@ -187,6 +188,9 @@ with pkgs; {
       set number
       set backspace=indent,eol,start
       set cc=80
+      set textwidth=80
+      autocmd FileType rust setlocal cc=100
+      autocmd FileType python setlocal cc=88
       colorscheme catppuccin-mocha
       if &diff
         colorscheme blue
