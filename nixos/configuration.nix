@@ -41,6 +41,8 @@
       keep-outputs = true;
       keep-derivations = true;
     };
+
+    package = pkgs.nixVersions.latest;
   };
 
   nixpkgs.config = {
