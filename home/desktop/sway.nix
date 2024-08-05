@@ -21,10 +21,10 @@
 in {
   wayland.windowManager.sway = {
     enable = true;
-    package = null;
-    config = null;
-    systemd.xdgAutostart = true;
-    extraConfig = lib.fileContents ./sway.conf;
+    config = rec {
+      modifier = "Mod4";
+    };
+    #extraConfig = lib.fileContents ./sway.conf;
   };
 
   services.swayidle = {

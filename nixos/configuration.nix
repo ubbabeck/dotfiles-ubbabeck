@@ -145,8 +145,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security = {
     polkit.enable = true;
     pam.services.swaylock = {};
@@ -157,6 +155,10 @@
   # sway light
   programs.light.enable = true;
 
+  # Enable sound with pipewire.
+
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -209,6 +211,7 @@
     podman-desktop
 
     pulseaudio
+    pavucontrol
 
     # Sway
     grim
