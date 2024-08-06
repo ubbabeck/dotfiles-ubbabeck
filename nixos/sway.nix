@@ -18,16 +18,24 @@
 
   '';
 in {
- # programs.sway = {
- #   enable = true;
- #   wrapperFeatures.gtk = true;
- # };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  # };
 
+  # TODO need to wait for a certain systemd process to finish
+  # https://github.com/apognu/tuigreet/issues/68
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+        command = ''
+            ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --time \
+          --asterisks \
+          --user-menu \
+          --cmd sway
+        '';
       };
     };
   };

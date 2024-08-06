@@ -7,12 +7,15 @@
   loginctl = "${pkgs.systemd}/bin/loginctl";
   swaymsg = "${pkgs.sway}/bin/swaymsg";
   systemctl = "${pkgs.systemd}/bin/systemctl";
-
+  mod4 = "Mod4";
   wpaperd-config = {
     default = {
       path = "~/Documents/Pictures/Backgrounds";
     };
   };
+
+  pactl = pkgs.pulseaudio + /bin/pactl;
+
 
   wpaperd-config-dir = pkgs.runCommand "wpaperd-config" {} ''
     mkdir -p $out/wpaperd
@@ -21,10 +24,30 @@
 in {
   wayland.windowManager.sway = {
     enable = true;
-    config = rec {
-      modifier = "Mod4";
+    xwayland = false;
+
+    config.modifier = mod4;
+    config.terminal = "alacritty";
+    config.input."type:touchpad" = {
+      tap = "enabled";
+      natural_scroll = "enabled";
     };
-    #extraConfig = lib.fileContents ./sway.conf;
+    config.input."type:keyboard".xkb_layout = "no,us";
+    config.input."type:keyboard".xkb_options = "grp:win_space_toggle";
+
+    config.keybindings = lib.mkOptionDefault {
+      "${mod4}+Q" = "exec alacritty";
+      # brightness
+      "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
+      "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
+      # audio control
+      "XF86AudioRaiseVolume" = "exec '${pactl} set-sink-volume @DEFAULT_SINK@ +5%'";
+      "XF86AudioLowerVolume" = "exec '${pactl} set-sink-volume @DEFAULT_SINK@ -5%'";
+      "XF86AudioMute" = "exec '${pactl} set-sink-mute @DEFAULT_SINK@ toggle'";
+    };
+    extraSessionCommands = ''
+      export MOZ_ENABLE_WAYLAND=1
+    '';
   };
 
   services.swayidle = {
@@ -66,8 +89,6 @@ in {
       color = "808080";
     };
   };
-
-  programs.bemenu.enable = true;
 
   systemd.user.services.swaylock = {
     Unit.Description = "Lock screen";
