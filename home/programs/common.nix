@@ -95,6 +95,9 @@
 
     #ungoogled chromeium
     ungoogled-chromium
+
+    # element
+    element-desktop
   ];
   programs.bat.enable = true;
 }
