@@ -16,7 +16,6 @@
 
   pactl = pkgs.pulseaudio + /bin/pactl;
 
-
   wpaperd-config-dir = pkgs.runCommand "wpaperd-config" {} ''
     mkdir -p $out/wpaperd
     cp ${(pkgs.formats.toml {}).generate "wallpaper.toml" wpaperd-config} $out/wpaperd/wallpaper.toml
@@ -24,7 +23,6 @@
 in {
   wayland.windowManager.sway = {
     enable = true;
-    xwayland = false;
 
     config.modifier = mod4;
     config.terminal = "alacritty";
@@ -44,6 +42,7 @@ in {
       "XF86AudioRaiseVolume" = "exec '${pactl} set-sink-volume @DEFAULT_SINK@ +5%'";
       "XF86AudioLowerVolume" = "exec '${pactl} set-sink-volume @DEFAULT_SINK@ -5%'";
       "XF86AudioMute" = "exec '${pactl} set-sink-mute @DEFAULT_SINK@ toggle'";
+      "XF86AudioMicMute" = "exec '${pactl} set-source-mute @DEFAULT_SOURCE@ toggle'";
     };
     extraSessionCommands = ''
       export MOZ_ENABLE_WAYLAND=1
