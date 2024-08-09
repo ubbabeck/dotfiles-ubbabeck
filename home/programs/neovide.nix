@@ -5,5 +5,5 @@
   };
 in {
   home.packages = [pkgs.neovide];
-  xdg.configFile."neovide/config.toml".source = pkgs.writeTOML "neovide/config.toml" options;
+  xdg.configFile."neovide/config.toml".source = pkgs.writers.writeTOML "neovide/config.toml" options;
 }
