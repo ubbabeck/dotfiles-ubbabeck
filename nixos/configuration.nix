@@ -228,6 +228,9 @@
     (pkgs.writers.writeDashBin "btc-kraken" ''
       ${pkgs.curl}/bin/curl -Ss 'https://api.kraken.com/0/public/Ticker?pair=BTCEUR' | ${pkgs.jq}/bin/jq '.result.XXBTZEUR.a[0]'
     '')
+    (pkgs.writers.writeDashBin "btc-bitmynt" ''
+      ${pkgs.curl}/bin/curl -Ss 'https://ny.bitmynt.no/data/rates.json' | ${pkgs.jq}/bin/jq .'current_rate.bid'
+    '')
   ];
 
   environment.variables.EDITOR = "nvim";
