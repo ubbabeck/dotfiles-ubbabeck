@@ -23,7 +23,7 @@
 in {
   wayland.windowManager.sway = {
     enable = true;
-
+    wrapperFeatures.gtk = true;
     config.modifier = mod4;
     config.terminal = "alacritty";
     config.input."type:touchpad" = {
@@ -48,6 +48,10 @@ in {
       export MOZ_ENABLE_WAYLAND=1
     '';
   };
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr];
+  xdg.portal.config.common.default = "*";
 
   services.swayidle = {
     enable = true;

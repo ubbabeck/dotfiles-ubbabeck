@@ -44,7 +44,7 @@ in {
   wayland.windowManager.sway.config.bars = [
     {
       statusCommand = "i3status-rs ${config.xdg.configHome}/i3status-rust/config-${id}.toml";
-      mode  = "hide";
+      mode = "hide";
       trayOutput = "none";
       fonts = {
         names = ["monospace"];
