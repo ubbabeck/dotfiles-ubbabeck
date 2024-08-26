@@ -82,8 +82,8 @@
 
     #
     neovide
-    # vscodium
-    vscodium
+    # rust-rover
+    jetbrains.rust-rover
     # password manager
     keepassxc
 
@@ -97,7 +97,6 @@
     ungoogled-chromium
 
     # element
-    element-desktop
   ];
   programs.bat.enable = true;
 }

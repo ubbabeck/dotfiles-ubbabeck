@@ -6,6 +6,6 @@
 
     difftastic.enable = true;
     difftastic.background = "dark";
-    ignores = ["*.swp" "result" ".envrc" ".direnv/"];
+    ignores = ["*.swp" "result" ".envrc" ".direnv/" ".idea/"];
   };
 }

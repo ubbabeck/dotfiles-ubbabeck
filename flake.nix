@@ -29,7 +29,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    allowed-unfree-packages = ["zerotierone" "obsidian"];
+    allowed-unfree-packages = ["zerotierone" "obsidian" "rust-rover"];
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
