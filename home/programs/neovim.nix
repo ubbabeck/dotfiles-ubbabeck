@@ -1,17 +1,48 @@
-{pkgs, ...}:
-with pkgs; {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  home.packages = [
+    pkgs.nil
+    pkgs.xclip
+    pkgs.nodePackages.bash-language-server
+  ];
   programs.neovim = {
     enable = true;
-
+    vimdiffAlias = true;
+    vimAlias = true;
+    withNodeJs = true;
     coc = {
       enable = true;
       settings = {
-        "languageserver" = {
+        rust-analyzer.server.path = "rust-analyzer";
+        rust-analyzer.inlayHints.closureReturnTypeHints.enable = false;
+        languageserver = {
+          bash = {
+            command = "bash-language-server";
+            args = ["start"];
+            filetypes = ["sh"];
+            ignoredRootPaths = ["~"];
+          };
+
           nix = {
-            command = "nixd";
+            command = "nil";
             filetypes = ["nix"];
+            rootPatterns = ["flake.nix"];
+            settings.nil.formatting = {
+              command = [
+                (lib.getExe pkgs.nixfmt-classic)
+              ];
+            };
+          };
+          python = {
+            linting.mypyEnabled = true;
           };
         };
+        "coc.preferences.currentFunctionSymbolAutoUpdate" = true;
+        "coc.preferences.formatOnSaveFiletypes" = "*";
+        "suggest.noselect" = true;
       };
       pluginConfig = ''
         " Use tab for trigger completion with characters ahead and navigate"
@@ -162,28 +193,32 @@ with pkgs; {
       '';
     };
 
-    plugins = with vimPlugins; [
-      scope-nvim
-      surround-nvim
-      vim-nix
-      coc-rust-analyzer
-      coc-sh
-      ale
+    plugins = with pkgs.vimPlugins; [
+      undotree
+      nvim-treesitter.withAllGrammars
+      editorconfig-vim
+      coc-json
       coc-pairs
+      coc-explorer
+      coc-rust-analyzer
       coc-pyright
-      YouCompleteMe
-      coc-html
-      lightline-vim
-      catppuccin-nvim
+      gruvbox-community
     ];
+    extraLuaConfig = ''
+      require'nvim-treesitter.configs'.setup {
+        highlight = {
+          enable = true,
+        },
+      }
+    '';
     extraConfig = ''
-      syntax on
+      syntax enable
       filetype plugin indent on
       set nobackup
-      set updatetime=300
+      set nowritebackup
+      set hidden
       " Always show the signcolumn, otherwise it would shift the text each time
       " diagnostics appear/become resolved
-      set signcolumn=yes
       set number relativenumber
       set number
       set backspace=indent,eol,start
@@ -191,12 +226,18 @@ with pkgs; {
       set textwidth=80
       autocmd FileType rust setlocal cc=100
       autocmd FileType python setlocal cc=88
-      colorscheme catppuccin-mocha
-      if &diff
-        colorscheme blue
-      endif
+      set ignorecase
+      set smartcase
+      colorscheme gruvbox
+      set termguicolors
+      set backspace=indent,eol,start
+      set background=dark
+      set expandtab
+      set undofile
+      set undodir=$HOME/.local/share/vim/undo
+      set directory=$HOME/.local/share/vim/swap
+
+
     '';
-    viAlias = true;
-    vimAlias = true;
   };
 }
