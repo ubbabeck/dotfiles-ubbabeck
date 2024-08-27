@@ -1,13 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  home.packages = [
-    pkgs.nil
-    pkgs.xclip
-    pkgs.nodePackages.bash-language-server
-  ];
+{ pkgs, lib, ... }: {
+  home.packages =
+    [ pkgs.nil pkgs.xclip pkgs.nodePackages.bash-language-server ];
   programs.neovim = {
     enable = true;
     vimdiffAlias = true;
@@ -21,27 +14,23 @@
         languageserver = {
           bash = {
             command = "bash-language-server";
-            args = ["start"];
-            filetypes = ["sh"];
-            ignoredRootPaths = ["~"];
+            args = [ "start" ];
+            filetypes = [ "sh" ];
+            ignoredRootPaths = [ "~" ];
           };
 
           nix = {
             command = "nil";
-            filetypes = ["nix"];
-            rootPatterns = ["flake.nix"];
+            filetypes = [ "nix" ];
+            rootPatterns = [ "flake.nix" ];
             settings.nil.formatting = {
-              command = [
-                (lib.getExe pkgs.nixfmt-classic)
-              ];
+              command = [ (lib.getExe pkgs.nixfmt-classic) ];
             };
           };
-          python = {
-            linting.mypyEnabled = true;
-          };
+          python = { linting.mypyEnabled = true; };
         };
         "coc.preferences.currentFunctionSymbolAutoUpdate" = true;
-        "coc.preferences.formatOnSaveFiletypes" = "*";
+        "coc.preferences.formatOnSaveFiletypes" = [ "*" ];
         "suggest.noselect" = true;
       };
       pluginConfig = ''
