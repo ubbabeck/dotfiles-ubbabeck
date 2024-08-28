@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   loginctl = "${pkgs.systemd}/bin/loginctl";
   swaymsg = "${pkgs.sway}/bin/swaymsg";
   systemctl = "${pkgs.systemd}/bin/systemctl";
@@ -16,11 +17,12 @@
 
   pactl = pkgs.pulseaudio + /bin/pactl;
 
-  wpaperd-config-dir = pkgs.runCommand "wpaperd-config" {} ''
+  wpaperd-config-dir = pkgs.runCommand "wpaperd-config" { } ''
     mkdir -p $out/wpaperd
-    cp ${(pkgs.formats.toml {}).generate "wallpaper.toml" wpaperd-config} $out/wpaperd/wallpaper.toml
+    cp ${(pkgs.formats.toml { }).generate "wallpaper.toml" wpaperd-config} $out/wpaperd/wallpaper.toml
   '';
-in {
+in
+{
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -50,7 +52,7 @@ in {
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   xdg.portal.config.common.default = "*";
 
   services.swayidle = {
@@ -101,8 +103,8 @@ in {
   systemd.user.services.wpaperd = {
     Unit = {
       Description = "Wallpaper daemon";
-      After = ["graphical-session-pre.target"];
-      PartOf = ["graphical-session.target"];
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
     };
 
     Service = {
@@ -110,6 +112,6 @@ in {
       Environment = "XDG_CONFIG_HOME=${wpaperd-config-dir}";
     };
 
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }

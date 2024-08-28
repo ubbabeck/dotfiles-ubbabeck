@@ -7,7 +7,8 @@
   lib,
   allowed-unfree-packages,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -21,7 +22,7 @@
   security.sudo.enable = false;
   security.doas.extraRules = [
     {
-      users = ["ruben"];
+      users = [ "ruben" ];
       keepEnv = true;
       persist = true;
     }
@@ -36,8 +37,14 @@
 
     settings = {
       auto-optimise-store = true;
-      trusted-users = ["root" "ruben"];
-      experimental-features = ["nix-command" "flakes"];
+      trusted-users = [
+        "root"
+        "ruben"
+      ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
       keep-outputs = true;
       keep-derivations = true;
@@ -97,7 +104,13 @@
       #open-dyslexic
       noto-fonts
       # nerdfonts
-      (nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "NerdFontsSymbolsOnly"];})
+      (nerdfonts.override {
+        fonts = [
+          "JetBrainsMono"
+          "Iosevka"
+          "NerdFontsSymbolsOnly"
+        ];
+      })
       font-awesome
       noto-fonts-emoji
     ];
@@ -108,8 +121,11 @@
 
     # user defined fonts
     fontconfig.defaultFonts = {
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-      emoji = ["Noto Color Emoji"];
+      monospace = [
+        "JetBrainsMono Nerd Font"
+        "Noto Color Emoji"
+      ];
+      emoji = [ "Noto Color Emoji" ];
     };
   };
 
@@ -148,7 +164,7 @@
 
   security = {
     polkit.enable = true;
-    pam.services.swaylock = {};
+    pam.services.swaylock = { };
   };
 
   services.gnome.gnome-keyring.enable = true;
@@ -191,7 +207,12 @@
   users.users.ruben = {
     isNormalUser = true;
     description = "ruben";
-    extraGroups = ["networkmanager" "wheel" "podman" "video"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "video"
+    ];
     packages = with pkgs; [
       #  thunderbird
     ];

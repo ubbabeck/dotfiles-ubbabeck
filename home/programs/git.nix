@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.git = {
     enable = true;
     userName = "ruben";
@@ -6,6 +7,12 @@
 
     difftastic.enable = true;
     difftastic.background = "dark";
-    ignores = ["*.swp" "result" ".envrc" ".direnv/" ".idea/"];
+    ignores = [
+      "*.swp"
+      "result"
+      ".envrc"
+      ".direnv/"
+      ".idea/"
+    ];
   };
 }

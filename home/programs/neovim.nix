@@ -1,6 +1,10 @@
-{ pkgs, lib, ... }: {
-  home.packages =
-    [ pkgs.nil pkgs.xclip pkgs.nodePackages.bash-language-server ];
+{ pkgs, lib, ... }:
+{
+  home.packages = [
+    pkgs.nil
+    pkgs.xclip
+    pkgs.nodePackages.bash-language-server
+  ];
   programs.neovim = {
     enable = true;
     vimdiffAlias = true;
@@ -24,10 +28,12 @@
             filetypes = [ "nix" ];
             rootPatterns = [ "flake.nix" ];
             settings.nil.formatting = {
-              command = [ (lib.getExe pkgs.nixfmt-classic) ];
+              command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
             };
           };
-          python = { linting.mypyEnabled = true; };
+          python = {
+            linting.mypyEnabled = true;
+          };
         };
         "coc.preferences.currentFunctionSymbolAutoUpdate" = true;
         "coc.preferences.formatOnSaveFiletypes" = [ "*" ];

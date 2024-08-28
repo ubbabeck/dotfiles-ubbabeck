@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   swayConfig = pkgs.writeText "greetd-sway-config" ''
     # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
     exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
@@ -17,7 +18,8 @@
     }
 
   '';
-in {
+in
+{
   # programs.sway = {
   #   enable = true;
   #   wrapperFeatures.gtk = true;

@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   id = "bottom";
-in {
+in
+{
   programs.i3status-rust = {
     enable = true;
     bars = {
@@ -14,8 +16,8 @@ in {
           {
             block = "cpu";
           }
-          {block = "memory";}
-          {block = "disk_space";}
+          { block = "memory"; }
+          { block = "disk_space"; }
           {
             block = "time";
             format = "$icon $timestamp.datetime(f:'%F %a %R')";
@@ -47,7 +49,7 @@ in {
       mode = "hide";
       trayOutput = "none";
       fonts = {
-        names = ["monospace"];
+        names = [ "monospace" ];
         size = 12.0;
         style = "Bold";
       };
