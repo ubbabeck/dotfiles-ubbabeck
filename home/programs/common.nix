@@ -3,7 +3,8 @@
   pkgs,
   allowed-unfree-packages,
   ...
-}: {
+}:
+{
   # Packages that should be installed to the user profile.
   # TODO split and clean up
   home.packages = with pkgs; [
@@ -57,9 +58,9 @@
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
-    nixd
     nix-tree
     alejandra
+    nixfmt-rfc-style
 
     # productivity
     glow # markdown previewer in terminal
@@ -88,6 +89,7 @@
     keepassxc
 
     # signal desktop
+    # TOOD add norwegian language
     signal-desktop-beta
 
     # obsidian
@@ -96,7 +98,7 @@
     #ungoogled chromeium
     ungoogled-chromium
 
-    # element
+    anki
   ];
   programs.bat.enable = true;
 }
