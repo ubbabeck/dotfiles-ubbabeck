@@ -36,7 +36,10 @@
           };
         };
         "coc.preferences.currentFunctionSymbolAutoUpdate" = true;
-        "coc.preferences.formatOnSaveFiletypes" = [ "*" ];
+        "coc.preferences.formatOnSaveFiletypes" = [
+          "rust"
+          "nix"
+        ];
         "suggest.noselect" = true;
       };
       pluginConfig = ''
