@@ -201,6 +201,7 @@
       coc-rust-analyzer
       coc-pyright
       gruvbox-community
+      lightline-vim
     ];
     extraLuaConfig = ''
       require'nvim-treesitter.configs'.setup {
