@@ -222,7 +222,7 @@
       set number
       set backspace=indent,eol,start
       set cc=80
-      set textwidth=80
+      setlocal nowrap
       autocmd FileType rust setlocal cc=100
       autocmd FileType python setlocal cc=88
       set ignorecase
@@ -235,8 +235,6 @@
       set undofile
       set undodir=$HOME/.local/share/vim/undo
       set directory=$HOME/.local/share/vim/swap
-
-
     '';
   };
 }
