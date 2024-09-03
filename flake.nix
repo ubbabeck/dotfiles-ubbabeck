@@ -44,11 +44,16 @@
       nixosConfigurations = {
         thinkpad-p14 = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs allowed-unfree-packages;
+            inherit
+              self
+              inputs
+              outputs
+              allowed-unfree-packages
+              ;
           };
           # > Our main nixos configuration file <
           modules = [
-            ./nixos/configuration.nix
+            ./nixos
 
             nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
 
