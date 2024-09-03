@@ -88,6 +88,9 @@
     # password manager
     keepassxc
 
+    # remote programming
+    mob
+
     # signal desktop
     # TOOD add norwegian language
     signal-desktop-beta
