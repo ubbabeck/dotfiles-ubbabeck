@@ -32,6 +32,7 @@
             };
           };
           python = {
+            filetypes = [ "py" ];
             linting.mypyEnabled = true;
           };
         };
@@ -43,6 +44,8 @@
         "suggest.noselect" = true;
       };
       pluginConfig = ''
+
+        let mapleader = " "
         " Use tab for trigger completion with characters ahead and navigate"
         " NOTE: There's always complete item selected by default, you may want to enable"
         " no select by `"suggest.noselect": true` in your configuration file"
@@ -95,6 +98,7 @@
 
         " Highlight the symbol and its references when holding the cursor"
         autocmd CursorHold * silent call CocActionAsync('highlight')
+
 
         " Symbol renaming"
         nmap <leader>rn <Plug>(coc-rename)
@@ -235,6 +239,7 @@
       set undofile
       set undodir=$HOME/.local/share/vim/undo
       set directory=$HOME/.local/share/vim/swap
+
     '';
   };
 }
