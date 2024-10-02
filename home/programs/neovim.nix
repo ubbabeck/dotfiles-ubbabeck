@@ -203,6 +203,7 @@
       coc-pairs
       coc-explorer
       coc-rust-analyzer
+      coc-yaml
       coc-pyright
       gruvbox-community
       lightline-vim
