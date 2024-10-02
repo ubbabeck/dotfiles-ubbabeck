@@ -61,6 +61,7 @@
     nix-tree
     alejandra
     nixfmt-rfc-style
+    fh
 
     # productivity
     glow # markdown previewer in terminal
