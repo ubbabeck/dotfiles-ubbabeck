@@ -156,7 +156,7 @@
   console.keyMap = "no";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   security = {
     polkit.enable = true;
