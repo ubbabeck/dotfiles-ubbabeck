@@ -249,16 +249,6 @@
     (writers.writeDashBin "btc-bitmynt" ''
       ${curl}/bin/curl -Ss 'https://ny.bitmynt.no/data/rates.json' | ${jq}/bin/jq .'current_rate.bid'
     '')
-
-    (writers.writeDashBin "tmux-bitmynt" ''
-      ${tmux}/bin/tmux new-session -s bitmynt -c ~/Git/Bitmynt 
-    '')
-    (writers.writeDashBin "tmux-eelco" ''
-      ${tmux}/bin/tmux new-session -s eelco -c ~/Github/eelco 
-    '')
-    (writers.writeDashBin "tmux-nix-config" ''
-      ${tmux}/bin/tmux new-session -s nix-config -c ~/nix-config 
-    '')
   ];
 
   environment.variables.EDITOR = "nvim";
