@@ -36,6 +36,7 @@ in
     config.input."type:keyboard".xkb_options = "grp:win_space_toggle";
 
     config.keybindings = lib.mkOptionDefault {
+      #"${mod4}+D" = "exec ${pkgs.rofi}/bin/rofi --show=drum";
       "${mod4}+Q" = "exec alacritty";
       # brightness
       "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
