@@ -2,7 +2,7 @@
 {
   imports = [
     ./common.nix
-    ./tmux.nix
+    ./zellij.nix
     ./fzf.nix
     ./terminal.nix
     ./zsh.nix
