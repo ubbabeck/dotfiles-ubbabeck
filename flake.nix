@@ -34,7 +34,6 @@
       allowed-unfree-packages = [
         "zerotierone"
         "obsidian"
-        "rust-rover"
       ];
     in
     {

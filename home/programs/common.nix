@@ -84,8 +84,6 @@
 
     #
     neovide
-    # rust-rover
-    jetbrains.rust-rover
     # password manager
     keepassxc
 
