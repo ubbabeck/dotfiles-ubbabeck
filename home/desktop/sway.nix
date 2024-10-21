@@ -52,6 +52,8 @@ in
     '';
   };
 
+  gtk.gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+  gtk.gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   xdg.portal.config.common.default = "*";
