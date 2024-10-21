@@ -7,5 +7,6 @@
     ./zerotier.nix
     ./yubikey.nix
     ./sway.nix
+    ./tor.nix
   ];
 }
