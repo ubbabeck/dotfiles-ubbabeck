@@ -100,8 +100,6 @@
     #ungoogled chromeium
     ungoogled-chromium
 
-    calibre
-
     anki
   ];
   programs.bat.enable = true;
