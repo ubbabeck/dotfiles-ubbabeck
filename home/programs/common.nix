@@ -63,6 +63,9 @@
     nixfmt-rfc-style
     fh
 
+    cargo
+    cargo-watch
+
     # productivity
     glow # markdown previewer in terminal
 
