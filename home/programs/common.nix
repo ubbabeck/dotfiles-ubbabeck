@@ -43,6 +43,7 @@
     nmap # A utility for network discovery and security auditing
     ipcalc # it is a calculator for the IPv4/v6 addresses
 
+    wireguard-tools
     # misc
     file
     which
@@ -102,6 +103,9 @@
 
     #ungoogled chromeium
     ungoogled-chromium
+
+    # tor browser
+    tor-browser
 
     anki
   ];
