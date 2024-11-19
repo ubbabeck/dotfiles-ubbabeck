@@ -199,10 +199,14 @@
       undotree
       nvim-treesitter.withAllGrammars
       editorconfig-vim
+      vim-fugitive
+      fzf-vim
+      vim-gitgutter
       coc-json
       coc-pairs
       coc-explorer
       coc-rust-analyzer
+      coc-clangd
       coc-yaml
       coc-pyright
       gruvbox-community
