@@ -1,7 +1,14 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, lib, allowed-unfree-packages, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  allowed-unfree-packages,
+  ...
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -9,11 +16,13 @@
 
   security.doas.enable = true;
   security.sudo.enable = false;
-  security.doas.extraRules = [{
-    users = [ "ruben" ];
-    keepEnv = true;
-    persist = true;
-  }];
+  security.doas.extraRules = [
+    {
+      users = [ "ruben" ];
+      keepEnv = true;
+      persist = true;
+    }
+  ];
 
   nix = {
     gc = {
@@ -24,8 +33,14 @@
 
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "root" "ruben" ];
-      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [
+        "root"
+        "ruben"
+      ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
       keep-outputs = true;
       keep-derivations = true;
@@ -35,15 +50,13 @@
   };
 
   nixpkgs.config = {
-    allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) allowed-unfree-packages;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-1c3d6c0f-5c93-4c26-9b50-5a8db85684c6".device =
-    "/dev/disk/by-uuid/1c3d6c0f-5c93-4c26-9b50-5a8db85684c6";
+  boot.initrd.luks.devices."luks-1c3d6c0f-5c93-4c26-9b50-5a8db85684c6".device = "/dev/disk/by-uuid/1c3d6c0f-5c93-4c26-9b50-5a8db85684c6";
   networking.hostName = "thinkpad-p14"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -88,7 +101,11 @@
       noto-fonts
       # nerdfonts
       (nerdfonts.override {
-        fonts = [ "JetBrainsMono" "Iosevka" "NerdFontsSymbolsOnly" ];
+        fonts = [
+          "JetBrainsMono"
+          "Iosevka"
+          "NerdFontsSymbolsOnly"
+        ];
       })
       font-awesome
       noto-fonts-emoji
@@ -100,7 +117,10 @@
 
     # user defined fonts
     fontconfig.defaultFonts = {
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+      monospace = [
+        "JetBrainsMono Nerd Font"
+        "Noto Color Emoji"
+      ];
       emoji = [ "Noto Color Emoji" ];
     };
   };
@@ -201,11 +221,15 @@
   users.users.ruben = {
     isNormalUser = true;
     description = "ruben";
-    extraGroups = [ "networkmanager" "wheel" "podman" "video" ];
-    packages = with pkgs;
-      [
-        #  thunderbird
-      ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "video"
+    ];
+    packages = with pkgs; [
+      #  thunderbird
+    ];
     shell = pkgs.zsh;
   };
 
