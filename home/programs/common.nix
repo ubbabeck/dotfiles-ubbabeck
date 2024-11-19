@@ -94,6 +94,9 @@
     # remote programming
     mob
 
+    # accounting
+    hledger
+
     # signal desktop
     # TOOD add norwegian language
     signal-desktop-beta
