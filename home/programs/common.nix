@@ -42,6 +42,7 @@
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
     ipcalc # it is a calculator for the IPv4/v6 addresses
+    wget
 
     wireguard-tools
     # misc
@@ -85,6 +86,8 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    apksigner # for verifying apk files
 
     #
     neovide
