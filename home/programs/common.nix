@@ -33,6 +33,8 @@
     #video player
     mpv
 
+    #screen show
+
     # networking tools
     mtr # A network diagnostic tool
     iperf3
@@ -102,8 +104,7 @@
 
     # signal desktop
     # TOOD add norwegian language
-    signal-desktop-beta
-
+    signal-desktop
     # obsidian
     obsidian
 
