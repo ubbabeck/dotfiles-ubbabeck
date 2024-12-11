@@ -99,14 +99,9 @@
 
       #open-dyslexic
       noto-fonts
-      # nerdfonts
-      (nerdfonts.override {
-        fonts = [
-          "JetBrainsMono"
-          "Iosevka"
-          "NerdFontsSymbolsOnly"
-        ];
-      })
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.iosevka
+      nerd-fonts.symbols-only
       font-awesome
       noto-fonts-emoji
     ];
