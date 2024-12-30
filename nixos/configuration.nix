@@ -56,10 +56,16 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-1c3d6c0f-5c93-4c26-9b50-5a8db85684c6".device = "/dev/disk/by-uuid/1c3d6c0f-5c93-4c26-9b50-5a8db85684c6";
+  boot.initrd.luks.devices."luks-1c3d6c0f-5c93-4c26-9b50-5a8db85684c6".device =
+    "/dev/disk/by-uuid/1c3d6c0f-5c93-4c26-9b50-5a8db85684c6";
   networking.hostName = "thinkpad-p14"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.lidSwitchDocked = "ignore";
+  services.logind.extraConfig = ''
+    HandlePowerKey=hibernate
+  '';
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
