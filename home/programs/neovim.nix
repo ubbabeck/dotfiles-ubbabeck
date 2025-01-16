@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   home.packages = [
-    pkgs.nil
+    pkgs.nixd
     pkgs.xclip
     pkgs.nodePackages.bash-language-server
   ];
@@ -24,10 +24,10 @@
           };
 
           nix = {
-            command = "nil";
+            command = lib.getExe pkgs.nixd;
             filetypes = [ "nix" ];
             rootPatterns = [ "flake.nix" ];
-            settings.nil.formatting = {
+            settings.nixd.formatting = {
               command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
             };
           };
