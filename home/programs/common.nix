@@ -115,8 +115,6 @@
     tor-browser
 
     anki
-
-    npins
   ];
   programs.bat.enable = true;
 }
