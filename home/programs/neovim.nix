@@ -24,7 +24,7 @@
           };
 
           nix = {
-            command = lib.getExe pkgs.nixd;
+            command = (lib.getExe pkgs.nixd);
             filetypes = [ "nix" ];
             rootPatterns = [ "flake.nix" ];
             settings.nixd.formatting = {

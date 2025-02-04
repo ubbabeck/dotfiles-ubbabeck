@@ -34,6 +34,7 @@ in
     };
     config.input."type:keyboard".xkb_layout = "no,us";
     config.input."type:keyboard".xkb_options = "grp:win_space_toggle";
+    config.workspaceLayout = "tabbed";
 
     config.keybindings = lib.mkOptionDefault {
       #"${mod4}+D" = "exec ${pkgs.rofi}/bin/rofi --show=drum";
