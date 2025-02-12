@@ -115,6 +115,9 @@
     tor-browser
 
     anki
+
+    # email
+    thunderbird
   ];
   programs.bat.enable = true;
 }
