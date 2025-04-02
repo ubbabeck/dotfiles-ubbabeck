@@ -13,9 +13,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Nixos Hardware
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +23,6 @@
     {
       self,
       nixpkgs,
-      nixos-hardware,
       home-manager,
       ...
     }@inputs:
@@ -53,8 +50,10 @@
           # > Our main nixos configuration file <
           modules = [
             ./nixos
+            #./tools/flake.nix
 
-            nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+            inputs.nixos-facter-modules.nixosModules.facter
+            { config.facter.reportPath = ./facter.json; }
 
             home-manager.nixosModules.home-manager
             {
