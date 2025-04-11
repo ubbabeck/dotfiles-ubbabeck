@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+#nixPath = [ "nixpkgs=${self.inputs.nixpkgs}" ]; Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
@@ -71,6 +71,12 @@
 
   boot.initrd.luks.devices."luks-1c3d6c0f-5c93-4c26-9b50-5a8db85684c6".device =
     "/dev/disk/by-uuid/1c3d6c0f-5c93-4c26-9b50-5a8db85684c6";
+  boot.kernel.sysctl = {
+    "net.ipv4.tcp_syncookies" = false;
+    "vm.swappiness" = 60;
+    "kernel.sysrq" = 1;
+  };
+
   networking.hostName = "thinkpad-p14"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -79,6 +85,9 @@
   services.logind.extraConfig = ''
     HandlePowerKey=hibernate
   '';
+  services.udisks2 = {
+    enable = true;
+  };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

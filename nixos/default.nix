@@ -10,5 +10,7 @@
     ./tor.nix
     ./android.nix
     #./wireguard.nix
+    ./file-manager.nix
+    ./hardend.nix
   ];
 }
