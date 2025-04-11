@@ -59,7 +59,7 @@
       keep-derivations = true;
     };
 
-    package = pkgs.nixVersions.latest;
+    package = pkgs.lix;
   };
 
   nixpkgs.config = {
