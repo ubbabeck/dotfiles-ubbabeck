@@ -12,5 +12,6 @@
     #./wireguard.nix
     ./file-manager.nix
     ./hardend.nix
+    ./virt-manager.nix
   ];
 }
