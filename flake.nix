@@ -38,6 +38,7 @@
       allowed-unfree-packages = [
         "zerotierone"
         "obsidian"
+        "vmware-workstation"
       ];
     in
     {

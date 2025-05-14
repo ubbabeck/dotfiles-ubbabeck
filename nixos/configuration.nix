@@ -13,6 +13,29 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    {
+      users = {
+        groups.plugdev = { };
+        users = {
+          bitcoin = {
+            name = "bitcoin";
+            description = "user for bitcoin stuff";
+            home = "/home/bitcoin";
+            isNormalUser = true;
+            useDefaultShell = true;
+            createHome = true;
+            extraGroups = [
+              "networkmanager"
+              "plugdev"
+            ];
+          };
+        };
+      };
+      security.doas.extraConfig = ''
+        permit nopass ruben as bitcoin
+      '';
+    }
   ];
 
   system.autoUpgrade = {
