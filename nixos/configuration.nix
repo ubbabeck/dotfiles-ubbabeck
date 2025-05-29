@@ -304,7 +304,7 @@
     '')
 
     (writers.writeDashBin "btc-kraken" ''
-      ${curl}/bin/curl -Ss 'https://api.kraken.com/0/public/Ticker?pair=BTCEUR' | ${jq}/bin/jq '.result.XXBTZEUR.a[0]'
+      ${curl}/bin/curl -Ss 'https://api.kraken.com/0/public/Ticker?pair=BTCUSD' | ${jq}/bin/jq '.result.XXBTZUSD.a[0]'
     '')
     (writers.writeDashBin "btc-bitmynt" ''
       ${curl}/bin/curl -Ss 'https://ny.bitmynt.no/data/rates.json' | ${jq}/bin/jq .'current_rate.bid'
