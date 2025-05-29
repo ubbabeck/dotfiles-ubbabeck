@@ -258,19 +258,21 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ruben = {
-    isNormalUser = true;
-    description = "ruben";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "podman"
-      "video"
-    ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
-    shell = pkgs.zsh;
+  users.users = {
+    ruben = {
+      isNormalUser = true;
+      description = "ruben";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "podman"
+        "video"
+      ];
+      packages = with pkgs; [
+        #  thunderbird
+      ];
+      shell = pkgs.zsh;
+    };
   };
 
   programs.zsh.enable = true;
