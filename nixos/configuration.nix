@@ -102,6 +102,10 @@
   };
 
   networking.hostName = "thinkpad-p14"; # Define your hostname.
+  networking.nameservers = [
+    "194.242.2.4"
+    "1.1.1.1"
+  ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services.logind.lidSwitch = "suspend-then-hibernate";
