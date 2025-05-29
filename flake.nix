@@ -20,9 +20,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # Home manager
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,7 +39,9 @@
       self,
       nixpkgs,
       lix-module,
+      nixos-hardware,
       home-manager,
+      auto-cpufreq,
       ...
     }@inputs:
     let
@@ -59,6 +70,9 @@
           modules = [
             ./nixos
             #./tools/flake.nix
+            auto-cpufreq.nixosModules.default
+
+            nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
 
             inputs.nixos-facter-modules.nixosModules.facter
             { config.facter.reportPath = ./facter.json; }

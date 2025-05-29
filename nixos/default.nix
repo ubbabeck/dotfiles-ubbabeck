@@ -13,5 +13,6 @@
     ./file-manager.nix
     ./hardend.nix
     ./virt-manager.nix
+    ./auto-cpufreq.nix
   ];
 }
