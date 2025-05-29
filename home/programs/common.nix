@@ -118,6 +118,18 @@
 
     # email
     thunderbird
+
+    #libreoffie
+    libreoffice
+
+    #sqlitebrowser
+    sqlitebrowser
+
+    # electrum
+    electrum
+
+    mattermost-desktop
+
   ];
   programs.bat.enable = true;
 }
