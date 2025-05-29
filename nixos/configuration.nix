@@ -183,11 +183,12 @@
 
   programs.git.enable = true;
 
-  # -----Docker ---------
+  # ----- Podman ---------
   virtualisation.containers.enable = true;
   virtualisation = {
     docker.enable = false;
     podman = {
+      autoPrune.enable = true;
       enable = true;
 
       # Create a `docker` alias for podman, to use it as a drop-in replacement
@@ -198,7 +199,7 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-  # -----Docker ---------
+  # ----- Podman ---------
 
   powerManagement.enable = true;
   services.tlp.enable = true;
