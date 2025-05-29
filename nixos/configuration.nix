@@ -122,6 +122,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  systemd.network.wait-online.timeout = 0;
+  systemd.shutdownRamfs.enable = false;
 
   # Enable network manager applet
   programs.nm-applet.enable = true;
