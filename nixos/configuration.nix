@@ -98,6 +98,7 @@
     "net.ipv4.tcp_syncookies" = false;
     "vm.swappiness" = 60;
     "kernel.sysrq" = 1;
+    "kernel.unprivileged_userns_clone" = 1;
   };
 
   networking.hostName = "thinkpad-p14"; # Define your hostname.
