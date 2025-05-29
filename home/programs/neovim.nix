@@ -14,7 +14,10 @@
       enable = true;
       settings = {
         rust-analyzer.server.path = "rust-analyzer";
-        rust-analyzer.inlayHints.closureReturnTypeHints.enable = false;
+        #rust-analyzer.inlayHints.closureReturnTypeHints.enable = false;
+        rust-analyzer.completion.postfix.enable = false;
+        rust-analyzer.imports.group.enable = false;
+        rust-analyzer.check.features = "all";
         languageserver = {
           bash = {
             command = "bash-language-server";
@@ -204,11 +207,15 @@
       vim-gitgutter
       coc-json
       coc-pairs
+      lsp_signature-nvim
       coc-explorer
+      vim-matchup
+      vim-rooter
       coc-rust-analyzer
       coc-clangd
       coc-yaml
       coc-pyright
+      coc-tsserver
       gruvbox-community
       lightline-vim
     ];
@@ -239,7 +246,6 @@
       colorscheme gruvbox
       set termguicolors
       set backspace=indent,eol,start
-      set background=dark
       set expandtab
       set undofile
       set undodir=$HOME/.local/share/vim/undo

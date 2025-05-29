@@ -9,7 +9,7 @@
       window.decorations = "none";
       window.dynamic_title = true;
       font = {
-        size = 16;
+        size = 14;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;

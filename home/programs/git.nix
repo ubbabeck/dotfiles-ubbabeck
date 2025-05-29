@@ -10,7 +10,6 @@
     ignores = [
       "*.swp"
       "result"
-      ".envrc"
       ".direnv/"
       ".idea/"
     ];
