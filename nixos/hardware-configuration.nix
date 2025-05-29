@@ -22,8 +22,12 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_13_hardened;
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "amdgpu.dcdebugmask=0x10"
+    "amd_pstate=active"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/b048fb2f-7466-4181-8481-0a92fa13f3da";
