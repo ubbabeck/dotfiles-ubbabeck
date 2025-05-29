@@ -155,13 +155,16 @@
     packages = with pkgs; [
       # icon fonts
 
-      #open-dyslexic
+      open-dyslexic
       noto-fonts
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
       nerd-fonts.symbols-only
       font-awesome
       noto-fonts-emoji
+      mplus-outline-fonts.githubRelease
+      noto-fonts-cjk-sans
+      dina-font
     ];
 
     fontDir.enable = true;
