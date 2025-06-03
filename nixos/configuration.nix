@@ -284,11 +284,12 @@ in
       packages = with pkgs; [
         #  thunderbird
       ];
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
     };
   };
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
+  programs.starship.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -309,6 +310,14 @@ in
     slurp
     wl-clipboard
     mako
+
+    fishPlugins.fzf-fish
+    fishPlugins.grc
+    fishPlugins.done
+    fishPlugins.forgit
+    grc
+    fd
+    zbar
 
     # Youtube
     yt-dlp
