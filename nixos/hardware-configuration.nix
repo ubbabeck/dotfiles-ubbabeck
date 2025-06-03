@@ -8,6 +8,7 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -17,17 +18,10 @@
     "nvme"
     "xhci_pci"
     "thunderbolt"
-    "usb_storage"
-    "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_13_hardened;
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [
-    "amdgpu.dcdebugmask=0x10"
-    "amd_pstate=active"
-  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/b048fb2f-7466-4181-8481-0a92fa13f3da";
@@ -58,6 +52,8 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0f0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.ztmose5yxt.useDHCP = lib.mkDefault true;
+  # networking.interfaces.ztppi3i5sj.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

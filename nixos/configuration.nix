@@ -9,6 +9,9 @@
   allowed-unfree-packages,
   ...
 }:
+let
+  nixos-hardware = inputs.nixos-hardware.nixosModules;
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -36,6 +39,9 @@
         permit nopass ruben as bitcoin
       '';
     }
+    nixos-hardware.lenovo-thinkpad-p14s-amd-gen4
+    nixos-hardware.common-pc-ssd
+
   ];
 
   system.autoUpgrade = {
@@ -82,7 +88,7 @@
       keep-derivations = true;
     };
 
-    package = pkgs.lix;
+    package = pkgs.nix;
   };
 
   nixpkgs.config = {
@@ -100,12 +106,24 @@
     "kernel.sysrq" = 1;
     "kernel.unprivileged_userns_clone" = 1;
   };
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "ehci_pci"
+    "xhci_pci"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+  ];
 
   networking.hostName = "thinkpad-p14"; # Define your hostname.
   networking.nameservers = [
     "194.242.2.4"
     "1.1.1.1"
   ];
+
+  networking.wireless.interfaces = [ "wlp2s0" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services.logind.lidSwitch = "suspend-then-hibernate";
@@ -122,9 +140,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  systemd.network.wait-online.timeout = 0;
-  systemd.shutdownRamfs.enable = false;
-
+  systemd.network.wait-online.enable = false;
   # Enable network manager applet
   programs.nm-applet.enable = true;
 
@@ -245,13 +261,10 @@
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
-  services.fprintd = {
-    enable = false;
-    # TODO allowUnFree for this packages
-    # tod = {
-    #   enable = true;
-    #   driver = pkgs.libfprint-2-tod1-goodix;
-    # };
+  services.tlp.settings = {
+    START_CHARGE_THRESH_BAT0 = 75;
+    STOP_CHARGE_THRESH_BAT0 = 80;
+    RESTORE_THRESHOLDS_ON_BAT = 1;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
