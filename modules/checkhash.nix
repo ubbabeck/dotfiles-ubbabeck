@@ -1,0 +1,13 @@
+{ pkgs, ... }:
+pkgs.writers.writePython3Bin "checkhash" { } ''
+  import sys, hashlib
+
+  data = sys.stdin.buffer.read()
+  hash = hashlib.sha256(data).hexdigest()
+
+  if hash == sys.argv[1]:
+    sys.exit(0)
+  else:
+    print('hash did not match')
+    sys.exit(1)
+''

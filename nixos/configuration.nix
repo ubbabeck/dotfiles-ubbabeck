@@ -55,12 +55,28 @@ in
     dates = "02:00";
     randomizedDelaySec = "45min";
   };
+  ruben.demo = {
+    enable = false;
+
+    greetings = [
+      {
+        name = "ruben";
+        message = "Elsker joski";
+      }
+      {
+        name = "joski";
+        message = "Elsker ruki";
+      }
+    ];
+
+  };
 
   security.doas.enable = true;
   security.sudo.enable = false;
   security.doas.extraRules = [
     {
       users = [ "ruben" ];
+
       keepEnv = true;
       persist = true;
     }
@@ -106,7 +122,7 @@ in
     "kernel.sysrq" = 1;
     "kernel.unprivileged_userns_clone" = 1;
   };
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_13_hardened;
   boot.kernelModules = [ "kvm-amd" ];
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -122,6 +138,9 @@ in
     "194.242.2.4"
     "1.1.1.1"
   ];
+
+  services.fwupd.enable = true;
+  systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
 
   networking.wireless.interfaces = [ "wlp2s0" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -163,6 +182,7 @@ in
   };
 
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable the LXQT Desktop Environment.
   services.libinput.enable = true;
@@ -236,6 +256,8 @@ in
     polkit.enable = true;
     pam.services.swaylock = { };
   };
+
+  services.fprintd.enable = false;
 
   services.gnome.gnome-keyring.enable = true;
 

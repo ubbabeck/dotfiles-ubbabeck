@@ -4,6 +4,8 @@
     pkgs.nixd
     pkgs.xclip
     pkgs.nodePackages.bash-language-server
+    pkgs.rust-analyzer
+    pkgs.ruff
   ];
   programs.neovim = {
     enable = true;
@@ -218,13 +220,18 @@
       coc-tsserver
       gruvbox-community
       lightline-vim
+      vim-fish
+      indent-blankline-nvim
+      uv-nvim
     ];
     extraLuaConfig = ''
       require'nvim-treesitter.configs'.setup {
-        highlight = {
-          enable = true,
-        },
-      }
+         highlight = {
+           enable = true,
+         },
+       }
+      require("ibl").setup()
+
     '';
     extraConfig = ''
       syntax enable

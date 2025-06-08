@@ -27,22 +27,18 @@ in
 
   # TODO need to wait for a certain systemd process to finish
   # https://github.com/apognu/tuigreet/issues/68
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = ''
-            ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --user-menu \
-          --cmd sway
-        '';
+        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
       };
     };
   };
   environment.etc."greetd/environments".text = ''
     sway
-    zsh
+    fish 
+    bash
   '';
 }

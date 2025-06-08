@@ -1,0 +1,68 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+with lib;
+
+let
+  cfg = config.ruben.protonmail-bridge;
+in
+{
+  options = {
+    ruben = {
+      protonmail-bridge = {
+        enable = mkEnableOption "Transmission directory monitoring daemon";
+
+        nonInteractive = mkOption {
+          type = types.boolean;
+          default = true;
+          description = ''
+            Start Bridge entirely noninteractively (default: false)
+          '';
+        };
+
+        logLevel = mkOption {
+          type = types.str;
+          default = "info";
+          description = ''
+            Set the log level (one of panic, fatal, error, warn, info, debug)
+          '';
+        };
+
+        package = mkOption {
+          default = pkgs.protonmail-bridge;
+          defaultText = "pkgs.protonmail-bridge";
+          description = ''
+            Package to install. Usually pkgs.protonmail-bridge.
+          '';
+          type = types.package;
+        };
+      };
+    };
+  };
+
+  config = mkIf cfg.enable {
+    systemd.user.services.protonmail-bridge = {
+      enable = true;
+      description = "ProtonMail bridge service";
+      serviceConfig = {
+        Restart = "on-failure";
+        RestartSec = 5;
+        ExecStart = ''
+          ${cfg.package}/bin/protonmail-bridge \
+            --log-level ${cfg.logLevel} \
+            --no-window
+        '';
+      };
+      path = with pkgs; [
+        pkgs.gnome-keyring
+        libnotify
+      ];
+      partOf = [ "graphical-session.target" ];
+      wantedBy = [ "graphical-session.target" ];
+    };
+  };
+}

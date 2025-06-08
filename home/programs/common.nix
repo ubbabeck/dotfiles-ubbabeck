@@ -116,9 +116,6 @@
 
     anki
 
-    # email
-    thunderbird
-
     #libreoffie
     libreoffice
 
@@ -129,6 +126,9 @@
     electrum
 
     mattermost-desktop
+
+    #email
+    evolution
 
   ];
   programs.bat.enable = true;

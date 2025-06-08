@@ -5,27 +5,40 @@
 }:
 {
   home.packages = with pkgs; [
-    zsh-powerlevel10k
+    starship
   ];
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
 
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
+  #      the standard path under ~/.config/
+  #           to find the file       Where the file is located relative to this .nix file
+  #                    |                             |
+  #                    V                             V
+  xdg.configFile."starship.toml".source = ./starship.toml;
+
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+
+  };
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disbale greeting
+    '';
+
+    plugins = [
+      {
+        name = "grc";
+        src = pkgs.fishPlugins.grc.src;
+      }
+    ];
+    generateCompletions = true;
+
     # set some aliases, feel free to add more or remove some
-    shellAliases = {
-      ls = "eza";
+    shellAbbrs = {
+      eza = "eza -l --icons --time-style=long-iso --group-directories-first";
       gs = "git status";
     };
 
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-    };
   };
 }

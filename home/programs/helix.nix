@@ -2,7 +2,6 @@
 {
   home.packages = [
     pkgs.python312Packages.python-lsp-server
-    pkgs.rust-analyzer
   ];
   programs.helix = {
     enable = true;
