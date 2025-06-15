@@ -18,6 +18,7 @@ in
           }
           { block = "memory"; }
           { block = "disk_space"; }
+          { block = "net"; }
           {
             block = "time";
             format = "$icon $timestamp.datetime(f:'%F %a %R')";

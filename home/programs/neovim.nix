@@ -250,7 +250,7 @@
       autocmd FileType python setlocal cc=88
       set ignorecase
       set smartcase
-      colorscheme gruvbox
+      " colorscheme gruvbox
       set termguicolors
       set backspace=indent,eol,start
       set expandtab

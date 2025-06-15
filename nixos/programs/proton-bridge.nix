@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  ruben.protonmail-bridge.enable = true;
+  ruben.protonmail-bridge.enable = false;
 }

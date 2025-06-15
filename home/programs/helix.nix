@@ -8,7 +8,7 @@
 
     settings = {
 
-      theme = "onedark";
+      #theme = "onedark";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;

@@ -32,7 +32,7 @@ in
       tap = "enabled";
       natural_scroll = "enabled";
     };
-    config.input."type:keyboard".xkb_layout = "no,us";
+    config.input."type:keyboard".xkb_layout = lib.mkForce "no,us";
     config.input."type:keyboard".xkb_options = "grp:win_space_toggle";
     config.workspaceLayout = "tabbed";
 
@@ -53,8 +53,8 @@ in
     '';
   };
 
-  gtk.gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-  gtk.gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  #gtk.gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+  #gtk.gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   xdg.portal.config.common.default = "*";
@@ -83,6 +83,8 @@ in
     ];
   };
 
+  services.swaync.enable = true;
+
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
@@ -95,7 +97,7 @@ in
       effect-blur = "7x5";
       show-failed-attempts = true;
       font-size = 24;
-      color = "808080";
+      #color = "808080";
     };
   };
 

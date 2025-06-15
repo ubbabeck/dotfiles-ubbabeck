@@ -124,8 +124,10 @@ in
     "kernel.sysrq" = 1;
     "kernel.unprivileged_userns_clone" = 1;
   };
-  boot.kernelPackages = pkgs.linuxPackages_6_13_hardened;
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelParams = [
+    "amdgpu.runpm=0"
+    "amdgpu.dcdebugmask=0x10"
+  ];
   boot.initrd.availableKernelModules = [
     "nvme"
     "ehci_pci"
@@ -134,12 +136,15 @@ in
     "sd_mod"
     "rtsx_pci_sdmmc"
   ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "kvm-amd" ];
 
   networking.hostName = "thinkpad-p14"; # Define your hostname.
   networking.nameservers = [
     "194.242.2.4"
     "1.1.1.1"
   ];
+  #boot.initrd.systemd.enable = true; to enable
 
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834

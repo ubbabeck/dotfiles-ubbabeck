@@ -20,7 +20,7 @@ in
           type = types.boolean;
           default = true;
           description = ''
-            Start Bridge entirely noninteractively (default: false)
+            Start Bridge entirely noninteractively (default: true)
           '';
         };
 

@@ -26,6 +26,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -35,6 +40,7 @@
       nixos-hardware,
       home-manager,
       auto-cpufreq,
+      catppuccin,
       ...
     }@inputs:
     let
@@ -63,6 +69,7 @@
           modules = [
             ./nixos
             ./modules
+            catppuccin.nixosModules.catppuccin
             #./tools/flake.nix
             auto-cpufreq.nixosModules.default
 
@@ -74,7 +81,12 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
-              home-manager.users.ruben = import ./home;
+              home-manager.users.ruben = {
+                imports = [
+                  ./home
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
               home-manager.extraSpecialArgs = {
                 inherit allowed-unfree-packages;
               };

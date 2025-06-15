@@ -99,6 +99,11 @@
     # remote programming
     mob
 
+    calibre
+
+    # gitlab cli
+    glab
+
     # accounting
     hledger
 

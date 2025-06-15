@@ -18,4 +18,8 @@
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
   services.network-manager-applet.enable = true;
+  catppuccin = {
+    enable = true;
+    flavor = "latte";
+  };
 }

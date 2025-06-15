@@ -14,5 +14,6 @@
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
     };
+    #theme = "catppuccin_latte";
   };
 }
