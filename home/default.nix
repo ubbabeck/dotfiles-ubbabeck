@@ -20,6 +20,6 @@
   services.network-manager-applet.enable = true;
   catppuccin = {
     enable = true;
-    flavor = "latte";
+    flavor = "mocha";
   };
 }

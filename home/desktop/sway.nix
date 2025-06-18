@@ -37,7 +37,7 @@ in
     config.workspaceLayout = "tabbed";
 
     config.keybindings = lib.mkOptionDefault {
-      #"${mod4}+D" = "exec ${pkgs.rofi}/bin/rofi --show=drum";
+      "${mod4}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
       "${mod4}+Q" = "exec alacritty";
       # brightness
       "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";

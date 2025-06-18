@@ -339,6 +339,10 @@ in
     slurp
     wl-clipboard
     mako
+    libnotify
+    kanshi
+    rofi-wayland
+    rofi-bluetooth
 
     fishPlugins.fzf-fish
     fishPlugins.grc
