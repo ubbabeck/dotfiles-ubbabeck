@@ -1,11 +1,18 @@
 { pkgs, lib, ... }:
 {
-  home.packages = [
-    pkgs.nixd
-    pkgs.xclip
-    pkgs.nodePackages.bash-language-server
-    pkgs.rust-analyzer
-    pkgs.ruff
+  home.packages = with pkgs; [
+    nixd
+    xclip
+    nodePackages.bash-language-server
+    rust-analyzer
+    rustfmt
+    ruff
+    clang-tools
+    clippy
+    typos-lsp
+    typos
+    taplo-lsp
+
   ];
   programs.neovim = {
     enable = true;
