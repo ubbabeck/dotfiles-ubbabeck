@@ -12,8 +12,9 @@
     # feel free to add your own or remove some of them
 
     fastfetch
-    nnn # terminal file manager
+    league-of-moveable-type
 
+    gimp
     # archives
     zip
     xz
@@ -32,8 +33,15 @@
 
     #video player
     mpv
+    adwaita-icon-theme
+    hicolor-icon-theme
+    graphicsmagick
+    screen-message
+    sshfs-fuse
+    inxi
 
     #screen show
+    pkgs.ghostty
 
     # networking tools
     mtr # A network diagnostic tool
@@ -41,10 +49,12 @@
     dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
+    cheat
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
     ipcalc # it is a calculator for the IPv4/v6 addresses
     wget
+    q
 
     wireguard-tools
     # misc
