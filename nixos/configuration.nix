@@ -17,6 +17,8 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    ../nixosModules/i18n.nix
+    ../nixosModules/kde
     {
       users = {
         groups.plugdev = { };
@@ -173,21 +175,6 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "nb_NO.UTF-8";
-    LC_IDENTIFICATION = "nb_NO.UTF-8";
-    LC_MEASUREMENT = "nb_NO.UTF-8";
-    LC_MONETARY = "nb_NO.UTF-8";
-    LC_NAME = "nb_NO.UTF-8";
-    LC_NUMERIC = "nb_NO.UTF-8";
-    LC_PAPER = "nb_NO.UTF-8";
-    LC_TELEPHONE = "nb_NO.UTF-8";
-    LC_TIME = "nb_NO.UTF-8";
-  };
-
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
@@ -247,10 +234,8 @@ in
   powerManagement.enable = true;
   # Configure keymap in wayland
   services.xserver = {
-    xkb = {
-      layout = "no";
-      variant = "";
-    };
+    xkb.layout = "us,no";
+    xkb.options = "grp:win_space_toggle";
   };
 
   # Configure console keymap
@@ -261,7 +246,7 @@ in
 
   security = {
     polkit.enable = true;
-    pam.services.swaylock = { };
+    #pam.services.swaylock = { };
   };
 
   services.fprintd.enable = false;
@@ -333,16 +318,6 @@ in
 
     pulseaudio
     pavucontrol
-
-    # Sway
-    grim
-    slurp
-    wl-clipboard
-    mako
-    libnotify
-    kanshi
-    rofi-wayland
-    rofi-bluetooth
 
     fishPlugins.fzf-fish
     fishPlugins.grc
