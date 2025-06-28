@@ -20,6 +20,9 @@
     xz
     unzip
 
+    eternal-terminal
+    ferdium
+
     # utils
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
@@ -139,8 +142,6 @@
 
     # electrum
     electrum
-
-    mattermost-desktop
 
     #email
     evolution

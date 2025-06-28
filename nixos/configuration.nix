@@ -16,6 +16,7 @@ in
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./modules/postgresql.nix
 
     ../nixosModules/i18n.nix
     ../nixosModules/kde
@@ -242,7 +243,15 @@ in
   console.keyMap = "no";
 
   # Enable CUPS to print documents.
-  #services.printing.enable = true;
+  services.printing = {
+    enable = false;
+    browsing = true;
+    drivers = with pkgs; [
+      gutenprint
+    ];
+  };
+
+  services.journald.extraConfig = "SystemMaxUse=1G";
 
   security = {
     polkit.enable = true;

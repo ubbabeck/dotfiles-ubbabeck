@@ -4,7 +4,7 @@
     ./common.nix
     ./zellij.nix
     ./fzf.nix
-    ./terminal.nix
+    #./terminal.nix
     ./zsh.nix
   ];
 }

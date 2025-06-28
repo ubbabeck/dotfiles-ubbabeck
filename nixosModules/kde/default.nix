@@ -25,5 +25,10 @@
     wl-clipboard # wl-copy / wl-paste
     (pkgs.callPackage ./choosers.nix { })
   ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa
+    baloo
+    plasma-browser-integration
+  ];
   programs.kdeconnect.enable = true;
 }
