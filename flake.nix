@@ -83,7 +83,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.users.ruben = {
                 imports = [
-                  ./home
+                  ./home-manager
                   catppuccin.homeModules.catppuccin
                 ];
               };
