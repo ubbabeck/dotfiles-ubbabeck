@@ -5,4 +5,5 @@
     #./wayland.nix
     ./file-manager.nix
   ];
+  services.syncthing.enable = true;
 }
