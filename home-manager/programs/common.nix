@@ -14,7 +14,7 @@
     fastfetch
     league-of-moveable-type
 
-    gimp
+    gimp3
     # archives
     zip
     xz
