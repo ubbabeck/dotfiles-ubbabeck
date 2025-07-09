@@ -22,25 +22,25 @@
 
   };
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set fish_greeting # Disbale greeting
-    '';
+  #programs.fish = {
+  #  enable = true;
+  #  interactiveShellInit = ''
+  #    set fish_greeting # Disbale greeting
+  #  '';
 
-    plugins = [
-      {
-        name = "grc";
-        src = pkgs.fishPlugins.grc.src;
-      }
-    ];
-    generateCompletions = true;
+  #  plugins = [
+  #    {
+  #      name = "grc";
+  #      src = pkgs.fishPlugins.grc.src;
+  #    }
+  #  ];
+  #  generateCompletions = true;
 
-    # set some aliases, feel free to add more or remove some
-    shellAbbrs = {
-      eza = "eza -l --icons --time-style=long-iso --group-directories-first";
-      gs = "git status";
-    };
+  #  # set some aliases, feel free to add more or remove some
+  #  shellAbbrs = {
+  #    eza = "eza -l --icons --time-style=long-iso --group-directories-first";
+  #    gs = "git status";
+  #  };
 
-  };
+  #};
 }

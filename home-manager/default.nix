@@ -22,4 +22,9 @@
     enable = true;
     flavor = "mocha";
   };
+  # better eval time
+  manual.html.enable = false;
+  manual.manpages.enable = false;
+  manual.json.enable = false;
+
 }
