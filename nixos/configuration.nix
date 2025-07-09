@@ -17,7 +17,7 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/postgresql.nix
-
+    ../nixosModules/users.nix
     ../nixosModules/i18n.nix
     ../nixosModules/kde
     {
@@ -294,25 +294,9 @@ in
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
-    ruben = {
-      isNormalUser = true;
-      description = "ruben";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "podman"
-        "video"
-      ];
-      packages = with pkgs; [
-        #  thunderbird
-      ];
-      shell = pkgs.fish;
-    };
-  };
+  
 
-  programs.fish.enable = true;
-  programs.starship.enable = true;
+    programs.starship.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
