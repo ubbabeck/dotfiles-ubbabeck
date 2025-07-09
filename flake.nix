@@ -15,11 +15,6 @@
 
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # Home manager
     home-manager = {
@@ -39,7 +34,6 @@
       nixpkgs,
       nixos-hardware,
       home-manager,
-      auto-cpufreq,
       catppuccin,
       ...
     }@inputs:
@@ -71,7 +65,6 @@
             ./modules
             catppuccin.nixosModules.catppuccin
             #./tools/flake.nix
-            auto-cpufreq.nixosModules.default
 
             #nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
 
