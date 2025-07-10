@@ -312,10 +312,6 @@ in
     pulseaudio
     pavucontrol
 
-    fishPlugins.fzf-fish
-    fishPlugins.grc
-    fishPlugins.done
-    fishPlugins.forgit
     grc
     fd
     zbar

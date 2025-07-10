@@ -5,6 +5,6 @@
     ./zellij.nix
     ./fzf.nix
     #./terminal.nix
-    ./zsh.nix
+    #./zsh.nix
   ];
 }

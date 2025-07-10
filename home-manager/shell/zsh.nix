@@ -17,8 +17,8 @@
 
   catppuccin.starship.enable = true;
   programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
+    enable = false;
+    enableZshIntegration = true;
 
   };
 
