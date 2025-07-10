@@ -5,3 +5,5 @@
 - [x] light buttons
 - [x] add cargo as an input for offline work..
 - [ ] sshd tor config
+- [ ] My own vaultvarden server
+- [ ] my own cloud nixos server
