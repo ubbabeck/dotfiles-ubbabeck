@@ -34,7 +34,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 rust-doc(){
-  xdg-open "$(nix-build '<nixpkgs>' -A rustc.doc --no-out-link)/share/doc/rust/html/index.html"
+  xdg-open "$(nix-build '<nixpkgs>' -A rustc.doc --no-out-link)/share/doc/docs/html/index.html"
 }
 
 

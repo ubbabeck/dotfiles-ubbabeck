@@ -32,7 +32,7 @@
     bottom
 
     # sound
-    rhythmbox
+    #rhythmbox
 
     #video player
     mpv
