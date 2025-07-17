@@ -244,11 +244,17 @@ in
 
   # Enable CUPS to print documents.
   services.printing = {
-    enable = false;
+    enable = true;
     browsing = true;
     drivers = with pkgs; [
       gutenprint
+      cnijfilter2
     ];
+  };
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
 
   services.journald.extraConfig = "SystemMaxUse=1G";
@@ -294,9 +300,6 @@ in
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  
-
-    programs.starship.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

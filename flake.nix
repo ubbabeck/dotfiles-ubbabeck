@@ -43,6 +43,7 @@
         "zerotierone"
         "obsidian"
         "vmware-workstation"
+        "cnijfilter2"
       ];
       pkgs = import nixpkgs;
     in
