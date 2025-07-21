@@ -8,6 +8,7 @@
     ./programs
     ./shell
     ./desktop
+    ./codename-goose.nix
   ];
 
   home = {
