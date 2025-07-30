@@ -25,13 +25,20 @@ fi
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -e
+bindkey -v
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
+bindkey "^[[3~" delete-char # bind delete key
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/ruben/.zshrc'
 
 autoload -Uz compinit
-compinit
+autoload colors; colors
+autoload -U promptinit; promptinit
+compinit -C
 # End of lines added by compinstall
 rust-doc(){
   xdg-open "$(nix-build '<nixpkgs>' -A rustc.doc --no-out-link)/share/doc/docs/html/index.html"
