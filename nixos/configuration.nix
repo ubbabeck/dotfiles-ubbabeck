@@ -20,6 +20,7 @@ in
     ../nixosModules/users.nix
     ../nixosModules/i18n.nix
     ../nixosModules/kde
+    ../nixosModules/powertop.nix
     {
       users = {
         groups.plugdev = { };
@@ -284,19 +285,18 @@ in
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
-  services.tlp.settings = {
-    START_CHARGE_THRESH_BAT0 = 75;
-    STOP_CHARGE_THRESH_BAT0 = 80;
-    RESTORE_THRESHOLDS_ON_BAT = 1;
-  };
+  # services.tlp.settings = {
+  #   START_CHARGE_THRESH_BAT0 = 75;
+  #   STOP_CHARGE_THRESH_BAT0 = 80;
+  #   RESTORE_THRESHOLDS_ON_BAT = 1;
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  
 
-    programs.starship.enable = true;
+  programs.starship.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
