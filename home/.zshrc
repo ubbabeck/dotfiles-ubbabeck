@@ -25,7 +25,8 @@ fi
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -v
+# emacs keys, use -v for vim keys
+bindkey -e
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^e' edit-command-line
@@ -39,6 +40,29 @@ autoload -Uz compinit
 autoload colors; colors
 autoload -U promptinit; promptinit
 compinit -C
+if [[ -n ${commands[fzf]} ]]; then
+  source ~/.zsh-fzf-tab/fzf-tab.zsh
+  if [ -n $TMUX ]; then
+    zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+  fi
+  # disable sort when completing `git checkout`
+  zstyle ':completion:*:git-checkout:*' sort false
+  # set descriptions format to enable group support
+  # NOTE: don't use escape sequences here, fzf-tab will ignore them
+  zstyle ':completion:*:descriptions' format '[%d]'
+  # set list-colors to enable filename colorizing
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+  zstyle ':completion:*' menu no
+  # preview directory's content with lsd when completing cd
+  if [[ -n ${commands[lsd]} ]]; then
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath'
+  fi
+  # switch group using `<` and `>`
+  zstyle ':fzf-tab:*' switch-group '<' '>'
+fi
+
+
 # End of lines added by compinstall
 rust-doc(){
   xdg-open "$(nix-build '<nixpkgs>' -A rustc.doc --no-out-link)/share/doc/docs/html/index.html"
