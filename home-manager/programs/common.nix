@@ -146,6 +146,12 @@
     #email
     evolution
 
+    #just
+    just
+
+    # gh
+    gh
+
   ];
   programs.bat.enable = true;
 }

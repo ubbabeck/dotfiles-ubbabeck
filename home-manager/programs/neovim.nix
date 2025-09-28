@@ -22,7 +22,7 @@
     coc = {
       enable = true;
       settings = {
-        rust-analyzer.server.path = "rust-analyzer";
+        rust-analyzer.server.path = lib.getExe pkgs.rust-analyzer;
         #rust-analyzer.inlayHints.closureReturnTypeHints.enable = false;
         rust-analyzer.completion.postfix.enable = false;
         rust-analyzer.imports.group.enable = false;
@@ -230,6 +230,7 @@
       vim-fish
       indent-blankline-nvim
       uv-nvim
+      vim-just
     ];
     extraLuaConfig = ''
       require'nvim-treesitter.configs'.setup {
@@ -238,6 +239,15 @@
          },
        }
       require("ibl").setup()
+      require("nvim-treesitter.parsers").get_parser_configs().just = {
+         install_info = {
+        url = "https://github.com/IndianBoy42/tree-sitter-just", -- local path or git repo
+        files = { "src/parser.c", "src/scanner.c" },
+        branch = "main",
+         -- use_makefile = true -- this may be necessary on MacOS (try if you see compiler errors)
+        },
+        maintainers = { "@IndianBoy42" },
+      }
 
     '';
     extraConfig = ''

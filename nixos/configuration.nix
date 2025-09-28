@@ -2,18 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  inputs,
   config,
   pkgs,
   lib,
   allowed-unfree-packages,
+  self,
   ...
 }:
-let
-  nixos-hardware = inputs.nixos-hardware.nixosModules;
-in
 {
   imports = [
+    self.inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+    self.inputs.nixos-hardware.nixosModules.common-pc-ssd
+    self.inputs.nix-index-database.nixosModules.nix-index
+    { programs.nix-index-database.comma.enable = true; }
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/postgresql.nix
@@ -43,14 +44,12 @@ in
         permit nopass ruben as bitcoin
       '';
     }
-    nixos-hardware.lenovo-thinkpad-p14s-amd-gen4
-    nixos-hardware.common-pc-ssd
 
   ];
 
   system.autoUpgrade = {
     enable = true;
-    flake = inputs.self.outPath;
+    flake = self.outPath;
     flags = [
       "--update-input"
       "nixpkgs"
@@ -156,11 +155,11 @@ in
   networking.wireless.interfaces = [ "wlp2s0" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  services.logind.lidSwitchDocked = "ignore";
-  services.logind.extraConfig = ''
-    HandlePowerKey=hibernate
-  '';
+  services.logind.settings.Login = {
+    HandlePowerKey = "hibernate";
+    lidSwitch = "suspend-then-hibernate";
+    lidSwitchDocked = "ignore";
+  };
   services.udisks2 = {
     enable = true;
   };

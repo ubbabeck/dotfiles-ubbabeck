@@ -41,7 +41,7 @@ autoload colors; colors
 autoload -U promptinit; promptinit
 compinit -C
 if [[ -n ${commands[fzf]} ]]; then
-  source ~/.zsh-fzf-tab/fzf-tab.zsh
+  source ~/.fzf-tab/fzf-tab.zsh
   if [ -n $TMUX ]; then
     zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
   fi
