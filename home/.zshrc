@@ -22,9 +22,21 @@ if [ -f ~/.nix-profile/zsh/ghostty-integration ]; then
 fi
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+DIRTSTACKSIZE=30
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # Like default, but without / -- ^W must be useful in paths, like it is in vim, bash, tcsh
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
+setopt share_history
+setopt append_history
+setopt hist_verify
+setopt inc_append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_space
+setopt long_list_jobs
 # emacs keys, use -v for vim keys
 bindkey -e
 autoload edit-command-line
@@ -41,7 +53,7 @@ autoload colors; colors
 autoload -U promptinit; promptinit
 compinit -C
 if [[ -n ${commands[fzf]} ]]; then
-  source ~/.fzf-tab/fzf-tab.zsh
+  source ~/.zsh-fzf-tab/fzf-tab.zsh
   if [ -n $TMUX ]; then
     zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
   fi
@@ -61,6 +73,9 @@ if [[ -n ${commands[fzf]} ]]; then
   # switch group using `<` and `>`
   zstyle ':fzf-tab:*' switch-group '<' '>'
 fi
+
+setopt complete_in_word
+unsetopt always_to_end
 
 
 # End of lines added by compinstall
