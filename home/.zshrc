@@ -21,6 +21,19 @@ if [ -f ~/.nix-profile/zsh/ghostty-integration ]; then
   . ~/.nix-profile/zsh/ghostty-integration
 fi
 
+
+## Options
+setopt auto_name_dirs
+setopt transient_rprompt
+setopt pushd_ignore_dups
+setopt no_beep
+setopt auto_cd
+setopt correct
+setopt multios
+setopt cdablevarS
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+bindkey "^[m" copy-prev-shell-word
 # Lines configured by zsh-newuser-install
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
