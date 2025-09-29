@@ -108,6 +108,24 @@ rust-doc(){
   xdg-open "$(nix-build '<nixpkgs>' -A rustc.doc --no-out-link)/share/doc/docs/html/index.html"
 }
 
+
+
+if [[ -n ${commands[dust]} ]]; then
+  du() {
+    args=()
+    for i in "$@"; do
+      case "$i" in
+      -h|-s|-sh) continue;;
+      esac
+      args+=("$i")
+    done
+    dust "${args[@]}"
+  }
+else
+  alias du='du -hc'
+fi
+alias df='df -hT'
+
 flakify() {
   if [ ! -e flake.nix ]; then
     nix flake new -t github:Mic92/flake-templates#nix-develop .

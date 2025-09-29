@@ -44,7 +44,7 @@
     inxi
 
     #screen show
-    pkgs.ghostty
+    ghostty
 
     # networking tools
     mtr # A network diagnostic tool
@@ -117,6 +117,9 @@
     # gitlab cli
     glab
 
+    # gh
+    gh
+
     # accounting
     hledger
 
@@ -149,9 +152,7 @@
     #just
     just
 
-    # gh
-    gh
-
+    dust
   ];
   programs.bat.enable = true;
 }
