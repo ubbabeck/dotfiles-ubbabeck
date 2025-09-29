@@ -120,6 +120,8 @@
     # gh
     gh
 
+    zoxide
+
     # accounting
     hledger
 

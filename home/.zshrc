@@ -126,6 +126,10 @@ else
 fi
 alias df='df -hT'
 
+if [[ -n ${commands[zoxide]} ]]; then
+  eval "$(zoxide init zsh)"
+fi
+
 flakify() {
   if [ ! -e flake.nix ]; then
     nix flake new -t github:Mic92/flake-templates#nix-develop .
@@ -146,12 +150,26 @@ else
   alias ls='ls --color=auto --classify --human-readable'
 fi
 
+cd() {
+  if [[ "$1" == "--" ]]; then
+    shift
+  fi
+  local to="${1:-$HOME}"
+  if [[ -f "$to" ]]; then
+    to="$(dirname $to)"
+  fi
+
+  # fallback to zoxide if builtin cd fails
+  if ! builtin cd "$to" && [[ -n ${commands[zoxide]} ]]; then
+    __zoxide_z "$to"
+  fi
+}
+
 # Alias git
 alias gl='git log --oneline --graph --all --decorate'
 alias gc='git commit -v'
 alias ga='git add -p'
 alias gs='git status'
-alias ls='ls --color=auto --classify --human-readable'
 # Direnv
 eval "$(direnv hook zsh)"
 # Plugins
