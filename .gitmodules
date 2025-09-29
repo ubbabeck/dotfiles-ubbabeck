@@ -13,3 +13,6 @@
 [submodule "zsh/fast-syntax-highlighting"]
 	path = zsh/fast-syntax-highlighting
 	url = git@github.com:zdharma-continuum/fast-syntax-highlighting.git
+[submodule "zsh/pure"]
+	path = zsh/pure
+	url = git@github.com:sindresorhus/pure.git

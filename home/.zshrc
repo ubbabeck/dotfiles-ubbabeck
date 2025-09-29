@@ -90,12 +90,43 @@ fi
 setopt complete_in_word
 unsetopt always_to_end
 
+PURE_GIT_UNTRACT_DIRTY=0 PURE_GIT_PULL=0
+fpath+=($HOME/.zsh-pure)
+PURE_PROMT_SYMBOL="%(?.%F{green}.%F{red})%%%f"
+zstyle :prompt:pure:path color yellow
+zstyle :prompt:pure:git:branch color yellow
+zstyle :prompt:pure:user color cyan
+zstyle :prompt:pure:host color yellow
+zstyle :prompt:pure:git:branch:cached color red
+## non-zero exit code in right prompt
+RPS1='%(?.%F{magenta}.%F{red}(%?%) %F{magenta})'
+autoload -U promptinit; promptinit
+prompt pure
 
 # End of lines added by compinstall
 rust-doc(){
   xdg-open "$(nix-build '<nixpkgs>' -A rustc.doc --no-out-link)/share/doc/docs/html/index.html"
 }
 
+flakify() {
+  if [ ! -e flake.nix ]; then
+    nix flake new -t github:Mic92/flake-templates#nix-develop .
+  elif [ ! -e .envrc ]; then
+    echo "use flake" > .envrc
+  fi
+  direnv allow
+  ${EDITOR:-vim} flake.nix
+}
+
+# File management
+if [[ -n ${commands[eza]} ]]; then
+  alias ls="eza --icons --smart-group --time-style relative"
+  alias tree="eza --tree --icons"
+elif [[ $OSTYPE == freebsd* ]] ||  [[ $OSTYPE == darwin* ]]; then
+  alias ls='ls -G'
+else
+  alias ls='ls --color=auto --classify --human-readable'
+fi
 
 # Alias git
 alias gl='git log --oneline --graph --all --decorate'
