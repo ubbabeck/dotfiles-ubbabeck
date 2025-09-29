@@ -106,18 +106,18 @@ alias ls='ls --color=auto --classify --human-readable'
 # Direnv
 eval "$(direnv hook zsh)"
 # Plugins
-if [[ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -f ~/.zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh
   export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=60
 fi
 if [[ -f ~/.homesick/repos/homeshick/homeshick.sh ]]; then
   source ~/.homesick/repos/homeshick/homeshick.sh
 fi
-if [[ -f ~/.zsh/zsh-autopair/autopair.zsh ]]; then
-  source ~/.zsh/zsh-autopair/autopair.zsh
+if [[ -f ~/.zsh-autopair/autopair.zsh ]]; then
+  source ~/.zsh-autopair/autopair.zsh
 fi
-if [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
-  source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+if [[ -f ~/.fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
+  source ~/.fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 fi
 
 [[ -d ~/.zsh-completions/src ]] && fpath+=(~/.zsh-completions/src)
