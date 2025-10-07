@@ -6,7 +6,7 @@
     userEmail = "ruben@sdu.as";
 
     difftastic.enable = true;
-    difftastic.background = "dark";
+    difftastic.options.background = "dark";
     ignores = [
       "*.swp"
       "result"

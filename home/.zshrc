@@ -130,15 +130,6 @@ if [[ -n ${commands[zoxide]} ]]; then
   eval "$(zoxide init zsh)"
 fi
 
-flakify() {
-  if [ ! -e flake.nix ]; then
-    nix flake new -t github:Mic92/flake-templates#nix-develop .
-  elif [ ! -e .envrc ]; then
-    echo "use flake" > .envrc
-  fi
-  direnv allow
-  ${EDITOR:-vim} flake.nix
-}
 
 # File management
 if [[ -n ${commands[eza]} ]]; then
@@ -163,6 +154,17 @@ cd() {
   if ! builtin cd "$to" && [[ -n ${commands[zoxide]} ]]; then
     __zoxide_z "$to"
   fi
+}
+
+# Nix flake init for dev
+flakify() {
+  if [ ! -e flake.nix ]; then
+    nix flake new -t github:Mic92/flake-templates#nix-develop .
+  elif [ ! -e .envrc ]; then
+    echo "use flake" > .envrc
+  fi
+  direnv allow
+  ${EDITOR:-vim} flake.nix
 }
 
 # Alias git
