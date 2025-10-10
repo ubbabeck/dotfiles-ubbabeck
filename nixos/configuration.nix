@@ -20,7 +20,7 @@
     ./modules/postgresql.nix
     ../nixosModules/users.nix
     ../nixosModules/i18n.nix
-    ../nixosModules/kde
+    #../nixosModules/kde
     ../nixosModules/powertop.nix
     {
       users = {
@@ -327,6 +327,15 @@
     (writers.writeDashBin "btc-bitmynt" ''
       ${curl}/bin/curl -Ss 'https://ny.bitmynt.no/data/rates.json' | ${jq}/bin/jq .'current_rate.bid'
     '')
+    aspell
+    aspellDicts.en
+    aspellDicts.da
+    aspellDicts.nn
+    aspellDicts.de
+    aspellDicts.nb
+    hunspell
+    hunspellDicts.nn-no
+
   ];
 
   environment.variables.EDITOR = "nvim";
