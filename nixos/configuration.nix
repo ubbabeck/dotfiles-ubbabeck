@@ -20,7 +20,7 @@
     ./modules/postgresql.nix
     ../nixosModules/users.nix
     ../nixosModules/i18n.nix
-    #../nixosModules/kde
+    ../nixosModules/kde
     ../nixosModules/powertop.nix
     {
       users = {

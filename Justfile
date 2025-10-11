@@ -4,7 +4,7 @@ check:
 switch:
         doas nixos-rebuild switch --flake .# -L
 
-update COMMIT:
+update COMMIT="":
         nix flake update -L {{COMMIT}}
 
 update-commit:
