@@ -196,6 +196,7 @@
       mplus-outline-fonts.githubRelease
       noto-fonts-cjk-sans
       dina-font
+      ubuntu_font_family
     ];
 
     fontDir.enable = true;

@@ -131,6 +131,9 @@
     # obsidian
     obsidian
 
+    # pueue for long running task
+    pueue
+
     #ungoogled chromeium
     ungoogled-chromium
 
