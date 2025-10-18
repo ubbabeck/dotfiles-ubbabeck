@@ -12,11 +12,12 @@
     typos-lsp
     typos
     taplo-lsp
-
+    vscode-langservers-extracted
   ];
   programs.neovim = {
     enable = true;
     vimdiffAlias = true;
+    package = pkgs.neovim-unwrapped;
     vimAlias = true;
     withNodeJs = true;
     coc = {
@@ -222,6 +223,7 @@
       vim-rooter
       coc-rust-analyzer
       coc-clangd
+      coc-cmake
       coc-yaml
       coc-pyright
       coc-tsserver
@@ -229,6 +231,8 @@
       lightline-vim
       vim-fish
       indent-blankline-nvim
+      rustaceanvim
+
       uv-nvim
       vim-just
     ];
