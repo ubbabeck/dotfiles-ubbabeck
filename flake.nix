@@ -9,34 +9,25 @@
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
-  inputs = {
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+  # Nixpkgs
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # Home manager
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+  inputs.nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
-    ngit = {
-      url = "github:DanConwayDev/ngit-cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  # Home manager
+  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+  inputs.ngit.url = "github:DanConwayDev/ngit-cli";
+  inputs.ngit.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+  inputs.catppuccin.url = "github:catppuccin/nix";
+  inputs.catppuccin.inputs.nixpkgs.follows = "nixpkgs";
+
+  inputs.nix-index-database.url = "github:nix-community/nix-index-database";
+  inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs =
     {
@@ -54,7 +45,6 @@
         "obsidian"
         "vmware-workstation"
       ];
-      pkgs = import nixpkgs;
     in
     {
       # NixOS configuration entrypoint
@@ -76,7 +66,7 @@
             catppuccin.nixosModules.catppuccin
             #./tools/flake.nix
 
-            #nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+            nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
 
             inputs.nixos-facter-modules.nixosModules.facter
             { config.facter.reportPath = ./facter.json; }
