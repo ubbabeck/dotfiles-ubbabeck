@@ -2,16 +2,20 @@
 {
   programs.git = {
     enable = true;
-    userName = "ruben";
-    userEmail = "ruben@sdu.as";
+    #userName = "ruben";
+    #userEmail = "ruben@sdu.as";
+    settings = {
+      merge.conflictstyle = "diff3";
+    };
 
-    difftastic.enable = true;
-    difftastic.options.background = "dark";
     ignores = [
       "*.swp"
       "result"
       ".direnv/"
       ".idea/"
     ];
+  };
+  programs.difftastic = {
+    git.enable = true;
   };
 }

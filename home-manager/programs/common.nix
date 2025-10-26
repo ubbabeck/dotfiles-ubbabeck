@@ -150,7 +150,7 @@
     sqlitebrowser
 
     # electrum
-    electrum
+    #electrum
 
     #email
     evolution
