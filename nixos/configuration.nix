@@ -22,6 +22,7 @@
     ../nixosModules/i18n.nix
     ../nixosModules/kde
     ../nixosModules/powertop.nix
+    ../nixosModules/packages.nix
     {
       users = {
         groups.plugdev = { };
@@ -315,6 +316,7 @@
     grc
     fd
     zbar
+    perf
 
     # Youtube
     yt-dlp
