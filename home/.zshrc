@@ -21,6 +21,16 @@ if [ -f ~/.nix-profile/zsh/ghostty-integration ]; then
   . ~/.nix-profile/zsh/ghostty-integration
 fi
 
+if [[ -n "${commands[atuin]}" ]]; then
+  export ATUIN_NOBIND="true"
+  eval "$(atuin init zsh)"
+
+  bindkey '^r' atuin-search
+
+  # bind to the up key, which depends on terminal mode
+  bindkey '^[[A' atuin-up-search
+  bindkey '^[OA' atuin-up-search
+fi
 
 ## Options
 setopt auto_name_dirs

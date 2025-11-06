@@ -193,11 +193,11 @@
       nerd-fonts.iosevka
       nerd-fonts.symbols-only
       font-awesome
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       mplus-outline-fonts.githubRelease
       noto-fonts-cjk-sans
       dina-font
-      ubuntu_font_family
+      ubuntu-classic
     ];
 
     fontDir.enable = true;

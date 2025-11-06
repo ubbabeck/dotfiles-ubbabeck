@@ -11,7 +11,9 @@
     clippy
     typos-lsp
     typos
-    taplo-lsp
+    taplo
+    shellcheck
+    shfmt
     vscode-langservers-extracted
   ];
   programs.neovim = {

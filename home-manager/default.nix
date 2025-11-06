@@ -9,6 +9,7 @@
     ./shell
     ./desktop
     ./codename-goose.nix
+    ./modules/atuin-autosync.nix
   ];
 
   home = {
