@@ -21,16 +21,6 @@ if [ -f ~/.nix-profile/zsh/ghostty-integration ]; then
   . ~/.nix-profile/zsh/ghostty-integration
 fi
 
-if [[ -n "${commands[atuin]}" ]]; then
-  export ATUIN_NOBIND="true"
-  eval "$(atuin init zsh)"
-
-  bindkey '^r' atuin-search
-
-  # bind to the up key, which depends on terminal mode
-  bindkey '^[[A' atuin-up-search
-  bindkey '^[OA' atuin-up-search
-fi
 
 ## Options
 setopt auto_name_dirs
@@ -202,3 +192,14 @@ fi
 [[ -d ~/.zsh-completions/src ]] && fpath+=(~/.zsh-completions/src)
 [[ -d ~/.nix-profile/share/zsh/site-functions ]] && fpath+=(~/.nix-profile/share/zsh/site-functions)
 [[ -d /run/current-system/sw/share/zsh/site-functions/ ]] && fpath+=(/run/current-system/sw/share/zsh/site-functions/)
+
+if [[ -n "${commands[atuin]}" ]]; then
+  export ATUIN_NOBIND="true"
+  eval "$(atuin init zsh)"
+
+  bindkey '^r' atuin-search
+
+  # bind to the up key, which depends on terminal mode
+  bindkey '^[[A' atuin-up-search
+  bindkey '^[OA' atuin-up-search
+fi

@@ -1,0 +1,28 @@
+
+invert = true
+auto_sync = false
+workspaces = true
+preferes_reduced_motion = true
+enabled = true
+
+common_subcommands = [
+  "apt",
+  "cargo",
+  "docker",
+  "podman",
+  "git",
+  "nix",
+  "pnpm",
+  "npm",
+  "uv",
+  "tmux",
+  "systemctl",
+  "ip",
+  "port",
+  "nmcli"
+]
+
+common_prefix = [
+  "doas",
+  "sudo"
+]
