@@ -13,6 +13,10 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
+    hercules-ci-effects.inputs.nixpkgs.follows = "nixpkgs";
+    hercules-ci-effects.inputs.flake-parts.follows = "flake-parts";
+
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -54,12 +58,26 @@
         imports = [
           ./machines/flake-module.nix
           inputs.clan-core.flakeModules.default
+          inputs.hercules-ci-effects.flakeModule
         ];
         systems = [
           "x86_64-linux"
           "aarch64-linux"
           "aarch64-darwin"
         ];
+        herculesCI = herculesCI: {
+          onPush.default.outputs.effects.deploy = withSystem config.defaultEffectSystem (
+            { pkgs, hci-effects, ... }:
+            hci-effects.runIf (herculesCI.config.repo.branch == "main") (
+              hci-effects.mkEffect {
+                effectScript = ''
+                  echo "${builtins.toJSON { inherit (herculesCI.config.repo) branch tag rev; }}"
+                  ${pkgs.hello}/bin/hello
+                '';
+              }
+            )
+          );
+        };
 
         perSystem =
           {
