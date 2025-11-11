@@ -75,6 +75,8 @@
 
   };
 
+  system.rebuild.enableNg = true;
+
   security.doas.enable = true;
   security.sudo.enable = false;
   security.doas.extraRules = [
@@ -231,6 +233,7 @@
       dockerSocket.enable = true;
       defaultNetwork.settings.dns_enabled = true;
     };
+    virtualbox.host.enable = true;
   };
   # ----- Podman ---------
 
@@ -255,11 +258,6 @@
 
   services.journald.extraConfig = "SystemMaxUse=1G";
 
-  security = {
-    polkit.enable = true;
-    #pam.services.swaylock = { };
-  };
-
   services.fprintd.enable = false;
 
   services.gnome.gnome-keyring.enable = true;
@@ -271,6 +269,11 @@
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security = {
+    polkit.enable = true;
+    #pam.services.swaylock = { };
+    audit.enable = true;
+  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -309,6 +312,7 @@
     podman-tui
     podman-compose
     podman-desktop
+    nixos-rebuild-ng
 
     pulseaudio
     pavucontrol
