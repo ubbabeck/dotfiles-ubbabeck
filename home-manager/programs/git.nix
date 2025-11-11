@@ -16,6 +16,15 @@
     ];
   };
   programs.difftastic = {
-    git.enable = true;
+    git = {
+      enable = true;
+      diffToolMode = true;
+    };
+
+    options = {
+      color = "dark";
+      sort-path = true;
+      tab-width = 8;
+    };
   };
 }
