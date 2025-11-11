@@ -2,7 +2,7 @@
 {
   imports = [
 
-    ../../nixosModules/packages.nix
+    ../../../nixosModules/packages.nix
   ];
   environment.systemPackages = with pkgs; [ cntr ];
 }

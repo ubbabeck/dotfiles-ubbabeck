@@ -10,83 +10,110 @@
     ];
   };
 
-  # Nixpkgs
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+    # Nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-  inputs.nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-  # Home manager
-  inputs.home-manager.url = "github:nix-community/home-manager";
-  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # Home manager
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.ngit.url = "github:DanConwayDev/ngit-cli";
-  inputs.ngit.inputs.nixpkgs.follows = "nixpkgs";
+    ngit.url = "github:DanConwayDev/ngit-cli";
+    ngit.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.catppuccin.url = "github:catppuccin/nix";
-  inputs.catppuccin.inputs.nixpkgs.follows = "nixpkgs";
+    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.nix-index-database.url = "github:nix-community/nix-index-database";
-  inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-ai-tools = {
+      url = "github:numtide/nix-ai-tools";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    clan-core.url = "git+https://git.clan.lol/clan/clan-core";
+    clan-core.inputs.nixpkgs.follows = "nixpkgs";
+    clan-core.inputs.flake-parts.follows = "flake-parts";
+  };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nixos-hardware,
-      home-manager,
-      catppuccin,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-      allowed-unfree-packages = [
-        "zerotierone"
-        "obsidian"
-        "vmware-workstation"
-      ];
-    in
-    {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      {
+        withSystem,
+        self,
+        config,
+        ...
+      }:
+      {
+        imports = [
+          ./machines/flake-module.nix
+          inputs.clan-core.flakeModules.default
+        ];
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+          "aarch64-darwin"
+        ];
 
-      nixosConfigurations = {
-        thinkpad-p14 = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit
-              self
-              inputs
-              outputs
-              allowed-unfree-packages
-              ;
-          };
-          modules = [
-            ./nixos
-            ./modules
-            catppuccin.nixosModules.catppuccin
-            #./tools/flake.nix
+        perSystem =
+          {
+            inputs',
+            self',
+            lib,
+            system,
+            ...
+          }:
+          {
+            # make pkgs available to all `perSystem` functions
+            _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
 
-            nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
+            checks =
+              let
+                machinesPerSystem = {
+                  aarch64-linux = [
+                  ];
+                  x86_64-linux = [
+                    "thinkpad-p14"
+                  ];
+                };
 
-            inputs.nixos-facter-modules.nixosModules.facter
-            { config.facter.reportPath = ./facter.json; }
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.users.ruben = {
-                imports = [
-                  ./home-manager
-                  catppuccin.homeModules.catppuccin
+                allowed-unfree-packages = [
+                  "zerotierone"
+                  "obsidian"
+                  "vmware-workstation"
                 ];
-              };
-              home-manager.extraSpecialArgs = {
-                inherit allowed-unfree-packages;
-              };
-            }
-          ];
-        };
-      };
+                nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
+                  lib.genAttrs (machinesPerSystem.${system} or [ ]) (
+                    name: self.nixosConfigurations.${name}.config.system.build.toplevel
+                  )
+                );
 
-    };
+                blacklistPackages = [
+                  "install-iso"
+                  "nspawn-template"
+                  "netboot-pixie-core"
+                  "netboot"
+                ];
+                packages = lib.mapAttrs' (n: lib.nameValuePair "package-${n}") (
+                  lib.filterAttrs (n: _v: !(builtins.elem n blacklistPackages)) self'.packages
+                );
+
+                devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
+
+                homeConfigurations = lib.mapAttrs' (
+                  name: config: lib.nameValuePair "home-manager-${name}" config.activation-script
+                ) (self'.legacyPackages.homeConfigurations or { });
+
+              in
+              nixosMachines // packages // devShells // homeConfigurations;
+
+          };
+      }
+    );
 }

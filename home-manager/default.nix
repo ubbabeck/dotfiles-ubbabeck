@@ -10,6 +10,7 @@
     ./desktop
     ./codename-goose.nix
     ./modules/atuin-autosync.nix
+    ./modules/tmux-thumbs.nix
   ];
 
   home = {

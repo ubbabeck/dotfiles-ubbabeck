@@ -18,10 +18,11 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/postgresql.nix
-    ../nixosModules/users.nix
-    ../nixosModules/i18n.nix
-    ../nixosModules/kde
-    ../nixosModules/powertop.nix
+    ../../nixosModules/users.nix
+    ../../nixosModules/i18n.nix
+    ../../nixosModules/kde
+    ../../nixosModules/powertop.nix
+    ../../modules/default.nix
     ./modules/packages.nix
     {
       users = {
