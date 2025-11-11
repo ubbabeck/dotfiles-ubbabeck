@@ -141,6 +141,29 @@ else
   alias ls='ls --color=auto --classify --human-readable'
 fi
 
+if [ -n "${commands[bat]}" ]; then
+  cat() {
+    if [[ -t 1 ]] && [[ -o interactive ]]; then
+        if [[ -n "$WAYLAND_DISPLAY" ]]; then
+            wl-copy < "$1" 2>/dev/null &
+        fi
+        bat "$@"
+    else
+        command cat "$@"
+    fi
+  }
+fi
+
+## PROFILE
+path=(
+    $HOME/bin
+    $HOME/.cargo/bin
+    $HOME/go/bin
+    # python
+    $HOME/.local/bin/
+    $path
+)
+
 cd() {
   if [[ "$1" == "--" ]]; then
     shift
