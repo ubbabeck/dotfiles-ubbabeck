@@ -22,7 +22,7 @@
     ../nixosModules/i18n.nix
     ../nixosModules/kde
     ../nixosModules/powertop.nix
-    ../nixosModules/packages.nix
+    ./modules/packages.nix
     {
       users = {
         groups.plugdev = { };
