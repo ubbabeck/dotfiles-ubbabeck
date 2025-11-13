@@ -15,7 +15,6 @@
     self.inputs.nix-index-database.nixosModules.nix-index
     { programs.nix-index-database.comma.enable = true; }
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./modules/postgresql.nix
     ../../nixosModules/users.nix
     ../../nixosModules/i18n.nix
@@ -23,6 +22,7 @@
     ../../nixosModules/powertop.nix
     ../../modules/default.nix
     ./modules/packages.nix
+    ./filesystems.nix
     {
       users = {
         groups.plugdev = { };
@@ -121,6 +121,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.tmp.cleanOnBoot = true;
   boot.loader.systemd-boot.configurationLimit = 10;
+  boot.initrd.systemd.enable = true;
+  # when installing toggle this
 
   boot.initrd.luks.devices."luks-1c3d6c0f-5c93-4c26-9b50-5a8db85684c6".device =
     "/dev/disk/by-uuid/1c3d6c0f-5c93-4c26-9b50-5a8db85684c6";
