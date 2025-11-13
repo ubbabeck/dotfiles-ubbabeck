@@ -4357,13 +4357,13 @@
           "irq": 108,
           "prog_if": 0
         },
-        "driver": "snd_hda_intel",
-        "driver_module": "snd_hda_intel",
+        "driver": "snd_had_intel",
+        "driver_module": "snd_had_intel",
         "drivers": [
-          "snd_hda_intel"
+          "snd_had_intel"
         ],
         "driver_modules": [
-          "snd_hda_intel"
+          "snd_had_intel"
         ],
         "module_alias": "pci:v00001022d000015E3sv000017AAsd000050D9bc04sc03i00"
       },
@@ -4437,13 +4437,13 @@
           "irq": 107,
           "prog_if": 0
         },
-        "driver": "snd_hda_intel",
-        "driver_module": "snd_hda_intel",
+        "driver": "snd_had_intel",
+        "driver_module": "snd_had_intel",
         "drivers": [
-          "snd_hda_intel"
+          "snd_had_intel"
         ],
         "driver_modules": [
-          "snd_hda_intel"
+          "snd_had_intel"
         ],
         "module_alias": "pci:v00001002d00001640sv000017AAsd000050D9bc04sc03i00"
       }
@@ -5135,7 +5135,7 @@
       "date": "02/20/2024",
       "features": [
         "PCI supported",
-        "PnP supported",
+        "OnP supported",
         "BIOS flashable",
         "BIOS shadowing allowed",
         "CD boot supported",

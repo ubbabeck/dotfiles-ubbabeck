@@ -1,7 +1,5 @@
 {
-  lib,
   pkgs,
-  allowed-unfree-packages,
   ...
 }:
 {
@@ -127,7 +125,7 @@
     hledger
 
     # signal desktop
-    # TOOD add norwegian language
+    # TODO add norwegian language
     signal-desktop
     # obsidian
     obsidian
@@ -143,7 +141,7 @@
 
     anki
 
-    #libreoffie
+    #libreoffice
     libreoffice
 
     #sqlitebrowser

@@ -51,7 +51,9 @@
         ],
         "nix-darwin": "nix-darwin",
         "nix-select": "nix-select",
-        "nixos-facter-modules": "nixos-facter-modules",
+        "nixos-facter-modules": [
+          "nixos-facter-modules"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -304,21 +306,6 @@
       "locked": {
         "lastModified": 1762264948,
         "narHash": "sha256-iaRf6n0KPl9hndnIft3blm1YTAyxSREV1oX0MFZ6Tk4=",
-        "owner": "nix-community",
-        "repo": "nixos-facter-modules",
-        "rev": "fa695bff9ec37fd5bbd7ee3181dbeb5f97f53c96",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixos-facter-modules",
-        "type": "github"
-      }
-    },
-    "nixos-facter-modules_2": {
-      "locked": {
-        "lastModified": 1762264948,
-        "narHash": "sha256-iaRf6n0KPl9hndnIft3blm1YTAyxSREV1oX0MFZ6Tk4=",
         "owner": "numtide",
         "repo": "nixos-facter-modules",
         "rev": "fa695bff9ec37fd5bbd7ee3181dbeb5f97f53c96",
@@ -388,9 +375,10 @@
         "ngit": "ngit",
         "nix-ai-tools": "nix-ai-tools",
         "nix-index-database": "nix-index-database",
-        "nixos-facter-modules": "nixos-facter-modules_2",
+        "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "treefmt-nix": "treefmt-nix_3"
       }
     },
     "rust-overlay": {
@@ -502,6 +490,26 @@
       "inputs": {
         "nixpkgs": [
           "nix-ai-tools",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762938485,
+        "narHash": "sha256-AlEObg0syDl+Spi4LsZIBrjw+snSVU4T8MOeuZJUJjM=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "5b4ee75aeefd1e2d5a1cc43cf6ba65eba75e83e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treefmt-nix_3": {
+      "inputs": {
+        "nixpkgs": [
           "nixpkgs"
         ]
       },

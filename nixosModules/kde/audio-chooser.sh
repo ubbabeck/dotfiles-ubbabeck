@@ -79,4 +79,3 @@ pactl list short sources | while read -r source; do
   source_idx=$(echo "$source" | cut -f1)
   pamixer --unmute --source "$source_idx" || true
 done
-

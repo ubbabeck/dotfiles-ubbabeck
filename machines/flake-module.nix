@@ -1,4 +1,4 @@
-{ self, lib, ... }:
+{ self, ... }:
 {
   flake.nixosModules.default = ../nixosModules/default.nix;
 

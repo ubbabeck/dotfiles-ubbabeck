@@ -1,5 +1,4 @@
-{ lib, ... }:
-with lib;
+{ ... }:
 {
   security.chromiumSuidSandbox.enable = true;
   security.lockKernelModules = false;

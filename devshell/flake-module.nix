@@ -1,0 +1,165 @@
+{ inputs, lib, ... }:
+{
+
+  imports = [ inputs.treefmt-nix.flakeModule ];
+
+  perSystem =
+    { inputs', pkgs, ... }:
+    {
+      # Definitions like this are entirely equivalent to the ones
+      # you may have directly in flake.nix.
+      devShells.default = pkgs.mkShellNoCC {
+        nativeBuildInputs = [
+          pkgs.python3.pkgs.invoke
+          pkgs.python3.pkgs.deploykit
+          inputs'.clan-core.packages.default
+          inputs'.clan-core.packages.clan-app
+        ]
+        ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+          pkgs.bubblewrap
+        ];
+      };
+
+      treefmt = {
+        # Used to find the project root
+        projectRootFile = ".git/config";
+
+        programs.typos.enable = true;
+        programs.terraform.enable = true;
+        programs.hclfmt.enable = true;
+        programs.yamlfmt.enable = true;
+        programs.actionlint.enable = true;
+        programs.mypy.enable = true;
+        programs.mypy.directories = {
+          "pkgs/tmux-mcp" = {
+            extraPythonPackages = with pkgs.python3.pkgs; [
+              mcp
+              pydantic
+              types-setuptools
+              pytest
+              pytest-asyncio
+            ];
+          };
+        };
+        programs.deadnix.enable = true;
+        programs.stylua.enable = true;
+        programs.clang-format.enable = true;
+        programs.deno.enable = true;
+        programs.nixfmt.enable = true;
+        programs.shellcheck.enable = true;
+
+        settings.formatter.shellcheck.options = [
+          "--external-sources"
+          "--source-path=SCRIPTDIR"
+        ];
+
+        programs.shfmt.enable = true;
+        programs.rustfmt.enable = true;
+        settings.formatter.shfmt.includes = [
+          "*.envrc"
+          "*.envrc.private-template"
+          "*.bashrc"
+          "*.bash_profile"
+          "*.bashrc.load"
+        ];
+
+        programs.ruff.format = true;
+        programs.ruff.check = true;
+
+        settings.formatter.ruff-check.excludes = [
+          "gdb/*"
+          "zsh/*"
+          "home/.config/qtile/*"
+          # bug in ruff
+        ];
+        settings.formatter.ruff-format.excludes = [
+          "gdb/*"
+          "zsh/*"
+        ];
+        settings.formatter.shfmt.excludes = [
+          "gdb/*"
+          "zsh/*"
+        ];
+        settings.formatter.shellcheck.excludes = [
+          "gdb/*"
+          "zsh/*"
+        ];
+
+        settings.global.excludes = [
+          "sops/*"
+          "vars/*"
+          "zsh/*"
+          "home/.zsh-*"
+          "home/.fast-syntax-highlighting"
+          "home/.config/nixpkgs"
+          "home/.gef-*"
+          "*.tfvars.sops.json"
+          "gdb/*"
+          "*nixos-vars.json"
+          "*/secrets.yaml"
+          "*/secrets.yml"
+          "machines/*/facts/*"
+          "*/facter.json"
+          "*.pub"
+          "*.pem"
+          "*.conf"
+          "*.sieve"
+          "*.patch"
+          "*.zone"
+          "*.lock"
+          "*.age"
+          "*.fish"
+          "*.txt"
+          "*.toml"
+          "*.vim"
+          "*.el"
+          "*.config"
+          "*.png"
+          "*.jpg"
+          "*.jpeg"
+          "*.gif"
+          "*.svg"
+          "*.ico"
+          "home/.gdbinit-gef.py"
+          "*/secrets.enc.json"
+          "*/lazy-lock.json"
+
+          "*.gitignore"
+          "*.gitmodules"
+          "home-manager/modules/waybar.css"
+          "home/.Xresources"
+          "home/.agignore"
+          "home/.config/autorandr/*"
+          "home/.config/bat/*"
+          "home/.config/dunst/dunstrc"
+          "home/.config/foot/foot.ini"
+          "home/.config/htop/htoprc"
+          "home/.config/kanshi/config"
+          "home/.config/nvim/treesitter-rev"
+          "home/.config/river/init"
+          "home/.config/rofi/*"
+          "home/.dircolors.*"
+          "home/.direnvrc"
+          "home/.gdbinit"
+          "home/.gef.rc"
+          "home/.gemrc"
+          "home/.gitattributes"
+          "home/.gitconfig"
+          "home/.gitignore"
+          "home/.hgrc"
+          "home/.irbrc"
+          "home/.mbsyncrc"
+          "home/.mpv/config"
+          "home/.ncmpcpp/config"
+          "home/.ncmpcpp/keys"
+          "home/.pryrc"
+          "home/.psqlrc"
+          "home/.spacemacs"
+          "home/.vimrc"
+          "home/.zsh-termsupport"
+          "home/.zshrc"
+          "home/bin/*"
+        ];
+      };
+    };
+}

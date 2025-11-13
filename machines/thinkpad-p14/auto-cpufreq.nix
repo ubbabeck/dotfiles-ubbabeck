@@ -1,4 +1,4 @@
-{ auto-cpufreq, ... }:
+{ ... }:
 {
 
   programs.auto-cpufreq.settings = {

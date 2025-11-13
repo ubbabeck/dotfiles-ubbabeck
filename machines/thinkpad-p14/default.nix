@@ -11,7 +11,7 @@
     ./android.nix
     #./wireguard.nix
     ./file-manager.nix
-    ./hardend.nix
+    ./hardened.nix
     #./virt-manager.nix
     #./auto-cpufreq.nix
   ];

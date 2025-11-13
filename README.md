@@ -1,4 +1,5 @@
 ## todos
+
 - [ ] Fix sway lock
 - [ ] fix sway idle (enable locking by pressing MOD4+L)
 - [x] fix sound buttons

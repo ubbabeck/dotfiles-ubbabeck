@@ -43,6 +43,10 @@
     clan-core.url = "git+https://git.clan.lol/clan/clan-core";
     clan-core.inputs.nixpkgs.follows = "nixpkgs";
     clan-core.inputs.flake-parts.follows = "flake-parts";
+    clan-core.inputs.nixos-facter-modules.follows = "nixos-facter-modules";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs =
@@ -57,6 +61,7 @@
       {
         imports = [
           ./machines/flake-module.nix
+          ./devshell/flake-module.nix
           inputs.clan-core.flakeModules.default
           inputs.hercules-ci-effects.flakeModule
         ];
@@ -100,12 +105,6 @@
                     "thinkpad-p14"
                   ];
                 };
-
-                allowed-unfree-packages = [
-                  "zerotierone"
-                  "obsidian"
-                  "vmware-workstation"
-                ];
                 nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
                   lib.genAttrs (machinesPerSystem.${system} or [ ]) (
                     name: self.nixosConfigurations.${name}.config.system.build.toplevel
