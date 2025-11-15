@@ -108,7 +108,9 @@ rust-doc(){
   xdg-open "$(nix-build '<nixpkgs>' -A rustc.doc --no-out-link)/share/doc/docs/html/index.html"
 }
 
-
+hm(){
+  nix run "$HOME/.homesick/repos/dotfiles-ubbabeck#hm" -- "$@"
+}
 
 if [[ -n ${commands[dust]} ]]; then
   du() {
@@ -164,6 +166,8 @@ path=(
     $path
 )
 
+export TERMINAL=ghostty
+
 cd() {
   if [[ "$1" == "--" ]]; then
     shift
@@ -211,6 +215,10 @@ fi
 if [[ -f ~/.fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
   source ~/.fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 fi
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
+
 
 [[ -d ~/.zsh-completions/src ]] && fpath+=(~/.zsh-completions/src)
 [[ -d ~/.nix-profile/share/zsh/site-functions ]] && fpath+=(~/.nix-profile/share/zsh/site-functions)
@@ -226,3 +234,5 @@ if [[ -n "${commands[atuin]}" ]]; then
   bindkey '^[[A' atuin-up-search
   bindkey '^[OA' atuin-up-search
 fi
+ttyctl -f
+
