@@ -14,7 +14,6 @@
   #                    V                             V
   xdg.configFile."starship.toml".source = lib.mkForce ./starship.toml;
 
-  catppuccin.starship.enable = true;
   programs.starship = {
     enable = false;
     enableZshIntegration = true;

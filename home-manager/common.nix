@@ -1,8 +1,34 @@
 {
+  self,
   pkgs,
   ...
 }:
 {
+  imports = [
+    ./programs
+    ./shell
+    #./codename-goose.nix
+    ./modules/ai.nix
+    ./modules/atuin-autosync.nix
+    ./modules/tmux-thumbs.nix
+  ];
+
+  nix.package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
+
+  home.enableNixpkgsReleaseCheck = false;
+  home = {
+    username = "ruben";
+    homeDirectory = "/home/ruben";
+    stateVersion = "24.05";
+  };
+  # Let home Manager install and manage itself.
+  programs.home-manager.enable = true;
+  services.network-manager-applet.enable = true;
+  # better eval time
+  manual.html.enable = false;
+  manual.manpages.enable = false;
+  manual.json.enable = false;
+
   # Packages that should be installed to the user profile.
   # TODO split and clean up
   home.packages = with pkgs; [
@@ -128,7 +154,7 @@
     # TODO add norwegian language
     signal-desktop
     # obsidian
-    obsidian
+    #obsidian
 
     # pueue for long running task
     pueue
