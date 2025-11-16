@@ -20,6 +20,14 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix.url = "git+https://github.com/nixos/nix?shallow=1";
+    nix.inputs.nixpkgs.follows = "nixpkgs";
+    nix.inputs.flake-parts.follows = "";
+    nix.inputs.flake-compat.follows = "";
+    nix.inputs.nixpkgs-regression.follows = "";
+    nix.inputs.git-hooks-nix.follows = "";
+    nix.inputs.nixpkgs-23-11.follows = "";
+
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -30,9 +38,6 @@
     ngit.url = "github:DanConwayDev/ngit-cli";
     ngit.inputs.nixpkgs.follows = "nixpkgs";
 
-    catppuccin.url = "github:catppuccin/nix";
-    catppuccin.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,7 +46,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     clan-core.url = "git+https://git.clan.lol/clan/clan-core";
-    #clan-core.inputs.nixpkgs.follows = "nixpkgs";
+    clan-core.inputs.nixpkgs.follows = "nixpkgs";
     clan-core.inputs.flake-parts.follows = "flake-parts";
     clan-core.inputs.nixos-facter-modules.follows = "nixos-facter-modules";
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -62,6 +67,7 @@
         imports = [
           ./machines/flake-module.nix
           ./devshell/flake-module.nix
+          ./home-manager/flake-module.nix
           inputs.clan-core.flakeModules.default
           inputs.hercules-ci-effects.flakeModule
         ];

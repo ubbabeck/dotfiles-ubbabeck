@@ -31,159 +31,165 @@
 
   # Packages that should be installed to the user profile.
   # TODO split and clean up
-  home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
+  home.packages =
+    with pkgs;
+    [
+      # here is some command line tools I use frequently
+      # feel free to add your own or remove some of them
 
-    fastfetch
-    league-of-moveable-type
+      fastfetch
+      league-of-moveable-type
 
-    gimp3
-    # archives
-    zip
-    xz
-    unzip
+      gimp3
+      # archives
+      zip
+      xz
+      unzip
 
-    eternal-terminal
-    ferdium
+      xdg-utils
 
-    # utils
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processor https://github.com/mikefarah/yq
-    fzf # A command-line fuzzy finder
-    mdcat
-    bottom
+      eternal-terminal
+      ferdium
 
-    # sound
-    #rhythmbox
+      # utils
+      ripgrep # recursively searches directories for a regex pattern
+      jq # A lightweight and flexible command-line JSON processor
+      yq-go # yaml processor https://github.com/mikefarah/yq
+      fzf # A command-line fuzzy finder
+      mdcat
+      bottom
 
-    #video player
-    mpv
-    adwaita-icon-theme
-    hicolor-icon-theme
-    graphicsmagick
-    screen-message
-    sshfs-fuse
-    inxi
+      # sound
+      #rhythmbox
 
-    #screen show
-    ghostty
+      #video player
+      mpv
+      adwaita-icon-theme
+      hicolor-icon-theme
+      graphicsmagick
+      screen-message
+      sshfs-fuse
+      inxi
 
-    # networking tools
-    mtr # A network diagnostic tool
-    iperf3
-    dnsutils # `dig` + `nslookup`
-    ldns # replacement of `dig`, it provide the command `drill`
-    aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    cheat
-    socat # replacement of openbsd-netcat
-    nmap # A utility for network discovery and security auditing
-    ipcalc # it is a calculator for the IPv4/v6 addresses
-    wget
-    q
+      # networking tools
+      mtr # A network diagnostic tool
+      iperf3
+      dnsutils # `dig` + `nslookup`
+      ldns # replacement of `dig`, it provide the command `drill`
+      aria2 # A lightweight multi-protocol & multi-source command-line download utility
+      cheat
+      socat # replacement of openbsd-netcat
+      nmap # A utility for network discovery and security auditing
+      ipcalc # it is a calculator for the IPv4/v6 addresses
+      wget
+      q
 
-    wireguard-tools
-    # misc
-    file
-    which
-    tree
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
+      wireguard-tools
+      # misc
+      file
+      which
+      tree
+      gnused
+      gnutar
+      gawk
+      zstd
+      gnupg
 
-    gdb
-    # nix related
-    #
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
-    nix-output-monitor
-    nix-tree
-    alejandra
-    nixfmt-rfc-style
-    fh
+      gdb
+      # nix related
+      #
+      # it provides the command `nom` works just like `nix`
+      # with more details log output
+      nix-output-monitor
+      nix-tree
+      alejandra
+      nixfmt-rfc-style
+      fh
 
-    cargo
-    cargo-watch
+      cargo
+      cargo-watch
 
-    # productivity
-    glow # markdown previewer in terminal
+      # productivity
+      glow # markdown previewer in terminal
 
-    btop # replacement of htop/nmon
-    iotop # io monitoring
-    iftop # network monitoring
+      btop # replacement of htop/nmon
+      iotop # io monitoring
+      iftop # network monitoring
 
-    # system call monitoring
-    strace # system call monitoring
-    ltrace # library call monitoring
-    lsof # list open files
+      # system call monitoring
+      strace # system call monitoring
+      ltrace # library call monitoring
+      lsof # list open files
 
-    # system tools
-    sysstat
-    lm_sensors # for `sensors` command
-    ethtool
-    pciutils # lspci
-    usbutils # lsusb
+      # system tools
+      sysstat
+      lm_sensors # for `sensors` command
+      ethtool
+      pciutils # lspci
+      usbutils # lsusb
 
-    apksigner # for verifying apk files
+      apksigner # for verifying apk files
 
-    #
-    neovide
-    # password manager
-    keepassxc
+      #
+      neovide
+      # password manager
+      keepassxc
 
-    # remote programming
-    mob
+      # remote programming
+      mob
 
-    calibre
+      calibre
 
-    # gitlab cli
-    glab
+      # gitlab cli
+      glab
 
-    # gh
-    gh
+      # gh
+      gh
 
-    zoxide
+      zoxide
 
-    # accounting
-    hledger
+      # accounting
+      hledger
 
-    # signal desktop
-    # TODO add norwegian language
-    signal-desktop
-    # obsidian
-    #obsidian
+      # signal desktop
+      # TODO add norwegian language
+      signal-desktop
+      # obsidian
+      #obsidian
 
-    # pueue for long running task
-    pueue
+      # pueue for long running task
+      pueue
 
-    #ungoogled chromeium
-    ungoogled-chromium
+      #ungoogled chromeium
+      ungoogled-chromium
 
-    # tor browser
-    tor-browser
+      # tor browser
+      tor-browser
 
-    anki
+      anki
 
-    #libreoffice
-    libreoffice
+      #libreoffice
+      libreoffice
 
-    #sqlitebrowser
-    sqlitebrowser
+      #sqlitebrowser
+      sqlitebrowser
 
-    # electrum
-    #electrum
+      # electrum
+      #electrum
 
-    #email
-    evolution
+      #email
+      evolution
 
-    #just
-    just
+      #just
+      just
 
-    dust
-  ];
+      nixos-shell
+
+      dust
+    ]
+    ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
+      ghostty
+    ];
   programs.bat.enable = true;
   programs.vscode = {
     enable = true;

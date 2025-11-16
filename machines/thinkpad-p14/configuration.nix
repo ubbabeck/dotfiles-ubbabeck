@@ -3,8 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
-  lib,
-  allowed-unfree-packages,
   self,
   ...
 }:
@@ -113,9 +111,6 @@
     package = pkgs.nix;
   };
 
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-  };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
