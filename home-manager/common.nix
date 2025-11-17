@@ -183,6 +183,9 @@
       #just
       just
 
+      twitter-color-emoji
+      hicolor-icon-theme
+
       nixos-shell
 
       dust

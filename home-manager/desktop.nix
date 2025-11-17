@@ -4,7 +4,7 @@
     ./modules/atuin-autosync.nix
     ./modules/tmux-thumbs.nix
     ./programs/git.nix
-    ./programs/neovim.nix
+    #./programs/neovim.nix
   ];
   services.syncthing.enable = true;
 

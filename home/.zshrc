@@ -168,6 +168,20 @@ path=(
 
 export TERMINAL=ghostty
 
+if [[ -n ${commands[nvim]} ]]; then
+  export EDITOR=nvim
+  alias vim="nvim"
+elif [[ -n ${commands[emacseditor]} ]]; then
+  export EDITOR=emacseditor
+else
+  export EDITOR=vim
+fi
+if [[ -n ${commands[nvim]} ]]; then
+  export ALTERNATE_EDITOR=nvim
+elif [[ -n ${commands[vim]} ]]; then
+  export ALTERNATE_EDITOR=vim
+fi
+
 cd() {
   if [[ "$1" == "--" ]]; then
     shift
