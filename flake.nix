@@ -46,9 +46,10 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     clan-core.url = "git+https://git.clan.lol/clan/clan-core";
+    #clan-core.url = "path:/home/ruben/git/clones/clan-core";
+
     clan-core.inputs.nixpkgs.follows = "nixpkgs";
     clan-core.inputs.flake-parts.follows = "flake-parts";
-    clan-core.inputs.treefmt-nix.follows = "flake-parts";
     clan-core.inputs.nixos-facter-modules.follows = "nixos-facter-modules";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
