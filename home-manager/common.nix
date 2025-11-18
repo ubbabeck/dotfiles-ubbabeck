@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ./programs
+    ./programs/git.nix
     ./shell
     #./codename-goose.nix
     ./modules/ai.nix
@@ -45,6 +45,8 @@
       zip
       xz
       unzip
+
+      nodejs
 
       xdg-utils
 

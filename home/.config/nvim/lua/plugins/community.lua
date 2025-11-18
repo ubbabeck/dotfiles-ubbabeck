@@ -33,6 +33,7 @@ return {
 	{ import = "astrocommunity.pack.rust" },
 	{ import = "astrocommunity.pack.toml" },
 	{ import = "astrocommunity.pack.yaml" },
+	{ import = "astrocommunity.pack.zig" },
 	{ import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 	{ import = "astrocommunity.editing-support.auto-save-nvim" },
 	{ import = "astrocommunity.motion.nvim-surround" },
