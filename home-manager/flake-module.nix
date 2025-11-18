@@ -32,7 +32,7 @@
     {
       # selects the right home-manager configuration based on the hostname
       # Called from my .zshrc like this:
-      # hm(){ nix run "$HOME/.homesick/repos/dotfiles#hm" -- "$@"; }
+      # hm(){ nix run "$HOME/.homesick/repos/dotfiles-ubbabeck#hm" -- "$@"; }
       apps.hm = {
         type = "app";
         program = "${pkgs.writeShellScriptBin "hm" ''

@@ -59,6 +59,7 @@
 
           self'.packages.nvim-install-treesitter
         ];
+
       };
       packages = {
         neovim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (
