@@ -8,4 +8,5 @@ update COMMIT="":
         nix flake update -L {{COMMIT}}
 
 update-commit:
-        just update --commit-lock-file 
+        just update --commit-lock-file
+

@@ -297,8 +297,6 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
-  programs.starship.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -336,7 +334,6 @@
     aspellDicts.da
     aspellDicts.nn
     aspellDicts.de
-    aspellDicts.nb
     hunspell
     hunspellDicts.nn-no
 
@@ -346,9 +343,15 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    zsh = {
+      enable = true;
+      promptInit = "";
+    };
   };
 
   # List services that you want to enable:
