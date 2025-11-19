@@ -23,18 +23,12 @@ return {
 		mappings = {
 			-- first key is the mode
 			n = {
-				-- Neotree: remember last source and make git the default
-				["<Leader>e"] = { "<Cmd>Neotree toggle source=git_status<CR>", desc = "Toggle Explorer" },
-				["<Leader>o"] = {
-					function()
-						if vim.bo.filetype == "neo-tree" then
-							vim.cmd.wincmd("p")
-						else
-							vim.cmd.Neotree({ "focus", "source=last" })
-						end
-					end,
-					desc = "Toggle Explorer Focus",
-				},
+				-- tables with the `name` key will be registered with which-key if it's installed
+				-- this is useful for naming menus
+				["<leader>b"] = { name = "Buffers" },
+				-- quick save
+				-- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
 				-- Switch between tabs
 				["<S-Tab>"] = { ":bprev<CR>" },
 				["<Tab>"] = { ":bnext<CR>" },
@@ -48,15 +42,13 @@ return {
 				},
 				["<leader>*"] = {
 					function()
-						require("snacks").picker.grep_word()
+						require("telescope.builtin").grep_string()
 					end,
 					desc = "Find for word under cursor",
 				},
 				["<leader><leader>"] = {
 					function()
-						require("snacks").picker.files({
-							hidden = vim.tbl_get((vim.uv or vim.loop).fs_stat(".git") or {}, "type") == "directory",
-						})
+						require("telescope.builtin").find_files()
 					end,
 					desc = "Find files",
 				},
