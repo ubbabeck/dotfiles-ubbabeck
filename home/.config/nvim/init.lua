@@ -6,6 +6,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Compatibility shim for deprecated vim.lsp.buf_get_clients()
+-- This fixes the deprecation warning from project.nvim plugin
+-- vim.lsp.buf_get_clients([bufnr]) -> vim.lsp.get_clients({ bufnr = bufnr })
+-- Override the deprecated function to use the new API before plugins load
+vim.lsp.buf_get_clients = function(bufnr)
+	-- Use the new API: vim.lsp.get_clients() with optional bufnr filter
+	-- If bufnr is nil or 0, it defaults to current buffer
+	if bufnr and bufnr ~= 0 then
+		return vim.lsp.get_clients({ bufnr = bufnr })
+	else
+		-- When called without args or with 0, get clients for current buffer
+		return vim.lsp.get_clients({ bufnr = 0 })
+	end
+end
+
 vim.api.nvim_create_user_command("RaiseTmuxPane", function()
 	-- Get the current tmux pane ID
 	local current_pane = vim.fn.environ()["TMUX_PANE"]
