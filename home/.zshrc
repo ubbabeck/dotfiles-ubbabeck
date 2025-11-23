@@ -165,6 +165,10 @@ path=(
     $HOME/.local/bin/
     $path
 )
+# get rid of duplicate
+typeset -U path
+# remove non-existing entries from path
+path=($^path(N))
 
 export TERMINAL=ghostty
 
@@ -181,6 +185,25 @@ if [[ -n ${commands[nvim]} ]]; then
 elif [[ -n ${commands[vim]} ]]; then
   export ALTERNATE_EDITOR=vim
 fi
+export VISUAL=$EDITOR
+if [[ -n ${commands[nvim]} ]]; then
+  export MANPAGER="nvim +Man!"
+elif [[ -n ${commands[moar]} ]]; then
+  export MANPAGER="moar"
+  export MOAR='--no-linenumbers --quit-if-one-screen'
+  alias less='moar'
+elif [[ -n ${commands[less]} ]]; then
+  export MANPAGER="less"
+fi
+if [[ -n ${commands[moar]} ]]; then
+  export PAGER="moar"
+elif [[ -n ${commands[less]} ]]; then
+  export PAGER="less"
+fi
+
+export GOPATH="$HOME/go"
+[[ ! -d "$GOPATH" ]] && mkdir -p "$GOPATH/src" 2>/dev/null
+
 
 cd() {
   if [[ "$1" == "--" ]]; then

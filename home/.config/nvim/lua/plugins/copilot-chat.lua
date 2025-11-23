@@ -1,9 +1,8 @@
 return {
 	"CopilotC-Nvim/CopilotChat.nvim",
-	branch = "main",
 	dependencies = {
 		{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-		{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log wrapper
+		{ "nvim-lua/plenary.nvim"  }, -- for curl, log wrapper
 		{ "nvim-telescope/telescope.nvim" }, -- required for telescope integration
 	},
 	lazy = false,

@@ -11,6 +11,8 @@
     self.inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
     self.inputs.nixos-hardware.nixosModules.common-pc-ssd
     self.inputs.nix-index-database.nixosModules.nix-index
+    self.inputs.home-manager.nixosModules.home-manager
+    self.nixosModules.default
     { programs.nix-index-database.comma.enable = true; }
     # Include the results of the hardware scan.
     ./modules/postgresql.nix
@@ -46,6 +48,8 @@
 
   ];
 
+  nixpkgs.pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
+
   system.autoUpgrade = {
     enable = true;
     flake = self.outPath;
@@ -72,6 +76,8 @@
     ];
 
   };
+
+  clan.core.deployment.requireExplicitUpdate = true;
 
   system.rebuild.enableNg = true;
 

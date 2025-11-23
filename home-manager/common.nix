@@ -11,6 +11,7 @@
     ./modules/ai.nix
     ./modules/atuin-autosync.nix
     ./modules/tmux-thumbs.nix
+    ./modules/neovim
   ];
 
   nix.package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
@@ -62,6 +63,7 @@
       bottom
 
       # sound
+      zed-editor
       #rhythmbox
 
       #video player
@@ -185,6 +187,15 @@
       #just
       just
 
+      (pkgs.runCommand "uutils-coreutils" { } ''
+        mkdir -p $out/bin
+        for i in ${pkgs.uutils-coreutils}/bin/*; do
+          ln -s "$i" "$out/bin/$(basename "''${i#${pkgs.uutils-coreutils}/bin/uutils-}")"
+        done
+      '')
+      git
+      mypy
+
       twitter-color-emoji
       hicolor-icon-theme
 
@@ -194,6 +205,12 @@
     ]
     ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
       ghostty
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
+      strace
+      psmisc
+      glibcLocales
+      gdb
     ];
   programs.bat.enable = true;
   programs.vscode = {
