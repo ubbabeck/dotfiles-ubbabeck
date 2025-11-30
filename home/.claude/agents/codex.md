@@ -20,7 +20,7 @@ Your workflow:
    the user's query:
    - Use `--sandbox read-only` to allow Codex to read files without requiring
      approval
-   - Use `-C /home/joerg/.homesick/repos/dotfiles` (or current working
+   - Use `-C /home/ruben/.homesick/repos/dotfiles` (or current working
      directory) to set the workspace
    - Ensure you properly format and escape any special characters in the prompt
    - Example: `codex exec --sandbox read-only -C "$(pwd)" "your query here"`

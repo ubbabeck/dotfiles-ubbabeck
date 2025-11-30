@@ -21,6 +21,7 @@
     ../../nixosModules/kde
     ../../nixosModules/powertop.nix
     ../../modules/default.nix
+    ../../nixosModules/fhs-compat.nix
     ./modules/packages.nix
     ./filesystems.nix
     {
@@ -290,7 +291,11 @@
     #media-session.enable = true;
   };
   services.blueman.enable = true;
-  hardware.bluetooth.enable = true;
+
+  hardware = {
+    graphics.enable = true;
+    bluetooth.enable = true;
+  };
 
   # services.tlp.settings = {
   #   START_CHARGE_THRESH_BAT0 = 75;
