@@ -49,6 +49,7 @@
           }
           declare -A profiles=(
             ["thinkpad-p14"]="desktop"
+          ["steve"]="macos"
           )
           profile="common"
           user=$(id -un)
@@ -99,8 +100,9 @@
           # this one should work for aarch64-linux/x86_64-linux and macos
           common = homeManagerConfiguration { };
         }
-        #// lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") {
-        #macos = homeManagerConfiguration { extraModules = [ ./macos.nix ]; };
+        // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-darwin") {
+          macos = homeManagerConfiguration { extraModules = [ ./macos.nix ]; };
+        }
         // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
           desktop = homeManagerConfiguration { extraModules = [ ./desktop.nix ]; };
 

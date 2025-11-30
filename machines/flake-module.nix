@@ -10,5 +10,11 @@
     # Define machines in the inventory
     # clan-core will automatically discover machines from ./machines/<machine-name>/
     # and use configuration.nix or default.nix as the entry point
+
+    inventory = {
+
+      machines.steve.machineClass = "darwin";
+
+    };
   };
 }

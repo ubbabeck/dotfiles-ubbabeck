@@ -28,6 +28,11 @@
     nix.inputs.git-hooks-nix.follows = "";
     nix.inputs.nixpkgs-23-11.follows = "";
 
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    srvos.url = "github:nix-community/srvos";
+    srvos.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
