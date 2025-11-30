@@ -21,6 +21,9 @@ if [ -f ~/.nix-profile/zsh/ghostty-integration ]; then
   . ~/.nix-profile/zsh/ghostty-integration
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+  export NIX_PATH="$NIX_PATH:darwin-config=$HOME/.config/nixpkgs/darwin-configuration.nix"
+fi
 
 ## Options
 setopt auto_name_dirs
@@ -229,6 +232,16 @@ flakify() {
   fi
   direnv allow
   ${EDITOR:-vim} flake.nix
+}
+
+darwin-build() {
+    if [ $# -lt 1 ]; then
+      echo "USAGE: $0 name" >&2
+    fi
+    name=$1
+    shift
+
+    command nix build ".#darwinConfigurations.$name.config.system.build.toplevel" "$@"
 }
 
 # Alias git
