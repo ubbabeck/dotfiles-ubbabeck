@@ -214,7 +214,9 @@ alias gc='git commit -v'
 alias ga='git add -p'
 alias gs='git status'
 # Direnv
-eval "$(direnv hook zsh)"
+if [[ -n ${commands[direnv]} ]]; then
+   eval "$(direnv hook zsh)"
+fi
 # Plugins
 if [[ -f ~/.zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh
