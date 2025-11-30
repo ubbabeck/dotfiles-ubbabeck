@@ -11,8 +11,8 @@
     [
       aiTools.opencode
       aiTools.coderabbit-cli
-      aiTools.goose-cli
       aiTools.cursor-agent
+      aiTools.claude-code
       aiTools.spec-kit
       pkgs.pueue
     ];
