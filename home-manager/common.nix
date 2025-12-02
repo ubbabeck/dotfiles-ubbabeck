@@ -1,6 +1,8 @@
 {
   self,
   pkgs,
+  lib,
+  config,
   ...
 }:
 {
@@ -18,13 +20,13 @@
 
   home.enableNixpkgsReleaseCheck = false;
   home = {
-    username = "ruben";
-    homeDirectory = "/home/ruben";
+    username = lib.mkDefault "ruben";
+    homeDirectory =
+      if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
     stateVersion = "24.05";
   };
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
-  services.network-manager-applet.enable = true;
   # better eval time
   manual.html.enable = false;
   manual.manpages.enable = false;
@@ -41,7 +43,6 @@
       fastfetch
       league-of-moveable-type
 
-      gimp3
       # archives
       zip
       xz
@@ -52,7 +53,6 @@
       xdg-utils
 
       eternal-terminal
-      ferdium
 
       # utils
       ripgrep # recursively searches directories for a regex pattern
@@ -62,14 +62,7 @@
       mdcat
       bottom
 
-      # sound
-      zed-editor
-      #rhythmbox
-
       #video player
-      mpv
-      adwaita-icon-theme
-      hicolor-icon-theme
       graphicsmagick
       screen-message
       sshfs-fuse
@@ -99,7 +92,6 @@
       zstd
       gnupg
 
-      gdb
       # nix related
       #
       # it provides the command `nom` works just like `nix`
@@ -117,32 +109,18 @@
       glow # markdown previewer in terminal
 
       btop # replacement of htop/nmon
-      iotop # io monitoring
       iftop # network monitoring
 
-      # system call monitoring
-      strace # system call monitoring
-      ltrace # library call monitoring
-      lsof # list open files
-
-      # system tools
-      sysstat
-      lm_sensors # for `sensors` command
-      ethtool
       pciutils # lspci
       usbutils # lsusb
 
       apksigner # for verifying apk files
 
       #
-      neovide
       # password manager
-      keepassxc
 
       # remote programming
       mob
-
-      calibre
 
       # gitlab cli
       glab
@@ -157,7 +135,6 @@
 
       # signal desktop
       # TODO add norwegian language
-      signal-desktop
       # obsidian
       #obsidian
 
@@ -165,24 +142,9 @@
       pueue
 
       #ungoogled chromeium
-      ungoogled-chromium
-
-      # tor browser
-      tor-browser
-
-      anki
-
-      #libreoffice
-      libreoffice
-
-      #sqlitebrowser
-      sqlitebrowser
 
       # electrum
       #electrum
-
-      #email
-      evolution
 
       #just
       just
@@ -196,9 +158,6 @@
       git
       mypy
 
-      twitter-color-emoji
-      hicolor-icon-theme
-
       nixos-shell
 
       dust
@@ -206,11 +165,17 @@
     ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
       ghostty
     ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [ iproute2mac ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       strace
+      ethtool
       psmisc
       glibcLocales
       gdb
+      # system call monitoring
+      ltrace # library call monitoring
+      lsof # list open files
+      strace # system call monitoring
     ];
   programs.bat.enable = true;
   programs.vscode = {

@@ -49,7 +49,7 @@
           }
           declare -A profiles=(
             ["thinkpad-p14"]="desktop"
-          ["steve"]="macos"
+            ["steve"]="macos"
           )
           profile="common"
           user=$(id -un)

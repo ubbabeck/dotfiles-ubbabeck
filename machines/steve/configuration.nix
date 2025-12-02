@@ -64,8 +64,6 @@
     pkgs.python3
     pkgs.nixos-rebuild
     pkgs.pinentry_mac
-    self.packages.${pkgs.stdenv.hostPlatform.system}.blueutil
-    self.packages.${pkgs.stdenv.hostPlatform.system}.systemctl-macos
   ];
 
   programs.zsh.enable = true;

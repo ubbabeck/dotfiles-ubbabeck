@@ -7,7 +7,7 @@
       hostName = "jamie";
       sshUser = "nix";
       protocol = "ssh-ng";
-      sshKey = config.sops.secrets.ssh-remote-builder.path;
+      #sshKey = config.sops.secrets.ssh-remote-builder.path;
       systems = [
         "x86_64-linux"
         "i686-linux"
@@ -23,7 +23,7 @@
       hostName = "eliza";
       sshUser = "nix";
       protocol = "ssh-ng";
-      sshKey = config.sops.secrets.ssh-remote-builder.path;
+      #sshKey = config.sops.secrets.ssh-remote-builder.path;
       system = "x86_64-linux";
       maxJobs = 224;
       supportedFeatures = [

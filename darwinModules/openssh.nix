@@ -7,17 +7,17 @@
   ];
   users.users.root.openssh.authorizedKeys.keys = config.users.users.ruben.openssh.authorizedKeys.keys;
 
-  environment.etc."ssh/ssh_config.d/jumphost.conf".text = '''';
+  #environment.etc."ssh/ssh_config.d/jumphost.conf".text = '''';
 
-  programs.ssh.knownHosts.ssh-ca = {
-    certAuthority = true;
-    hostNames = [
-    ];
-    publicKeyFile = ./ssh-ca.pub;
-  };
-
-  programs.ssh.knownHosts."" = {
-    hostNames = [ "" ];
-    publicKey = "";
-  };
+  #  programs.ssh.knownHosts.ssh-ca = {
+  #    certAuthority = true;
+  #    hostNames = [
+  #    ];
+  #    publicKeyFile = ./ssh-ca.pub;
+  #  };
+  #
+  #  programs.ssh.knownHosts."" = {
+  #    hostNames = [ "" ];
+  #    publicKey = "";
+  #  };
 }
