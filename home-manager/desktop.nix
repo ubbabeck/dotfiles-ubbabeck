@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./modules/ai.nix
@@ -31,7 +32,7 @@
     ungoogled-chromium
     # tor browser
     tor-browser
-    ioto
+    iotop
     twitter-color-emoji
     hicolor-icon-theme
 

@@ -22,6 +22,7 @@
     ../../nixosModules/powertop.nix
     ../../modules/default.nix
     ../../nixosModules/fhs-compat.nix
+    ../../nixosModules/mullvad.nix
     ./modules/packages.nix
     ./filesystems.nix
     {
