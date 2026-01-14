@@ -31,9 +31,6 @@
         ],
         "nix-darwin": "nix-darwin",
         "nix-select": "nix-select",
-        "nixos-facter-modules": [
-          "nixos-facter-modules"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -42,11 +39,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1768248390,
-        "narHash": "sha256-Bazenxmn9gqKCmhEkE2Ufk01nsuG8hlO4xVXwYwsFNI=",
+        "lastModified": 1768349206,
+        "narHash": "sha256-9Zur1/h+bU2YtcGrLRoi9jelOhgD5Iqch5R+cOFpNo4=",
         "ref": "refs/heads/main",
-        "rev": "2b906c9d1b0b35adf1ce57b4131c9103013670b3",
-        "revCount": 12097,
+        "rev": "1831c1a8e7f14c152f30dbe53e2eb5ae00b2bde6",
+        "revCount": 12120,
         "type": "git",
         "url": "https://git.clan.lol/clan/clan-core"
       },
@@ -435,11 +432,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768104471,
-        "narHash": "sha256-HdnXWQsA1EI27IJlaENUEEug58trUrh6+MT0cFiDHmY=",
+        "lastModified": 1768271704,
+        "narHash": "sha256-jJqlW8A3OZ5tYbXphF7U8P8g/3Cn8PPwPa4YlJ/9agg=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "94f9cbd20f680ebb2ad6cdf39da97cbcfaedf004",
+        "rev": "691b8b6713855d0fe463993867291c158472fc6f",
         "type": "github"
       },
       "original": {
