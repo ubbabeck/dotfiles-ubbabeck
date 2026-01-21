@@ -81,7 +81,6 @@
 
   clan.core.deployment.requireExplicitUpdate = true;
 
-  system.rebuild.enableNg = true;
 
   security.doas.enable = true;
   security.sudo.enable = false;
