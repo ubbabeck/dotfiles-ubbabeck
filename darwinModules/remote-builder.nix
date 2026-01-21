@@ -47,5 +47,5 @@
     #}
   ];
 
-  programs.ssh.extraConfig = '''';
+  programs.ssh.extraConfig = "";
 }
