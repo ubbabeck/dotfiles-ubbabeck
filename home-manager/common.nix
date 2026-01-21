@@ -11,6 +11,7 @@
     #./codename-goose.nix
     ./modules/ai.nix
     ./modules/atuin-autosync.nix
+    ./modules/homeshick.nix
     ./modules/tmux-thumbs.nix
     ./modules/neovim
   ];
@@ -99,7 +100,7 @@
       nix-output-monitor
       nix-tree
       alejandra
-      nixfmt-rfc-style
+      nixfmt
       fh
 
       cargo
