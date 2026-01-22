@@ -103,6 +103,8 @@
       nixfmt
       fh
 
+      bc
+
       cargo
       cargo-watch
 
