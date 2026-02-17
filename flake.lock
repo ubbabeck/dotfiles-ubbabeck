@@ -39,11 +39,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1771208823,
-        "narHash": "sha256-asekn//1bHujocovwaV1inzUzqzo9EDZR/s2msIDfqA=",
+        "lastModified": 1771272607,
+        "narHash": "sha256-Lvu5NGFdtnEgFwzV2PubZi7QI6KBfMCLxPJLpg7jhnQ=",
         "ref": "refs/heads/main",
-        "rev": "6187dba62a1e599646accf201016210f55f403dc",
-        "revCount": 12980,
+        "rev": "cb42d8371fcb5170cf871db1ab75cf6536da21b9",
+        "revCount": 13000,
         "type": "git",
         "url": "https://git.clan.lol/clan/clan-core"
       },
@@ -68,11 +68,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770580383,
-        "narHash": "sha256-fEpF46+YO+jz4X+kahCbgLpRzWRB8wlPiw3lzDcWFpI=",
-        "rev": "f6d0b3d4685c9f44e2c4f479e8fcac17ea923abb",
+        "lastModified": 1771211199,
+        "narHash": "sha256-1JHyii0rZzm9oyTgSxhW3v/t5XPEzqov+QN8bRUkxnk=",
+        "rev": "541e221be610c7e89a190ab2167d866a67cb815a",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/clan/data-mesher/archive/f6d0b3d4685c9f44e2c4f479e8fcac17ea923abb.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/clan/data-mesher/archive/541e221be610c7e89a190ab2167d866a67cb815a.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769524058,
-        "narHash": "sha256-zygdD6X1PcVNR2PsyK4ptzrVEiAdbMqLos7utrMDEWE=",
+        "lastModified": 1771271879,
+        "narHash": "sha256-Vn32sMuvV35ChjVGZE4d8NNmCq3E/6HjaK2uVUUp2JI=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "71a3fc97d80881e91710fe721f1158d3b96ae14d",
+        "rev": "e963ed5aea88ad0c093adde7c1c2abd4e1b48beb",
         "type": "github"
       },
       "original": {
