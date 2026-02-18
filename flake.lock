@@ -190,11 +190,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1771277681,
-        "narHash": "sha256-DXaKneElCi7O4RLQxhMZmpUeZXGYCRKLvkSOK5mSXZE=",
+        "lastModified": 1771340945,
+        "narHash": "sha256-tiJaqEsGbwBSSFxUDlexfln9l0GB+aXlh9j/KbWoWHo=",
         "owner": "DanConwayDev",
         "repo": "ngit-cli",
-        "rev": "6e4a923574eac2d5e58df1313953caedb3e6a2f2",
+        "rev": "a87debb605ae740c9d8698836b04345f1d94d769",
         "type": "github"
       },
       "original": {
