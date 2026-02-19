@@ -40,9 +40,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    ngit.url = "github:DanConwayDev/ngit-cli";
-    ngit.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-ai-tools = {
       url = "github:numtide/nix-ai-tools";
       inputs.nixpkgs.follows = "nixpkgs";
