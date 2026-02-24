@@ -20,6 +20,7 @@
     ../../nixosModules/i18n.nix
     ../../nixosModules/kde
     ../../nixosModules/powertop.nix
+    ../../nixosModules/libvirt.nix
     ../../modules/default.nix
     ../../nixosModules/fhs-compat.nix
     ../../nixosModules/mullvad.nix
@@ -236,7 +237,6 @@
       dockerSocket.enable = true;
       defaultNetwork.settings.dns_enabled = true;
     };
-    virtualbox.host.enable = true;
   };
   # ----- Podman ---------
 
