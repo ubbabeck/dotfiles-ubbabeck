@@ -163,28 +163,6 @@
         "type": "github"
       }
     },
-    "ngit": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1771630013,
-        "narHash": "sha256-FHArdKMH+qFYeWlvRXJqfQfqaXCDI0ZQE2fyxzN/Tvg=",
-        "owner": "DanConwayDev",
-        "repo": "ngit-cli",
-        "rev": "3a17877bcdabc9d6721e3054c2bb07a892f32147",
-        "type": "github"
-      },
-      "original": {
-        "owner": "DanConwayDev",
-        "repo": "ngit-cli",
-        "type": "github"
-      }
-    },
     "nix": {
       "inputs": {
         "flake-compat": [],
@@ -197,10 +175,10 @@
         "nixpkgs-regression": []
       },
       "locked": {
-        "lastModified": 1771875768,
-        "narHash": "sha256-jLz2fdcPq+S5Reh8whA9F6Zum04wmsdRr25JUQoDnCE=",
+        "lastModified": 1771971806,
+        "narHash": "sha256-dkqbAJKmB+8NH8aNcOPc2PLLowgdsxMyzqHxCUPWUwE=",
         "ref": "refs/heads/master",
-        "rev": "5ce241cbfd0ccbe2d3ec49fd0497f35fcd429fd0",
+        "rev": "cf1ead7872d410f6fa0326877481247bfb1cb607",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nix"
