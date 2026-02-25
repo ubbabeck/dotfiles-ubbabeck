@@ -39,11 +39,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1771873559,
-        "narHash": "sha256-SssC1qbdQrFBrOBd0edmTGaAeWqsYjsCJ64BCiG0w0U=",
+        "lastModified": 1771989910,
+        "narHash": "sha256-9Zy9OJ6nhjjD+dVI0ZD3t14uB+wAI7zJMKcKRl/ccBk=",
         "ref": "refs/heads/main",
-        "rev": "ef465a9dcefe2171319321ba98897db22f5f33d0",
-        "revCount": 13116,
+        "rev": "590bc3b67e9d2607a464bed567a59490cd135f84",
+        "revCount": 13155,
         "type": "git",
         "url": "https://git.clan.lol/clan/clan-core"
       },
@@ -68,11 +68,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771841597,
-        "narHash": "sha256-GlTzmDSyxipGsZjoZ7Blhb6Peemj52fgyo7c00gX8Rw=",
-        "rev": "e8869df714d8847d6a7d8806e7ebb368885ce4b3",
+        "lastModified": 1771909837,
+        "narHash": "sha256-3mi2CJwfQ/ofn1TJZafFmETNnnR+tqMz0Yvafa3j3tQ=",
+        "rev": "9fb339dde200d2aa7ed9f57fe0c678fbaf1b494c",
         "type": "tarball",
-        "url": "https://git.clan.lol/api/v1/repos/clan/data-mesher/archive/e8869df714d8847d6a7d8806e7ebb368885ce4b3.tar.gz"
+        "url": "https://git.clan.lol/api/v1/repos/clan/data-mesher/archive/9fb339dde200d2aa7ed9f57fe0c678fbaf1b494c.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -87,11 +87,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771469470,
-        "narHash": "sha256-GnqdqhrguKNN3HtVfl6z+zbV9R9jhHFm3Z8nu7R6ml0=",
+        "lastModified": 1771881364,
+        "narHash": "sha256-A5uE/hMium5of/QGC6JwF5TGoDAfpNtW00T0s9u/PN8=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "4707eec8d1d2db5182ea06ed48c820a86a42dc13",
+        "rev": "a4cb7bf73f264d40560ba527f9280469f1f081c6",
         "type": "github"
       },
       "original": {
@@ -160,28 +160,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "ngit": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1771630013,
-        "narHash": "sha256-FHArdKMH+qFYeWlvRXJqfQfqaXCDI0ZQE2fyxzN/Tvg=",
-        "owner": "DanConwayDev",
-        "repo": "ngit-cli",
-        "rev": "3a17877bcdabc9d6721e3054c2bb07a892f32147",
-        "type": "github"
-      },
-      "original": {
-        "owner": "DanConwayDev",
-        "repo": "ngit-cli",
         "type": "github"
       }
     },
@@ -379,11 +357,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771735105,
-        "narHash": "sha256-MJuVJeszZEziquykEHh/hmgIHYxUcuoG/1aowpLiSeU=",
+        "lastModified": 1771889317,
+        "narHash": "sha256-YV17Q5lEU0S9ppw08Y+cs4eEQJBuc79AzblFoHORLMU=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "d7755d820f5fa8acf7f223309c33e25d4f92e74f",
+        "rev": "b027513c32e5b39b59f64626b87fbe168ae02094",
         "type": "github"
       },
       "original": {
