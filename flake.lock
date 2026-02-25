@@ -163,28 +163,6 @@
         "type": "github"
       }
     },
-    "ngit": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1771630013,
-        "narHash": "sha256-FHArdKMH+qFYeWlvRXJqfQfqaXCDI0ZQE2fyxzN/Tvg=",
-        "owner": "DanConwayDev",
-        "repo": "ngit-cli",
-        "rev": "3a17877bcdabc9d6721e3054c2bb07a892f32147",
-        "type": "github"
-      },
-      "original": {
-        "owner": "DanConwayDev",
-        "repo": "ngit-cli",
-        "type": "github"
-      }
-    },
     "nix": {
       "inputs": {
         "flake-compat": [],
@@ -220,11 +198,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1771903242,
-        "narHash": "sha256-/9GY1GoHFLYshiJQRxRY4KQKJ9nygOoTVLNQ6gOyFoQ=",
+        "lastModified": 1771988864,
+        "narHash": "sha256-Zc0kPK7nu+bThM5En5ZbLXhROU5DM6sj6rLdJ2wyaRA=",
         "owner": "numtide",
         "repo": "nix-ai-tools",
-        "rev": "befdb562ed6dce2700ad10504099fca74a2bec96",
+        "rev": "378270d796a9380ba72cf4ba0997d2c40a21d42f",
         "type": "github"
       },
       "original": {
