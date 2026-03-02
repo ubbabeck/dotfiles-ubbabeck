@@ -159,6 +159,7 @@
 
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
+  boot.plymouth.enable = true;
 
   networking.wireless.interfaces = [ "wlp2s0" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
