@@ -1,5 +1,22 @@
 { pkgs, config, ... }:
 {
+  # Lock KWallet/ksecretd and before suspend
+  systemd.user.services.lock-secrets-on-suspend = {
+    description = "Lock secrets before suspend";
+    before = [ "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "lock-secrets" ''
+        # Lock KWallet/ksecretd
+        ${pkgs.libsecret}/bin/secret-tool lock --collection=kdewallet 2>/dev/null || true
+
+        # lock keepassxc
+        ${pkgs.keepassxc}/bin/keepassxc --lock  2>/dev/null || true
+
+      '';
+    };
+  };
 
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
