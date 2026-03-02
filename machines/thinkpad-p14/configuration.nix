@@ -155,7 +155,6 @@
     "194.242.2.4"
     "1.1.1.1"
   ];
-  #boot.initrd.systemd.enable = true; to enable
 
   services.fwupd.enable = true;
   systemd.timers.fwupd-refresh.enable = false; # https://github.com/NixOS/nixpkgs/issues/271834
@@ -278,7 +277,7 @@
   security = {
     polkit.enable = true;
     #pam.services.swaylock = { };
-    audit.enable = true;
+    audit.enable = false;
   };
   services.pipewire = {
     enable = true;
