@@ -149,6 +149,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "kvm-amd" ];
 
+  networking.nftables.enable = true;
   networking.hostName = "thinkpad-p14"; # Define your hostname.
   networking.nameservers = [
     "194.242.2.4"
@@ -236,6 +237,7 @@
       # Required for containers under podman-compose to be able to talk to each other.
       dockerSocket.enable = true;
       defaultNetwork.settings.dns_enabled = true;
+      defaultNetwork.settings.firewall_dirver = "nftables";
     };
   };
   # ----- Podman ---------
