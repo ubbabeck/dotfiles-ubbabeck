@@ -268,7 +268,6 @@
   services.gnome.gnome-keyring.enable = true;
 
   # sway light
-  programs.light.enable = true;
 
   # Enable sound with pipewire.
 
