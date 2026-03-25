@@ -44,7 +44,6 @@
           # based on https://github.com/ray-x/go.nvim#go-binaries-install-and-update
           go
           delve
-          ginkgo
           gofumpt
           golines
           gomodifytags
