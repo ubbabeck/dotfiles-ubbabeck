@@ -1,6 +1,8 @@
-{ self, inputs, ... }:
+{ self, ... }:
+let
+  inputs = self.inputs;
+in
 {
-  imports = [ ./modules/neovim/flake-module.nix ];
 
   perSystem =
     {

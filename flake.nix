@@ -71,6 +71,7 @@
           ./machines/flake-module.nix
           ./devshell/flake-module.nix
           ./home-manager/flake-module.nix
+          ./home-manager/modules/neovim/flake-module.nix
           inputs.clan-core.flakeModules.default
           inputs.hercules-ci-effects.flakeModule
         ];

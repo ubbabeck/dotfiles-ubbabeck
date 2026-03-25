@@ -8,7 +8,6 @@
   imports = [
     ./programs/git.nix
     ./shell
-    #./codename-goose.nix
     ./modules/ai.nix
     ./modules/atuin-autosync.nix
     ./modules/homeshick.nix
@@ -19,13 +18,6 @@
   #nix.package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
   nix.package = pkgs.nixVersions.latest;
 
-  home.enableNixpkgsReleaseCheck = false;
-  home = {
-    username = lib.mkDefault "ruben";
-    homeDirectory =
-      if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
-    stateVersion = "24.05";
-  };
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
   # better eval time
@@ -190,6 +182,13 @@
       yzhang.markdown-all-in-one
       llvm-vs-code-extensions.vscode-clangd
     ];
+  };
+  home.enableNixpkgsReleaseCheck = false;
+  home = {
+    username = lib.mkDefault "ruben";
+    homeDirectory =
+      if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+    stateVersion = "24.05";
   };
 
 }
