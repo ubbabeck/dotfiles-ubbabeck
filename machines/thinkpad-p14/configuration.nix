@@ -51,7 +51,14 @@
 
   ];
 
-  nixpkgs.pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
+  nixpkgs.pkgs = import self.inputs.nixpkgs {
+    system = "x86_64-linux";
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (self.inputs.nixpkgs.lib.getName pkg) [
+        "cnijfilter2"
+      ];
+  };
 
   system.autoUpgrade = {
     enable = true;
@@ -258,7 +265,13 @@
     browsing = true;
     drivers = with pkgs; [
       gutenprint
+      cnijfilter2
     ];
+  };
+  services.avahi={
+    enable = false;
+    nssmdns4 = true;
+    openFirewall = true;
   };
 
   services.journald.extraConfig = "SystemMaxUse=1G";
