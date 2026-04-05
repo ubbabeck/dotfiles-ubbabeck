@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  self,
   ...
 }:
 {
@@ -30,6 +31,7 @@
   home.packages =
     with pkgs;
     [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.checkhash
       # here is some command line tools I use frequently
       # feel free to add your own or remove some of them
 

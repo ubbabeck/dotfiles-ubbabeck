@@ -1,13 +1,23 @@
-{ pkgs, ... }:
-pkgs.writers.writePython3Bin "checkhash" { } ''
-  import sys, hashlib
+{
+  python3,
+  lib,
+  ...
+}:
+python3.pkgs.buildPythonApplication {
+  pname = "checkhash";
+  version = "0.1.0";
+  format = "other";
 
-  data = sys.stdin.buffer.read()
-  hash = hashlib.sha256(data).hexdigest()
+  src = ./.;
 
-  if hash == sys.argv[1]:
-    sys.exit(0)
-  else:
-    print('hash did not match')
-    sys.exit(1)
-''
+  dontBuild = true;
+
+  installPhase = ''
+    install -Dm755 checkhash.py $out/bin/checkhash
+  '';
+
+  meta = {
+    description = "A tool to check file hashes against known values.";
+    licenses = lib.licenses.mit;
+  };
+}
