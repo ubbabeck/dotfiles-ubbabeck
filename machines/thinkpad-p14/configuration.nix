@@ -200,7 +200,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
 
-  services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable the LXQT Desktop Environment.
@@ -260,10 +259,6 @@
 
   powerManagement.enable = true;
   # Configure keymap in wayland
-  services.xserver = {
-    xkb.layout = "us,no";
-    xkb.options = "grp:win_space_toggle";
-  };
 
   # Configure console keymap
   console.keyMap = "no";
@@ -326,7 +321,6 @@
   # };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 

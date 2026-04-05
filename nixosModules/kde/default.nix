@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   # Lock KWallet/ksecretd and before suspend
   systemd.user.services.lock-secrets-on-suspend = {
@@ -22,7 +27,13 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
-
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma6.enable = true;
+  services.tlp.enable = lib.mkForce false;
+  services.xserver = {
+    xkb.layout = "us,no";
+    xkb.options = "grp:win_space_toggle";
+  };
   # https://wiki.nixos.org/wiki/KDE#KMail_Renders_Blank_Messages
   environment.sessionVariables = {
     NIX_PROFILES = "${pkgs.lib.concatStringsSep " " (
