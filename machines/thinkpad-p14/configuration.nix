@@ -272,7 +272,7 @@
       cnijfilter2
     ];
   };
-  services.avahi={
+  services.avahi = {
     enable = false;
     nssmdns4 = true;
     openFirewall = true;
