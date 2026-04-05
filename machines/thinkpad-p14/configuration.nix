@@ -38,14 +38,22 @@
             useDefaultShell = true;
             createHome = true;
             extraGroups = [
+              "audio"
               "networkmanager"
-              "plugdev"
+              "video"
+            ];
+            packages = [
+              pkgs.wasabiwallet
+              pkgs.trezorctl
+              pkgs.trezor-suite
+              pkgs.electrum
             ];
           };
         };
       };
+      services.trezord.enable = true;
       security.doas.extraConfig = ''
-        permit nopass ruben as bitcoin
+        permit nopass keepenv ruben as bitcoin
       '';
     }
 
@@ -57,6 +65,7 @@
       pkg:
       builtins.elem (self.inputs.nixpkgs.lib.getName pkg) [
         "cnijfilter2"
+        "trezor-suite"
       ];
   };
 

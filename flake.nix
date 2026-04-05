@@ -68,6 +68,7 @@
       }:
       {
         imports = [
+          ./5pkgs/flake-module.nix
           ./machines/flake-module.nix
           ./devshell/flake-module.nix
           ./home-manager/flake-module.nix
