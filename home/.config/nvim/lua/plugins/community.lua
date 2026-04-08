@@ -10,12 +10,13 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
 			filetypes = {
 				gitcommit = true,
 			},
 		},
 	},
-	{ import = "astrocommunity.project.project-nvim" },
 	{ import = "astrocommunity.pack.go" },
 	{
 		"ray-x/go.nvim",
@@ -29,9 +30,22 @@ return {
 	{ import = "astrocommunity.pack.lua" },
 	{ import = "astrocommunity.pack.markdown" },
 	{ import = "astrocommunity.pack.nix" },
-	{ import = "astrocommunity.pack.just" },
-	{ import = "astrocommunity.pack.python-ruff" },
+	{ import = "astrocommunity.pack.python.ruff" },
 	{ import = "astrocommunity.pack.rust" },
+	{
+		-- With native_lsp_config, astrolsp.lsp_opts("rust_analyzer") returns
+		-- nvim-lspconfig's root_dir(bufnr, cb) which rustaceanvim calls with
+		-- (file_name, cb) — incompatible signature. Strip it so rustaceanvim
+		-- falls back to its own cargo-aware root detection.
+		-- TODO: remove once https://github.com/AstroNvim/astrocommunity/pull/1747 is merged
+		"mrcjkb/rustaceanvim",
+		opts = function(_, opts)
+			if opts.server then
+				opts.server.root_dir = nil
+			end
+			return opts
+		end,
+	},
 	{ import = "astrocommunity.pack.toml" },
 	{ import = "astrocommunity.pack.yaml" },
 	{ import = "astrocommunity.pack.zig" },

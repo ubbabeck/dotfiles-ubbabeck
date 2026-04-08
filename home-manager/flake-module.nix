@@ -91,7 +91,7 @@ in
           if [ ! -d "$HOME/.homesick/repos/dotfiles-ubbabeck" ]; then
             "$HOME/.homesick/repos/homeshick/bin/homeshick" clone https://github.com/ubbabeck/dotfiles-ubbabeck.git
           fi
-          "$HOME/.homesick/repos/homeshick/bin/homeshick" symlink
+          "$HOME/.homesick/repos/homeshick/bin/homeshick" --batch --force symlink
           nix run ${self}#hm -- switch
         ''}/bin/bootstrap-dotfiles";
       };

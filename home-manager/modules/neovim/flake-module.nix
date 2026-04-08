@@ -29,9 +29,11 @@
           golangci-lint
           gopls
           lua-language-server
-          marksman
           nil
           nixd
+          nixfmt
+          deadnix
+          statix
           prettierd
           ruff
           selene
@@ -44,6 +46,7 @@
           # based on https://github.com/ray-x/go.nvim#go-binaries-install-and-update
           go
           delve
+          ginkgo
           gofumpt
           golines
           gomodifytags
@@ -67,12 +70,10 @@
         ];
       };
       packages = {
-        neovim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (
-          pkgs.neovimUtils.makeNeovimConfig {
-            wrapRc = false;
-            withRuby = false;
-          }
-        );
+        neovim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped {
+          wrapRc = false;
+          withRuby = false;
+        };
         nvim-open = pkgs.python3.pkgs.callPackage ./nvim-open.nix { };
 
         nvim = pkgs.callPackage ./nvim-standalone.nix {

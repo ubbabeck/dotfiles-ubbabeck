@@ -1,12 +1,12 @@
-function open_or_create_file(tfilename)
+local function open_or_create_file(tfilename)
 	-- complete filepath from the file where this is called
 	local parent = vim.fn.expand("%:p:h")
 	local newfilepath = parent .. "/" .. vim.fn.expand(tfilename)
 
 	if vim.fn.filereadable(newfilepath) ~= 1 then
 		-- create parent directory
-		vim.fn.system("mkdir -p " .. vim.fn.shellescape(parent))
-		vim.fn.system("touch " .. vim.fn.shellescape(newfilepath))
+		vim.fn.mkdir(parent, "p")
+		vim.fn.writefile({}, newfilepath)
 	end
 	vim.cmd(":e " .. newfilepath)
 end
@@ -23,12 +23,18 @@ return {
 		mappings = {
 			-- first key is the mode
 			n = {
-				-- tables with the `name` key will be registered with which-key if it's installed
-				-- this is useful for naming menus
-				["<leader>b"] = { name = "Buffers" },
-				-- quick save
-				-- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-
+				-- Neotree: remember last source and make git the default
+				["<Leader>e"] = { "<Cmd>Neotree toggle source=git_status<CR>", desc = "Toggle Explorer" },
+				["<Leader>o"] = {
+					function()
+						if vim.bo.filetype == "neo-tree" then
+							vim.cmd.wincmd("p")
+						else
+							vim.cmd.Neotree({ "focus", "source=last" })
+						end
+					end,
+					desc = "Toggle Explorer Focus",
+				},
 				-- Switch between tabs
 				["<S-Tab>"] = { ":bprev<CR>" },
 				["<Tab>"] = { ":bnext<CR>" },
@@ -42,13 +48,15 @@ return {
 				},
 				["<leader>*"] = {
 					function()
-						require("telescope.builtin").grep_string()
+						require("snacks").picker.grep_word()
 					end,
 					desc = "Find for word under cursor",
 				},
 				["<leader><leader>"] = {
 					function()
-						require("telescope.builtin").find_files()
+						require("snacks").picker.files({
+							hidden = vim.tbl_get(vim.uv.fs_stat(".git") or {}, "type") == "directory",
+						})
 					end,
 					desc = "Find files",
 				},
