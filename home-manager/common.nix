@@ -16,7 +16,8 @@
     ./modules/neovim
   ];
 
-  nix.package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
+  #nix.package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
+  nix.package = pkgs.nixVersions.latest;
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;

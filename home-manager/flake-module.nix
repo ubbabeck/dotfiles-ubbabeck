@@ -6,9 +6,10 @@ in
 
   perSystem =
     {
-      config,
       pkgs,
       lib,
+      system,
+      self',
       ...
     }:
     let
@@ -65,9 +66,11 @@ in
             echo $profile
             exit 0
           fi
-          ${
-            inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
-          }/bin/home-manager --option keep-going true --flake "${self}#$profile" "$@"
+          ${inputs.home-manager.packages.${system}.home-manager}/bin/home-manager \
+          --option keep-going true \
+          --option accept-flake-config true \
+          --option extra-experimental-features 'nix-command flakes' \
+          --flake "${self}#$profile" "$@"
         ''}/bin/hm";
       };
 
@@ -95,7 +98,7 @@ in
           nix run ${self}#hm -- switch
         ''}/bin/bootstrap-dotfiles";
       };
-      apps.default = config.apps.bootstrap-dotfiles;
+      apps.default = self'.apps.bootstrap-dotfiles;
 
       legacyPackages = {
         homeConfigurations = {
