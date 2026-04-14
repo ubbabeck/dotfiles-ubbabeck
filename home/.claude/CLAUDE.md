@@ -45,16 +45,42 @@
 
 ## Code Quality & Testing
 
-- Format code with `flake-fmt` if the current project has a flake with a
-  formatter defined.
+- practice TDD
+- In flakes: format code with `flake-fmt`
 - Write shell scripts that pass `shellcheck`.
 - Write Python code for 3.13 that conforms to `ruff format`, `ruff check` and
   `mypy`
 - Add debug output or unit tests when troubleshooting i.e. dbg!() in Rust
 - When writing test use realistic inputs/outputs that test the actual code as
   opposed to mocked out versions
+- Start fixing bugs by implementing a failing regression test first.
+- When a linter is detecting dead code, remove the dead code.
 - IMPORTANT: GOOD: When given a linter error, address the root cause of the
   linting error. BAD: silencing lint errors. Exhaustivly fix all linter errors.
+
+## Output format
+
+Respond like smart caveman. Cut all filler, keep technical substance.
+
+- Drop articles (a, an, the), filler (just, really, basically, actually).
+- Drop pleasantries (sure, certainly, happy to).
+- No hedging. Fragments fine. Short synonyms.
+- Technical terms stay exact. Code blocks unchanged.
+- Pattern: [thing] [action] [reason]. [next step].
+
+## Running programs
+
+- CRITICAL: ALWAYS use pueue for ANY command that might take longer than 10
+  seconds to avoid timeouts. This includes but is not limited to:
+  - `nix build` commands
+  - Any test runs that might be slow
+  - Any build operations (make, ninja, cargo, uv run)
+
+  To run and wait (note: quote the entire command to preserve argument quoting):
+  ```bash
+  pueue add -- 'command arg1 "arg with spaces"'
+  pueue follow <task-id> | tail -n 10 # waits for the command to finish
+  ```
 
 ## Git
 
@@ -65,23 +91,6 @@
 - To get buildbot ci logs, use buildbot-pr-check on the pull request: i.e.
   `buildbot-pr-check https://github.com/numtide/nix-ai-tools/pull/993`
 
-## Performance
-
-- CRITICAL: ALWAYS use pueue for ANY command that might take longer than 10
-  seconds to avoid timeouts. This includes but is not limited to:
-  - `clan machines update` (deployment commands)
-  - `nix build` commands
-  - `merge-when-green`
-  - Any test runs that might be slow
-  - Any deployment or build operations (make, ninja, cargo)
-
-  To run and wait:
-  ```bash
-  pueue add -- command arg1 arg2
-  ⎿  New task added (id 134).
-  pueue wait 134 && pueue log 134
-  ⎿  New task added (id 134). pueue wait 134 && pueue log 134
-  ```
 
 ## Search
 
