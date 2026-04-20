@@ -91,7 +91,6 @@ Respond like smart caveman. Cut all filler, keep technical substance.
 - To get buildbot ci logs, use buildbot-pr-check on the pull request: i.e.
   `buildbot-pr-check https://github.com/numtide/nix-ai-tools/pull/993`
 
-
 ## Search
 
 - Recommended: Use GitHub code search to find examples for libraries and APIs:

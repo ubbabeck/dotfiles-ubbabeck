@@ -34,8 +34,8 @@ jobs:
       - uses: NixOS/nix-installer-action@main
         with:
           extra-conf: |
-            extra-substituters = https://cache.thalheim.io
-            extra-trusted-public-keys = cache.thalheim.io-1:R7msbosLEZKrxk/lKxf9BTjOOH7Ax3H0Qj0/6wiHOgc=
+            extra-substituters = https://cache.nixos.org
+            extra-trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
       - name: Determine PR number
         if: |
           github.event_name == 'repository_dispatch' ||
