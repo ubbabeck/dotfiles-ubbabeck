@@ -4,7 +4,7 @@
     ./configuration.nix
     ./nix.nix
     ./programs
-    ./zerotier.nix
+    #./zerotier.nix
     ./yubikey.nix
     #./sway.nix
     ./tor.nix

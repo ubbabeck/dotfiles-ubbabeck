@@ -1,4 +1,3 @@
-#nixPath = [ "nixpkgs=${self.inputs.nixpkgs}" ]; Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
@@ -109,31 +108,6 @@
     }
   ];
 
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    settings = {
-      auto-optimise-store = true;
-      trusted-users = [
-        "root"
-        "ruben"
-      ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      warn-dirty = false;
-      keep-outputs = true;
-      keep-derivations = true;
-    };
-
-    package = pkgs.nix;
-  };
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -166,6 +140,7 @@
   boot.kernelModules = [ "kvm-amd" ];
 
   networking.nftables.enable = true;
+  users.users.ruben.extraGroups = [ "networkmanager" ];
   networking.hostName = "thinkpad-p14"; # Define your hostname.
   networking.nameservers = [
     "194.242.2.4"
@@ -204,37 +179,6 @@
 
   # Enable the LXQT Desktop Environment.
   services.libinput.enable = true;
-
-  fonts = {
-    packages = with pkgs; [
-      # icon fonts
-
-      open-dyslexic
-      noto-fonts
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.iosevka
-      nerd-fonts.symbols-only
-      font-awesome
-      noto-fonts-color-emoji
-      mplus-outline-fonts.githubRelease
-      noto-fonts-cjk-sans
-      dina-font
-      ubuntu-classic
-    ];
-
-    fontDir.enable = true;
-    # use fonts specified by user rather than default ones
-    enableDefaultPackages = false;
-
-    # user defined fonts
-    fontconfig.defaultFonts = {
-      monospace = [
-        "JetBrainsMono Nerd Font"
-        "Noto Color Emoji"
-      ];
-      emoji = [ "Noto Color Emoji" ];
-    };
-  };
 
   programs.git.enable = true;
 

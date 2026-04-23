@@ -27,7 +27,6 @@
           bash-language-server
           clang-tools
           golangci-lint
-          gopls
           lua-language-server
           nil
           nixd

@@ -34,9 +34,14 @@
     tor-browser
     iotop
     twitter-color-emoji
-    hicolor-icon-theme
 
     adwaita-icon-theme
 
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    unifont
+
+    dejavu_fonts
+    ubuntu-classic
   ];
 }
