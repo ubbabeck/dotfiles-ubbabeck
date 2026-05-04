@@ -6,7 +6,7 @@ clipboard-write = allow
 shell-integration = none
 
 #theme = light:"Builtin Solarized Light",dark:"Builtin Solarized Dark"
-theme = iTerm2 Solarized Light
+theme = TokyoNight
 
 keybind = performable:copy=copy_to_clipboard
 keybind = performable:paste=paste_from_clipboard
