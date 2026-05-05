@@ -233,10 +233,10 @@
         "nixpkgs-regression": []
       },
       "locked": {
-        "lastModified": 1777827958,
-        "narHash": "sha256-Bu0+ILJVOfrblVrgQGYSDJTpjPwsciQ80kjm7aPi1lo=",
+        "lastModified": 1777915248,
+        "narHash": "sha256-ILPe+2GSPjmsZvEegUh0lJ1yWSsQnU1eJvfvIdJ8ins=",
         "ref": "refs/heads/master",
-        "rev": "61024d0855f397d80a2c8c554188fd3bd9b171a2",
+        "rev": "53ab7375a110825814837005aaf5a256edea6eae",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nix"
