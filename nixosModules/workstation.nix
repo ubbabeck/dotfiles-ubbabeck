@@ -35,10 +35,10 @@
   boot.initrd.systemd.enable = true;
 
   # Manual timezones (set by networkmanager dispatcher or manually)
-  time.timeZone = null;
+  #time.timeZone = null;
 
   # Development tools
-  programs.wireshark.enable = true;
+  programs.wireshark.enable = false;
 
   environment.systemPackages = [ pkgs.android-tools ];
 
