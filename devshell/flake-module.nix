@@ -124,6 +124,8 @@
           "*/secrets.enc.json"
           "*/lazy-lock.json"
 
+          "home/.config/noctalia/plugins.json"
+          "home/.config/noctalia/settings.json"
           "*.gitignore"
           "*.gitmodules"
           "home-manager/modules/waybar.css"

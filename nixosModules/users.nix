@@ -11,6 +11,9 @@
         "wheel"
         "podman"
         "video"
+        "kvm"
+        "vboxusers"
+        "adbusers"
       ];
       uid = 1000;
 

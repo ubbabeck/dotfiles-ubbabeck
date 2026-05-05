@@ -10,14 +10,16 @@
     self.inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen4
     self.inputs.nixos-hardware.nixosModules.common-pc-ssd
     self.inputs.nix-index-database.nixosModules.nix-index
-    self.inputs.home-manager.nixosModules.home-manager
     self.nixosModules.default
     { programs.nix-index-database.comma.enable = true; }
+    self.inputs.srvos.nixosModules.desktop
     # Include the results of the hardware scan.
     ./modules/postgresql.nix
     ../../nixosModules/users.nix
     ../../nixosModules/i18n.nix
-    ../../nixosModules/kde
+    #../../nixosModules/kde
+    ../../nixosModules/niri
+    ../../nixosModules/workstation.nix
     ../../nixosModules/powertop.nix
     ../../nixosModules/libvirt.nix
     ../../modules/default.nix
@@ -25,6 +27,7 @@
     ../../nixosModules/mullvad.nix
     ./modules/packages.nix
     ./filesystems.nix
+    #./user-password-root.nix
     {
       users = {
         groups.plugdev = { };
@@ -33,6 +36,7 @@
             name = "bitcoin";
             description = "user for bitcoin stuff";
             home = "/home/bitcoin";
+            uid = 1001;
             isNormalUser = true;
             useDefaultShell = true;
             createHome = true;
@@ -113,15 +117,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.tmp.cleanOnBoot = true;
   boot.loader.systemd-boot.configurationLimit = 10;
-  boot.initrd.systemd.enable = true;
   # when installing toggle this
 
   boot.initrd.luks.devices."luks-1c3d6c0f-5c93-4c26-9b50-5a8db85684c6".device =
     "/dev/disk/by-uuid/1c3d6c0f-5c93-4c26-9b50-5a8db85684c6";
   boot.kernel.sysctl = {
-    "net.ipv4.tcp_syncookies" = false;
-    "vm.swappiness" = 60;
-    "kernel.sysrq" = 1;
     "kernel.unprivileged_userns_clone" = 1;
   };
   boot.kernelParams = [
@@ -201,56 +201,16 @@
   };
   # ----- Podman ---------
 
-  powerManagement.enable = true;
-  # Configure keymap in wayland
-
   # Configure console keymap
   console.keyMap = "no";
 
-  # Enable CUPS to print documents.
-  services.printing = {
-    enable = false;
-    browsing = true;
-    drivers = with pkgs; [
-      gutenprint
-      cnijfilter2
-    ];
-  };
+  #printing discovery
   services.avahi = {
     enable = false;
     nssmdns4 = true;
     openFirewall = true;
   };
 
-  services.journald.extraConfig = "SystemMaxUse=1G";
-
-  services.fprintd.enable = false;
-
-  services.gnome.gnome-keyring.enable = true;
-
-  # sway light
-
-  # Enable sound with pipewire.
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  security = {
-    polkit.enable = true;
-    #pam.services.swaylock = { };
-    audit.enable = false;
-  };
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
   services.blueman.enable = true;
 
   hardware = {
@@ -328,7 +288,8 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
+  services.openssh.settings.PermitRootLogin = "prohibit-password";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
