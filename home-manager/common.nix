@@ -175,16 +175,7 @@
       strace # system call monitoring
     ];
   programs.bat.enable = true;
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
-      vscodevim.vim
-      yzhang.markdown-all-in-one
-      llvm-vs-code-extensions.vscode-clangd
-    ];
-  };
+
   home.enableNixpkgsReleaseCheck = false;
   home = {
     username = lib.mkDefault "ruben";
