@@ -139,6 +139,7 @@
       pueue
 
       #ungoogled chromeium
+      khal
 
       # electrum
       #electrum
