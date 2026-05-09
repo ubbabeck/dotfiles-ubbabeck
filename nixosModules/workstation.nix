@@ -16,6 +16,7 @@
     ./powertop.nix
     ./tracing.nix
     ./users.nix
+    ./docker.nix
   ];
 
   # System configuration

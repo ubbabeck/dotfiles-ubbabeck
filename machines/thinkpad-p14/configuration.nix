@@ -171,25 +171,6 @@
 
   programs.git.enable = true;
 
-  # ----- Podman ---------
-  virtualisation.containers.enable = true;
-  virtualisation = {
-    docker.enable = false;
-    podman = {
-      autoPrune.enable = true;
-      enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
-      dockerSocket.enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-      defaultNetwork.settings.firewall_driver = "nftables";
-    };
-  };
-  # ----- Podman ---------
-
   # Configure console keymap
   console.keyMap = "no";
 

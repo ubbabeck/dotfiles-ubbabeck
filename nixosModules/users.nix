@@ -14,7 +14,7 @@ in
       extraGroups = [
         "networkmanager"
         "wheel"
-        "podman"
+        "docker"
         "video"
         "kvm"
         "vboxusers"
