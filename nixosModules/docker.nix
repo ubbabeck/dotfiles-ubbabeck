@@ -8,7 +8,7 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-    storageDriver ="overlay2";
+    storageDriver = "overlay2";
     extraOptions = "--userland-proxy=false --ip-masq=true";
 
     # not compatible with docker swarm
