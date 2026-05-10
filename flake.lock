@@ -221,21 +221,6 @@
         "type": "github"
       }
     },
-    "import-tree": {
-      "locked": {
-        "lastModified": 1773693634,
-        "narHash": "sha256-BtZ2dtkBdSUnFPPFc+n0kcMbgaTxzFNPv2iaO326Ffg=",
-        "owner": "vic",
-        "repo": "import-tree",
-        "rev": "c41e7d58045f9057880b0d85e1152d6a4430dbf1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vic",
-        "repo": "import-tree",
-        "type": "github"
-      }
-    },
     "niri": {
       "inputs": {
         "nixpkgs": [
@@ -295,11 +280,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1778303621,
-        "narHash": "sha256-6bb2hPVTifq1jEemxPW9WRBpoWZ5Fsdpo5Fo657lDKM=",
+        "lastModified": 1778390471,
+        "narHash": "sha256-hZsxF4CgdR/+ZQ6VgHnI3uXj2gGl1voVIy0uutUGW24=",
         "owner": "numtide",
         "repo": "nix-ai-tools",
-        "rev": "cf4313b9cf396950b33ff4237ae42ae08bf2f59f",
+        "rev": "d4aac09e65ca92be67324d82c5dce2f2f3d6094d",
         "type": "github"
       },
       "original": {
