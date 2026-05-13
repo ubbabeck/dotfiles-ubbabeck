@@ -18,9 +18,6 @@
     anki
     #libreoffice
     libreoffice
-    #email
-    evolution
-
     #sqlitebrowser
     sqlitebrowser
     zed-editor
