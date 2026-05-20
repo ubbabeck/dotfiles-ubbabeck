@@ -7,7 +7,6 @@
 }:
 {
   imports = [
-    ./programs/git.nix
     ./shell
     ./modules/ai.nix
     ./modules/atuin-autosync.nix
@@ -154,6 +153,7 @@
         done
       '')
       git
+      git-absorb
       mypy
 
       nixos-shell

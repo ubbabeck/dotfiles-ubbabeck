@@ -27,6 +27,7 @@
     ../../nixosModules/mullvad.nix
     ./modules/packages.nix
     ./filesystems.nix
+    ../../nixosModules/libvirt.nix
     #./user-password-root.nix
     {
       users = {

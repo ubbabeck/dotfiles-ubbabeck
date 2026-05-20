@@ -4,8 +4,6 @@
     ./modules/ai.nix
     ./modules/atuin-autosync.nix
     ./modules/tmux-thumbs.nix
-    ./programs/git.nix
-    #./programs/neovim.nix
   ];
   services.syncthing.enable = true;
 
@@ -31,6 +29,7 @@
     tor-browser
     iotop
     twitter-color-emoji
+    git-lfs
 
     adwaita-icon-theme
 
