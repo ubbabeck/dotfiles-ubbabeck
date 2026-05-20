@@ -7,10 +7,6 @@
 let
   noctalia-qs = pkgs.noctalia-qs.overrideAttrs (old: {
     patches = (old.patches or [ ]) ++ [
-      # https://github.com/noctalia-dev/noctalia-qs/pull/35
-      ./patches/qs-0001-niri-avoid-duplicate-workspace-rows-when-reordering.patch
-      # https://github.com/noctalia-dev/noctalia-qs/pull/37
-      ./patches/qs-0002-bluetooth-lift-rfkill-soft-block.patch
     ];
   });
 
