@@ -16,8 +16,15 @@
 
       machines = {
         steve.machineClass = "darwin";
+        fyrstikkeske.deploy.targetHost = "root@fyrstikkeske.x";
       };
       instances = {
+        # TODO create this
+        #        emergency-access = {
+        #          module.name = "emergency-access";
+        #          module.input = "clan-core";
+        #          roles.default.tags.nixos = { };
+        #        };
         users-root = {
           module.name = "users";
           module.input = "clan-core";
@@ -29,6 +36,7 @@
           };
         };
         tor.roles.server.tags.nixos = { };
+
       };
     };
   };
