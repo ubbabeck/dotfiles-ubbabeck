@@ -154,6 +154,7 @@
       '')
       git
       git-absorb
+      delta
       mypy
 
       nixos-shell

@@ -1,0 +1,138 @@
+[core]
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  pager = delta
+  editor = nvim
+[interactive]
+  singlekey = true
+  diffFilter = delta --color-only
+[format]
+  signoff = true
+[color]
+  branch = true
+  diff = true
+  status = true
+[push]
+  recurseSubmodules = on-demand
+[submodule]
+  fetchJobs = 0
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  dark = true
+  syntax-theme = tokyonight_night
+  line-numbers = true
+  # Tokyo Night palette (from folke/tokyonight.nvim extras/delta)
+  minus-style = syntax "#4a272f"
+  minus-non-emph-style = syntax "#4a272f"
+  minus-emph-style = syntax "#713137"
+  minus-empty-line-marker-style = syntax "#4a272f"
+  line-numbers-minus-style = "#914c54"
+  plus-style = syntax "#243e4a"
+  plus-non-emph-style = syntax "#243e4a"
+  plus-emph-style = syntax "#2c5a66"
+  plus-empty-line-marker-style = syntax "#243e4a"
+  line-numbers-plus-style = "#449dab"
+  line-numbers-zero-style = "#3b4261"
+  hunk-header-style = file line-number syntax
+  hunk-header-decoration-style = "#3b4261" box ul
+  file-style = bold "#7aa2f7"
+  file-decoration-style = "#3b4261" ul
+[am]
+  threeWay = true
+[user]
+  name = Ruben
+  email = ruben.beck@pm.me
+  signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILAxHsji/CvivMu2uBdgs3hEQjUJNhtLtyWlMtinA3H8 ruben@sdu.as
+[gpg]
+  format = ssh
+[diff]
+  compactionHeuristic = true
+  renames = true
+  colorMoved = default
+	noprefix = true
+[merge]
+	tool = vimdiff
+  keepBackup = false
+  conflictstyle = zdiff3
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[merge "mergiraf"]
+  name = mergiraf
+  driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+[core]
+  attributesfile = ~/.gitattributes
+[alias]
+  clone = clone --recursive
+  blame = -w -M
+  update = !git pull && git submodule update --init --recursive
+  comma = commit --amend
+  uncommit = reset --soft HEAD^
+  backport = cherry-pick -x
+  checkout-pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr"
+  pick-pr = !"am() { git fetch origin pull/$1/head:pr-$1; git cherry-pick HEAD..pr-$1; }; am"
+  reset-pr = reset --hard FETCH_HEAD
+  force-push = push --force-with-lease
+  publish = !git pull && git push
+  # recover failed commit messages: https://stackoverflow.com/questions/9133526/git-recover-failed-commits-message
+  recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG
+[push]
+  default = current
+  autoSetupRemote = true
+[rerere]
+  autoUpdate = true
+  enabled = true
+[branch]
+  autoSetupRebase = always
+  autoSetupMerge = always
+[pull]
+  rebase = true
+  autostash = true
+  twohead = ort
+[rebase]
+  stat = true
+  autoStash = true
+  autoSquash = true
+  updateRefs = true
+
+[help]
+  autocorrect = 10
+[mergetool]
+  prompt = false
+  path = nvim-open
+[http "github.com"]
+  SSLCypherList = "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[magithub]
+  online = false
+[magithub "status"]
+  includeStatusHeader = false
+  includePullRequestsSection = false
+  includeIssuesSection = false
+[github]
+  user = ubbabeck
+[advice]
+  detachedHead = false
+  skippedCherryPicks = false
+[init]
+  defaultBranch = main
+[credential]
+  helper = store
+# sucks with lazygit
+#[commit]
+#  gpgsign = true
+[commit]
+	verbose = true
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !gh auth git-credential
+[http]
+  cookiefile = ~/.gitcookies
+#[url "git@github.com:"]
+#  insteadOf = https://github.com/
+[include]
+  path = ~/.gitconfig.local
