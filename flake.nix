@@ -48,6 +48,8 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
+    nix-bitcoin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
