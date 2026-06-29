@@ -40,8 +40,6 @@
 
     clan-core.url = "git+https://git.clan.lol/clan/clan-core?ref=main";
     #clan-core.url = "path:/home/ruben/git/clones/clan-core";
-    niri.url = "github:YaLTeR/niri/3819182";
-    niri.inputs.nixpkgs.follows = "nixpkgs";
 
     clan-core.inputs.nixpkgs.follows = "nixpkgs";
     clan-core.inputs.flake-parts.follows = "flake-parts";
