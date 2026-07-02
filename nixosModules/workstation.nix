@@ -69,7 +69,7 @@
     serviceConfig = {
       Type = "oneshot";
       Environment = "XDG_RUNTIME_DIR=/run/user/1000";
-      User = "joerg";
+      User = "ruben";
       RemainAfterExit = "yes";
       ExecStart = "${pkgs.pamixer}/bin/pamixer --mute";
     };

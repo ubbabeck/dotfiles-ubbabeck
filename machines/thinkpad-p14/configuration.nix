@@ -16,6 +16,7 @@
     self.inputs.srvos.nixosModules.desktop
     # Include the results of the hardware scan.
     ./modules/postgresql.nix
+    ./modules/networkmanager
     ../../nixosModules/users.nix
     ../../nixosModules/i18n.nix
     #../../nixosModules/kde
