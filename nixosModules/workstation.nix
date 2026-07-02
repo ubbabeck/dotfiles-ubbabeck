@@ -49,7 +49,7 @@
     upower.enable = true;
 
     printing = {
-      enable = false;
+      enable = true;
       browsing = true;
       drivers = with pkgs; [
         gutenprint
