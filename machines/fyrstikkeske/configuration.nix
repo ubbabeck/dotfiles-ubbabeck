@@ -5,13 +5,22 @@
     self.inputs.srvos.nixosModules.server
 
     ../../nixosModules/users.nix
+    ./hardware-configuration.nix
+    ./modules/et.nix
+    ../../nixosModules/borgbackup.nix
+
+    self.inputs.disko.nixosModules.disko
+    ./disko.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Required by ZFS. Must be unique per host with the same pool name.
+  networking.hostId = "03819847";
+  boot.supportedFilesystems = [ "zfs" ];
+
   nixpkgs.pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
-  #clan.core.networking.buildHost = "root@eve.i";
   clan.core.deployment.requireExplicitUpdate = true;
 
   time.timeZone = "UTC";
