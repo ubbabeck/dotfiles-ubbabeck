@@ -7,7 +7,6 @@
     ../../nixosModules/users.nix
     ./hardware-configuration.nix
     ./modules/et.nix
-    ../../nixosModules/borgbackup.nix
 
     self.inputs.disko.nixosModules.disko
     ./disko.nix

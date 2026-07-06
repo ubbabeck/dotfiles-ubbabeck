@@ -17,6 +17,14 @@ in
 
     inventory = {
 
+      # `config.nixos` is the list of NixOS machine names (darwin machines like
+      # steve are excluded). backup = every NixOS machine except the server.
+      tags =
+        { config, ... }:
+        {
+          backup = builtins.filter (name: name != "fyrstikkeske") config.nixos;
+        };
+
       machines = {
         steve.machineClass = "darwin";
         fyrstikkeske.deploy.targetHost = "root@192.168.42.116";
@@ -43,9 +51,13 @@ in
         borgbackup-fystikkeske = {
           module.name = "borgbackup";
           module.input = "clan-core";
-          roles.server.machines.fyrstikkeske = { };
+          roles.server.machines.fyrstikkeske.settings.address = "192.168.42.116";
           roles.server.settings.directory = "/var/lib/borgbackup";
-          roles.client.machines.fyrstikkeske.settings.exclude = borgbackupExcludes;
+          # Applied to every client: declares clan.core.state folders to back up.
+          roles.client.extraModules = [ ../nixosModules/borgbackup.nix ];
+          # Every NixOS machine except the server backs up to fyrstikkeske.
+          roles.client.tags.backup = { };
+          roles.client.settings.exclude = borgbackupExcludes;
         };
 
         sshd-ubbabeck = {
