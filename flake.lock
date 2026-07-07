@@ -75,11 +75,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1783314663,
-        "narHash": "sha256-dZ7fxy0plOk3T8JDiWaweF0JusnIpzQx8Slk3ji0RB4=",
+        "lastModified": 1783333991,
+        "narHash": "sha256-rf1So0XZutT3OBgKYw8os8tlWB0nhDTAVBx9fL4J8jE=",
         "ref": "main",
-        "rev": "59a3b77f0539293046c1964b9ff5cf2c09837959",
-        "revCount": 14755,
+        "rev": "01dad1b970cf3b099f8241acb7c00be599f3b6b7",
+        "revCount": 14757,
         "type": "git",
         "url": "https://git.clan.lol/clan/clan-core"
       },
