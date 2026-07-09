@@ -124,6 +124,8 @@
       # gh
       gh
 
+      delta
+
       zoxide
 
       # accounting
