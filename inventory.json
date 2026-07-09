@@ -2,6 +2,9 @@
   "machines": {
     "fyrstikkeske": {
       "installedAt": 1782997488
+    },
+    "archie": {
+      "installedAt": 1783604488
     }
   }
 }

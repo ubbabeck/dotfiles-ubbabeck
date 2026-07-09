@@ -28,14 +28,15 @@ in
       machines = {
         steve.machineClass = "darwin";
         fyrstikkeske.deploy.targetHost = "root@192.168.42.116";
+        archie.deploy.targetHost = "root@178.238.236.110";
       };
       instances = {
-        # TODO create this
-        #        emergency-access = {
-        #          module.name = "emergency-access";
-        #          module.input = "clan-core";
-        #          roles.default.tags.nixos = { };
-        #        };
+        emergency-access = {
+          module.name = "emergency-access";
+          module.input = "clan-core";
+          roles.default.tags.nixos = { };
+        };
+
         users-root = {
           module.name = "users";
           module.input = "clan-core";
@@ -91,6 +92,10 @@ in
         # with zerotier/wireguard later for a stable overlay address.
         internet.roles.default.machines.fyrstikkeske = {
           settings.host = "192.168.42.116";
+          settings.user = "root";
+        };
+        internet.roles.default.machines.archie = {
+          settings.host = "178.238.236.110";
           settings.user = "root";
         };
       };
