@@ -22,6 +22,11 @@
         ];
     services.zerotierone.enable = true;
     services.zerotierone.joinNetworks = [
+      "b6079f73c62fdd0f"
+      "3efa5cb78a26e018"
+      "e5cd7a9e1ccee855"
+      "60ee7c034a32e1b9"
+      "b6079f73c62fdd0f"
     ];
 
     services.zerotierone.localConf.settings = {

@@ -61,6 +61,18 @@ in
           roles.client.settings.exclude = borgbackupExcludes;
         };
 
+        zerotier-ubbabeck = {
+          module.name = "zerotier";
+          module.input = "clan-core";
+          roles.controller.machines.archie = { };
+          roles.moon.machines.archie.settings = {
+            stableEndpoints = [
+              "178.238.236.110"
+              "2a02:c207:2342:7388::1"
+            ];
+          };
+          roles.peer.tags.nixos = { };
+        };
         sshd-ubbabeck = {
           module.name = "sshd";
           module.input = "clan-core";
