@@ -15,5 +15,6 @@
     ]
   },
   "alwaysThinkingEnabled": false,
-  "effortLevel": "medium"
+  "effortLevel": "medium",
+  "agentPushNotifEnabled": true
 }
