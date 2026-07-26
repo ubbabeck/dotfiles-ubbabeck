@@ -1,0 +1,7 @@
+keys:
+  - &ubba-thinkpadp14 age15yqagyn6ev6rm9jcvksm78xlm0txh6gsqz64nm9agtwtwvjus9ts2q0gnk
+creation_rules:
+  - path_regex: secrets\.enc\.json
+    key_groups:
+      - age:
+          - *ubba-thinkpadp14
