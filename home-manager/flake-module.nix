@@ -52,6 +52,7 @@ in
           }
           declare -A profiles=(
             ["thinkpad-p14"]="desktop"
+            ["jos"]="desktop"
             ["steve"]="macos"
           )
           profile="common"

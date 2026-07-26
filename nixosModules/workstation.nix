@@ -53,7 +53,7 @@
       browsing = true;
       drivers = with pkgs; [
         gutenprint
-        cnijfilter2
+        #cnijfilter2
       ];
     };
 
