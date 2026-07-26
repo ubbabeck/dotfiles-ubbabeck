@@ -18,7 +18,6 @@
     libreoffice
     #sqlitebrowser
     sqlitebrowser
-    zed-editor
     ferdium
     mpv
     keepassxc

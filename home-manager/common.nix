@@ -15,8 +15,8 @@
     ./modules/neovim
   ];
 
-  #nix.package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
-  nix.package = pkgs.nixVersions.latest;
+  nix.package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
+  #nix.package = pkgs.nixVersions.latest;
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -31,6 +31,8 @@
     with pkgs;
     [
       self.packages.${pkgs.stdenv.hostPlatform.system}.checkhash
+      config.nix.package
+      jujutsu
       # here is some command line tools I use frequently
       # feel free to add your own or remove some of them
 
@@ -55,6 +57,8 @@
       fzf # A command-line fuzzy finder
       mdcat
       bottom
+
+      nurl
 
       #video player
       graphicsmagick
