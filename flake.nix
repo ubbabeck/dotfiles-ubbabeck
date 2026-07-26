@@ -41,11 +41,17 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     clan-core.url = "git+https://git.clan.lol/clan/clan-core?ref=main";
     #clan-core.url = "path:/home/ruben/git/clones/clan-core";
-
     clan-core.inputs.nixpkgs.follows = "nixpkgs";
+    clan-core.inputs.sops-nix.follows = "sops-nix";
     clan-core.inputs.flake-parts.follows = "flake-parts";
+    clan-core.inputs.treefmt-nix.follows = "treefmt-nix";
+    clan-core.inputs.disko.follows = "disko";
+
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
