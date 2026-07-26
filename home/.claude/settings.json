@@ -16,5 +16,20 @@
   },
   "alwaysThinkingEnabled": false,
   "effortLevel": "medium",
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "permissions": {
+    "deny": [
+      "Read(//home/ruben/.homesick/repos/dotfiles-ubbabeck/sops/**)",
+      "Read(//home/ruben/.homesick/repos/dotfiles-ubbabeck/vars/per-machine/**)",
+      "Read(//home/ruben/.homesick/repos/dotfiles-ubbabeck/vars/shared/**)",
+      "Read(//home/ruben/.config/kwallet-tpm/**)",
+      "Read(**/*password*.cred)",
+      "Read(**/*.age.key)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/id_ed25519)",
+      "Read(**/id_rsa)",
+      "Read(**/*.gpg)"
+    ]
+  }
 }
