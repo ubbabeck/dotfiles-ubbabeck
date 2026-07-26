@@ -121,6 +121,8 @@
       # gitlab cli
       glab
 
+      sesh
+
       # gh
       gh
 
