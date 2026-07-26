@@ -232,54 +232,16 @@
                     "useDistroLogo": false
                 },
                 {
-                    "defaultSettings": {
-                        "autoMount": false,
-                        "fileBrowser": "yazi",
-                        "hideWhenEmpty": false,
-                        "iconColor": "none",
-                        "showBadge": false,
-                        "showNotifications": true,
-                        "terminalCommand": "kitty"
-                    },
-                    "id": "plugin:usb-drive-manager"
-                },
-                {
-                    "defaultSettings": {
-                        "byteThresholdActive": 5000,
-                        "columnSpacing": 0,
-                        "customFontBold": false,
-                        "customFontItalic": false,
-                        "fontSizeModifier": 0.75,
-                        "iconSizeModifier": 1,
-                        "iconType": "caret",
-                        "layout": "vertical",
-                        "paddingLeft": 5,
-                        "paddingRight": 0,
-                        "rowSpacing": -8,
-                        "slots": [
-                            "txSpeed",
-                            "txIcon",
-                            "rxSpeed",
-                            "rxIcon"
-                        ],
-                        "useCustomColors": false,
-                        "useCustomFont": false
-                    },
                     "id": "plugin:network-indicator"
                 },
                 {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultDuration": 0,
-                        "iconColor": "none",
-                        "textColor": "none"
-                    },
+                    "id": "plugin:kde-connect"
+                },
+                {
                     "id": "plugin:timer"
                 },
                 {
-                    "defaultSettings": {
-                    },
-                    "id": "plugin:kde-connect"
+                    "id": "plugin:usb-drive-manager"
                 }
             ]
         }
@@ -711,7 +673,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/ruben/Documents/Pictures/Backgrounds",
+        "directory": "/home/ruben/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [

@@ -12,7 +12,6 @@
     in
     [
       aiTools.opencode
-      aiTools.coderabbit-cli
       aiTools.cursor-agent
       selfPkgs.claude-code
       aiTools.spec-kit
