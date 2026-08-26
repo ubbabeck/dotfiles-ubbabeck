@@ -94,7 +94,7 @@ def main() -> None:
 
     project_root = find_project_root(path.resolve())
     if should_open_directly(path):
-        os.execlp("nvim", "nvim", str(path))  # noqa: S606
+        os.execlp("nvim", "nvim", str(path))
 
     sock_hash = hashlib.blake2s(str(project_root).encode("utf-8")).hexdigest()
     sock = Path.home().joinpath(".local/share/nvim/").joinpath(f"sock-{sock_hash}")

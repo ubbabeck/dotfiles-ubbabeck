@@ -66,14 +66,12 @@
   # Configure console keymap
   console.keyMap = "us";
 
-
   services.blueman.enable = true;
 
   hardware = {
     graphics.enable = true;
     bluetooth.enable = true;
   };
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
