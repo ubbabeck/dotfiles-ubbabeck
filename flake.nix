@@ -11,14 +11,6 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nix.url = "git+https://github.com/nixos/nix?shallow=1";
-    nix.inputs.nixpkgs.follows = "nixpkgs";
-    nix.inputs.flake-parts.follows = "";
-    nix.inputs.flake-compat.follows = "";
-    nix.inputs.nixpkgs-regression.follows = "";
-    nix.inputs.git-hooks-nix.follows = "";
-    nix.inputs.nixpkgs-23-11.follows = "";
-
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     srvos.url = "github:nix-community/srvos";
@@ -54,9 +46,6 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
-    nix-bitcoin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

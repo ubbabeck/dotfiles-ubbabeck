@@ -1,11 +1,10 @@
 {
   pkgs,
-  self,
   ...
 }:
 {
   nix = {
-    package = self.inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.nix;
+    package = pkgs.nix;
     gc.automatic = true;
     gc.dates = "03:15";
     gc.options = "--delete-older-than 10d";

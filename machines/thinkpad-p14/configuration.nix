@@ -11,7 +11,6 @@
     self.inputs.nixos-hardware.nixosModules.common-pc-ssd
     self.inputs.nix-index-database.nixosModules.nix-index
     self.nixosModules.default
-    self.inputs.nix-bitcoin.nixosModules.default
     { programs.nix-index-database.comma.enable = true; }
     self.inputs.srvos.nixosModules.desktop
     # Include the results of the hardware scan.
@@ -52,14 +51,13 @@
               pkgs.wasabiwallet
               #pkgs.trezorctl
               #pkgs.trezor-suite
-              self.inputs.nix-bitcoin.packages.${pkgs.stdenv.hostPlatform.system}.hwi
+              # pkgs.hwi # TODO add my own hwi
               pkgs.electrum
             ];
           };
         };
       };
-      nix-bitcoin.generateSecrets = true;
-      services.hardware-wallets.trezor = true;
+      services.trezord.enable = true;
       #services.generateSecrets = true;
       security.doas.extraConfig = ''
         permit nopass keepenv ruben as bitcoin

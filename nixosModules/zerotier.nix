@@ -3,12 +3,6 @@
   lib,
   ...
 }:
-let
-  readList =
-    path:
-    lib.filter (l: l != "" && !lib.hasPrefix "#" l) (lib.splitString "\n" (lib.fileContents path));
-  networks = readList config.clan.core.vars.generators.zerotier-networks.files."networks".path;
-in
 {
   options = {
     services.zerotierone = {
