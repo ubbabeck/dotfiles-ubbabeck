@@ -21,7 +21,6 @@
     ../../modules/default.nix
     ../../nixosModules/fhs-compat.nix
     ../../nixosModules/mullvad.nix
-    ../../nixosModules/libvirt.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
