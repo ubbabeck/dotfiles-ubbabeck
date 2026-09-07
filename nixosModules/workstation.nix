@@ -57,7 +57,7 @@
       ];
     };
 
-    journald.extraConfig = "SystemMaxUse=1G";
+    journald.settings.Journal.SystemMaxUse = "1G";
 
     tor.client.enable = true;
   };

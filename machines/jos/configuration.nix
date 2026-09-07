@@ -80,7 +80,6 @@
     #  wget
     vim
     dive
-    nixos-rebuild-ng
 
     pulseaudio
     pavucontrol
