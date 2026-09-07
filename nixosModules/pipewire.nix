@@ -16,9 +16,4 @@
     jack.enable = true;
   };
   security.rtkit.enable = true;
-  security = {
-    polkit.enable = true;
-    #pam.services.swaylock = { };
-    audit.enable = false;
-  };
 }
