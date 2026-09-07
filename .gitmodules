@@ -16,3 +16,6 @@
 [submodule "zsh/pure"]
 	path = zsh/pure
 	url = https://github.com/sindresorhus/pure
+[submodule "home/.config/noctalia/shared-plugins"]
+	path = home/.config/noctalia/shared-plugins
+	url = https://github.com/Mic92/noctalia-plugins

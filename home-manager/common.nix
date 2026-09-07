@@ -171,8 +171,8 @@
     ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
       ghostty
     ]
-    ++ lib.optionals pkgs.stdenv.isDarwin [ iproute2mac ]
-    ++ lib.optionals pkgs.stdenv.isLinux [
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ iproute2mac ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       strace
       ethtool
       psmisc
@@ -189,7 +189,10 @@
   home = {
     username = lib.mkDefault "ruben";
     homeDirectory =
-      if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+      if pkgs.stdenv.hostPlatform.isDarwin then
+        "/Users/${config.home.username}"
+      else
+        "/home/${config.home.username}";
     stateVersion = "24.05";
   };
 

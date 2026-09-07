@@ -15,7 +15,7 @@
           inputs'.clan-core.packages.default
           inputs'.clan-core.packages.clan-cli
         ]
-        ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+        ++ lib.optionals (!pkgs.stdenv.hostPlatform.isDarwin) [
           pkgs.bubblewrap
         ];
       };
