@@ -36,5 +36,6 @@
       "effortLevel": "high"
     }
   },
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "theme": "light"
 }
