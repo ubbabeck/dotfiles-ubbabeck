@@ -122,7 +122,10 @@
       # remote programming
       mob
 
+
+      jjui
       # gitlab cli
+
       glab
 
       sesh
