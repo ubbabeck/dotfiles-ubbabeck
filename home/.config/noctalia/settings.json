@@ -25,7 +25,8 @@
             "com.mitchellh.ghostty",
             "librewolf",
             "calibre-gui",
-            "org.gnome.Evolution"
+            "org.gnome.Evolution",
+            "gimp"
         ],
         "position": "center",
         "screenshotAnnotationTool": "",
@@ -308,13 +309,13 @@
         ]
     },
     "colorSchemes": {
-        "darkMode": true,
+        "darkMode": false,
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
         "predefinedScheme": "Tokyo Night",
-        "schedulingMode": "off",
+        "schedulingMode": "location",
         "syncGsettings": true,
         "useWallpaperColors": false
     },
