@@ -29,6 +29,7 @@ in
         steve.machineClass = "darwin";
         fyrstikkeske.deploy.targetHost = "root@192.168.42.116";
         archie.deploy.targetHost = "root@178.238.236.110";
+        bubi.deploy.targetHost = "root@10.0.0.43";
       };
       instances = {
         emergency-access = {

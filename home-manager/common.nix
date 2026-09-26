@@ -122,7 +122,6 @@
       # remote programming
       mob
 
-
       jjui
       # gitlab cli
 
