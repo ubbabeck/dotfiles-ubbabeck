@@ -16,6 +16,7 @@
     ../../nixosModules/users.nix
     ./modules/disko.nix
     ./modules/initrd-ssh.nix
+    ./modules/nginx.nix
   ];
   nixpkgs.pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
 

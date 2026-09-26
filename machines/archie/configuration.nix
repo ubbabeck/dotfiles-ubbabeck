@@ -15,6 +15,7 @@
     self.inputs.disko.nixosModules.disko
     ../../nixosModules/users.nix
     ./modules/disko.nix
+    ./modules/nginx.nix
   ];
   nixpkgs.pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
 
