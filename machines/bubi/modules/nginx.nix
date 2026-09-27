@@ -1,19 +1,10 @@
 {
-  lib,
   pkgs,
   self,
   ...
 }:
 let
-  ztIp =
-    machine:
-    lib.trim (
-      self.inputs.clan-core.lib.getPublicValue {
-        flake = self;
-        generator = "zerotier-ip-${machine}-zerotier-ubbabeck";
-        file = "ip";
-      }
-    );
+  inherit (self.lib) ztIp;
   listenAddr = "[${ztIp "bubi"}]";
 in
 {

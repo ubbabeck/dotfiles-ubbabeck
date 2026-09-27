@@ -67,6 +67,10 @@
           inputs.clan-core.flakeModules.default
           inputs.hercules-ci-effects.flakeModule
         ];
+        flake.lib = import ./lib {
+          inherit self;
+          inherit (inputs.nixpkgs) lib;
+        };
         systems = [
           "x86_64-linux"
           "aarch64-linux"
