@@ -14,7 +14,7 @@ email = "ruben.beck@pm.me"
 log = 'log_oneline_terse'
 
 [template-aliases]
-# lazygit-style initials: "Jörg Thalheim" -> "JT", "dependabot[bot]" -> "de"
+# lazygit-style initials: "Ruben" -> "JT", "dependabot[bot]" -> "de"
 'author_initials(sig)' = '''
 if(sig.name().contains(" "),
   sig.name().first_line().substr(0, 1) ++ sig.name().replace(regex:"^\\S+\\s+", "").substr(0, 1),
