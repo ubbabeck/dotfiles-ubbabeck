@@ -17,6 +17,7 @@
     ./modules/disko.nix
     ./modules/initrd-ssh.nix
     ./modules/nginx.nix
+    ./modules/nextcloud.nix
   ];
   nixpkgs.pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
 

@@ -1,4 +1,9 @@
+{ pkgs, ... }:
 {
+  # Major version must match the root/postgres mountpoint below: each major
+  # uses its own dataDir, and upgrades need a manual pg_upgrade anyway.
+  services.postgresql.package = pkgs.postgresql_18;
+
   # facter.json reports UEFI firmware, so systemd-boot on an ESP works.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

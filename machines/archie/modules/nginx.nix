@@ -21,4 +21,5 @@ in
     serverAliases = [ "www.ubbabeck.com" ];
     locations."/".proxyPass = "http://${bubi}:80";
   };
+  services.nginx.virtualHosts."cloud.ubbabeck.com".locations."/".proxyPass = "http://${bubi}:80";
 }
