@@ -8,9 +8,9 @@
     gc.automatic = true;
     gc.dates = "03:15";
     gc.options = "--delete-older-than 10d";
-    nixPath = [ "nixpkgs=flake:nixpkgs" ];
 
     settings = {
+      nix-path = [ "nixpkgs=flake:nixpkgs" ];
       keep-outputs = true;
       keep-derivations = true;
       trusted-users = [

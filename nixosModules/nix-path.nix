@@ -1,4 +1,4 @@
 { self, ... }:
 {
-  nix.nixPath = [ "nixpkgs=${self.inputs.nixpkgs}" ];
+  nix.settings.nix-path = [ "nixpkgs=${self.inputs.nixpkgs}" ];
 }
