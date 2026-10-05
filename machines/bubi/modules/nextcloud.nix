@@ -15,7 +15,7 @@ in
     files."admin-password" = { };
     runtimeInputs = [ pkgs.xkcdpass ];
     script = ''
-      xkcdpass -n 6 -d - | tr -d '\n' > "$out"/admin-password
+      xkcdpass -n 12 -d - | tr -d '\n' > "$out"/admin-password
     '';
   };
 
