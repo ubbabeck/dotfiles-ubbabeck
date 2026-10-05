@@ -109,6 +109,10 @@
                   ];
                   x86_64-linux = [
                     "thinkpad-p14"
+                    "bubi"
+                    "archie"
+                    "fyrstikkeske"
+                    "jos"
                   ];
                 };
                 nixosMachines = lib.mapAttrs' (n: lib.nameValuePair "nixos-${n}") (
