@@ -36,7 +36,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    clan-core.url = "git+https://git.clan.lol/clan/clan-core?ref=main";
+    clan-core.url = "git+https://git.clan.lol/clan/clan-core?ref=26.05";
     #clan-core.url = "path:/home/ruben/git/clones/clan-core";
     clan-core.inputs.nixpkgs.follows = "nixpkgs";
     clan-core.inputs.sops-nix.follows = "sops-nix";

@@ -57,16 +57,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1792077833,
-        "narHash": "sha256-a5KOVq8zERpdA+37brsjIqnsQITr3Z2YgcPkRev+/Lg=",
-        "ref": "main",
-        "rev": "06f8e420826646b1b43afe3b15cf8ae6852dc996",
-        "revCount": 15380,
+        "lastModified": 1792127269,
+        "narHash": "sha256-CEg9RXRU5gwOevHRFlgREABzCT4kCotIU0My0yt9YH8=",
+        "ref": "26.05",
+        "rev": "4d1e73f439f46a69cf6fcb8ca7004dd184c464fd",
+        "revCount": 15035,
         "type": "git",
         "url": "https://git.clan.lol/clan/clan-core"
       },
       "original": {
-        "ref": "main",
+        "ref": "26.05",
         "type": "git",
         "url": "https://git.clan.lol/clan/clan-core"
       }
@@ -213,11 +213,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1792123574,
-        "narHash": "sha256-Nfg3uuj6SrYd95vB2acYHLvQfjs9L2WZwMgkaKsQyOs=",
+        "lastModified": 1792141775,
+        "narHash": "sha256-/SmqcW1W+yvtF6HpMoT8hmSdnboHme3nKc1lonxsTQM=",
         "owner": "numtide",
         "repo": "nix-ai-tools",
-        "rev": "64f24d6169b8e5996e0c3a3ae696bdf11806b34e",
+        "rev": "cf50fcd764672e2a5afcc2b734ee0e2bb557b2b0",
         "type": "github"
       },
       "original": {
@@ -234,15 +234,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1786845137,
-        "narHash": "sha256-oQFip+v0luP8NIxJzmiW4Wu8bILsbFWom5l0zonl8hQ=",
+        "lastModified": 1783744694,
+        "narHash": "sha256-2cp6N3rrwnGYLTx9l6N+NI+kwrCWxvJUbj5WJhvB29A=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "4cff07de74b50e64bdd68cd4e722ab5b6b35ee48",
+        "rev": "c3e90c89649b07d1a96e4b9dd6cd0d6e44b91a74",
         "type": "github"
       },
       "original": {
         "owner": "nix-darwin",
+        "ref": "nix-darwin-26.05",
         "repo": "nix-darwin",
         "type": "github"
       }

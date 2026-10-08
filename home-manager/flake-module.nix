@@ -84,7 +84,7 @@ in
               pkgs.gitMinimal
               pkgs.coreutils
               pkgs.findutils
-              pkgs.nix
+              pkgs.nixVersions.latest
               pkgs.jq
               pkgs.bash
             ]

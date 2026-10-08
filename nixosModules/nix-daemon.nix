@@ -4,7 +4,7 @@
 }:
 {
   nix = {
-    package = pkgs.nix;
+    package = pkgs.nixVersions.latest;
     gc.automatic = true;
     gc.dates = "03:15";
     gc.options = "--delete-older-than 10d";
