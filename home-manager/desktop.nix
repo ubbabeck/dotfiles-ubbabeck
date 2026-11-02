@@ -3,11 +3,14 @@
   imports = [
     ./modules/ai.nix
     ./modules/atuin-autosync.nix
+    ./modules/noctalia
     ./modules/tmux-thumbs.nix
   ];
   services.syncthing.enable = true;
 
   fonts.fontconfig.enable = true;
+
+  services.mpris-proxy.enable = true;
 
   home.packages = with pkgs; [
 

@@ -1,0 +1,152 @@
+# Noctalia v5. Store paths (pinned plugins, scripts) live in the
+# Nix-generated nix.toml next to this file; GUI changes go to
+# ~/.local/state/noctalia/settings.toml and override both.
+
+[shell]
+font_family = "DejaVu Sans"
+polkit_agent = true
+# Keeps launched apps alive across shell restarts.
+launch_apps_as_systemd_services = true
+telemetry_enabled = false
+avatar_path = "~/.face"
+
+[shell.panel]
+transparency_mode = "soft"
+
+[shell.launcher]
+pinned = [
+  "ferdium",
+  "firefox",
+  "org.keepassxc.KeePassXC",
+  "signal",
+  "com.mitchellh.ghostty",
+  "librewolf",
+  "calibre-gui",
+  "org.gnome.Evolution",
+  "gimp",
+]
+
+[theme]
+mode = "dark"
+source = "builtin"
+builtin = "Tokyo-Night"
+
+[theme.templates]
+builtin_ids = ["gtk3", "gtk4", "qt", "niri"]
+community_ids = ["pywalfox", "yazi"]
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+fill_mode = "crop"
+
+[notification]
+background_opacity = 1.0
+
+[osd]
+position = "top_right"
+
+[location]
+address = "copenhagen,denmark"
+
+[weather]
+enabled = true
+
+[calendar]
+enabled = true
+
+[calendar.account.local_vdir]
+type = "vdir"
+name = "Local Calendars"
+path = "~/.local/share/calendars"
+
+[calendar.reminders]
+enabled = true
+
+[idle.behavior.screen-off]
+timeout = 600
+action = "screen_off"
+enabled = false
+
+[idle.behavior.lock]
+timeout = 660
+action = "lock"
+enabled = false
+
+[idle.behavior.suspend]
+timeout = 1800
+action = "suspend"
+enabled = false
+
+[bar]
+order = ["main"]
+
+[bar.main]
+position = "top"
+background_opacity = 0.93
+margin_edge = 4
+margin_ends = 4
+widget_spacing = 10
+start = ["launcher", "clock", "timer", "cpu", "net-rx", "net-tx", "active_window"]
+center = ["workspaces"]
+end = [
+  "media",
+  "tray",
+  "notifications",
+  "battery",
+  "volume",
+  "network",
+  "bluetooth",
+  "phone",
+  "drives",
+  "control-center",
+]
+
+[widget.clock]
+format = "{:%H:%M %a, %b %d}"
+tooltip_format = "{:%A, %B %d, %Y}"
+
+[widget.clock.actions]
+left = "panel-toggle control-center calendar"
+
+# Keep the start section clear of the centered workspaces.
+[widget.active_window]
+max_length = 200
+
+[widget.workspaces]
+style = "focus_hint"
+focused_color = "primary"
+occupied_color = "on_surface_variant"
+empty_color = "surface_variant"
+hide_when_empty = false
+
+[widget.media]
+hide_when_no_media = true
+max_length = 180
+
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+
+[widget.net-rx]
+type = "sysmon"
+stat = "net_rx"
+network_speed_compact = true
+
+[widget.net-tx]
+type = "sysmon"
+stat = "net_tx"
+network_speed_compact = true
+
+[widget.timer]
+type = "noctalia/timer:bar"
+show_idle_on_horizontal = false
+
+[widget.phone]
+type = "icefish/phone-connect:bar"
+
+[widget.drives]
+type = "aristides/udiskie:status"
+
+# Beep until dismissed by clicking the (red) bar timer.
+[plugin_settings."noctalia/timer"]
+alarm = true
