@@ -33,7 +33,6 @@
 
   # Boot configuration
   boot.plymouth.enable = true;
-  boot.initrd.systemd.enable = true;
 
   # Manual timezones (set by networkmanager dispatcher or manually)
   #time.timeZone = null;

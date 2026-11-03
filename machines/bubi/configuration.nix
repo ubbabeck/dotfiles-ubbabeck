@@ -32,7 +32,6 @@
     "209.126.15.53"
   ];
 
-  boot.initrd.systemd.enable = true;
 
   srvos.boot.consoles = lib.mkDefault [ ];
   environment.systemPackages = with pkgs; [

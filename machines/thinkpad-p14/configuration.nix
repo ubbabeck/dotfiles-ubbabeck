@@ -48,10 +48,6 @@
               "video"
             ];
             packages = [
-              pkgs.wasabiwallet
-              #pkgs.trezorctl
-              #pkgs.trezor-suite
-              # pkgs.hwi # TODO add my own hwi
               pkgs.electrum
             ];
           };
