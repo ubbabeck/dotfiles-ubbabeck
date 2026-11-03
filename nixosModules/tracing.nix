@@ -21,7 +21,7 @@ let
 in
 {
   programs.bcc.enable = true;
-  programs.sysdig.enable = true;
+  programs.sysdig.enable = false; # when testing
 
   environment.systemPackages = [
     pkgs.strace
