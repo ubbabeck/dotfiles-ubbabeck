@@ -10,7 +10,7 @@ let
 in
 {
   # Admin login: `clan vars get bubi nextcloud/admin-password`.
-  # Only used for the initial install; change it in the web UI afterwards.
+  # Only used to create the account; change it in the web UI afterwards.
   clan.core.vars.generators.nextcloud = {
     files."admin-password" = { };
     runtimeInputs = [ pkgs.xkcdpass ];
@@ -29,11 +29,7 @@ in
 
     # Local PostgreSQL over the unix socket with peer auth: no DB password.
     database.createLocally = true;
-    config = {
-      dbtype = "pgsql";
-      adminuser = "admin";
-      adminpassFile = config.clan.core.vars.generators.nextcloud.files."admin-password".path;
-    };
+    config.dbtype = "pgsql";
 
     settings = {
       default_phone_region = "NO";
@@ -55,6 +51,32 @@ in
       mail_domain = "ubbabeck.com";
     };
     secrets.mail_smtppassword = config.clan.core.vars.generators.nextcloud-smtp.files."token".path;
+  };
+
+  # nixpkgs installs with --disable-admin-user, so create the admin via occ.
+  # Only when missing: re-running would clobber a password set in the web UI.
+  systemd.services.nextcloud-admin = {
+    after = [ "nextcloud-setup.service" ];
+    requires = [ "nextcloud-setup.service" ];
+    wantedBy = [ "multi-user.target" ];
+    path = [ config.services.nextcloud.occ ];
+    script = ''
+      if ! nextcloud-occ user:info admin >/dev/null; then
+        OC_PASS="$(<"$CREDENTIALS_DIRECTORY/admin-password")" \
+          nextcloud-occ user:add --password-from-env --group admin admin
+      fi
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "nextcloud";
+      RemainAfterExit = true;
+      # nextcloud-occ reads config.php secrets from CREDENTIALS_DIRECTORY;
+      # without one it re-execs through systemd-run and passes OC_PASS as a
+      # transient unit property that any local user can query over D-Bus.
+      LoadCredential = config.systemd.services.nextcloud-setup.serviceConfig.LoadCredential ++ [
+        "admin-password:${config.clan.core.vars.generators.nextcloud.files."admin-password".path}"
+      ];
+    };
   };
 
   # Proton → Settings → IMAP/SMTP → SMTP tokens, issued for cloud@ubbabeck.com.
